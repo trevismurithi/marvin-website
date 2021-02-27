@@ -1,0 +1,18 @@
+.benefits{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #D24848;
+    padding: 15px 1px;
+}
+
+.benefits img{
+    width: 2rem;
+}
+
+.benefits h2{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}

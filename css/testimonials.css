@@ -1,0 +1,42 @@
+.testimonials{
+    background-color: #f8f8f8;
+    width: 100%;
+    text-align: center;
+    color: black;
+    padding: 15px 1px;
+    margin-top: 5px;
+}
+
+.beneficiary{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: 10px 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    width: 100%;
+}
+
+.beneficiary img{
+    width: 80px;
+    height: 80px;
+    margin: 10px 15px;
+    border-radius: 100%;
+}
+
+.beneficiary h5{
+    font-weight: bolder;
+}
+.beneficiary span{
+    color: gray;
+}
+
+.beneficiary-details{
+    width: 70%;
+}
+
+.beneficiary-details a{
+    color: #367FD3;
+}
