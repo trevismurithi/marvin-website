@@ -47,6 +47,9 @@
                         <label for="single">Single spaces</label>
                         <input type="radio" name="single" id="single">
                     </div>
+                    <div class="cut-off">
+                        <p>$11.6</p>
+                    </div>
                     <button class="btn-submit" name="write-paper" type="submit">Write My Paper</button>
                 </form>
             </div>

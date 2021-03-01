@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/benefits.css">
-    <link rel="stylesheet" href="css/entail.css">
-    <link rel="stylesheet" href="css/services.css">
-    <link rel="stylesheet" href="css/testimonials.css">
-    <link rel="stylesheet" href="css/join.css">
+    <link rel="stylesheet" href="css/home/header.css">
+    <link rel="stylesheet" href="css/home/index.css">
+    <link rel="stylesheet" href="css/home/benefits.css">
+    <link rel="stylesheet" href="css/home/entail.css">
+    <link rel="stylesheet" href="css/home/services.css">
+    <link rel="stylesheet" href="css/home/testimonials.css">
+    <link rel="stylesheet" href="css/home/join.css">
+    <link rel="stylesheet" href="css/home/footer.css">
+    <link rel="stylesheet" href="css/log/log.css">
+    <link rel="stylesheet" href="css/sign/sign.css">
     <title>Essay</title>
 </head>
 <body>
@@ -32,8 +35,8 @@
                 <li><a href="#">Contact Us</a></li>
             </ul>
             <div class="user-accounts">
-                <li><a class="user-accounts-login" href="#">login</a></li>
-                <li><a class="user-accounts-sign-up" href="#">sign up</a></li>
+                <li><a class="user-accounts-login" href="login.php">login</a></li>
+                <li><a class="user-accounts-sign-up" href="signup.php">sign up</a></li>
             </div>
         </div>
     </nav>

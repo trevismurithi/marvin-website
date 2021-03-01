@@ -17,13 +17,14 @@ nav{
 
 .nav-contact{
     width: 100%;
+    background-color: #65AAD8;
+    padding: 10px 0px;
 }
 
 .nav-contact ul{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background-color: #65AAD8;
     align-items: baseline;
     list-style: none;
     color: white;
@@ -62,7 +63,6 @@ nav{
 
 .nav-links .user-accounts li a{
     text-decoration: none;
-    color:white;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
     padding: 10px;
@@ -70,8 +70,22 @@ nav{
 
 .user-accounts-login{
     background-color: #237DB5;
+    color: white;
+}
+
+.user-accounts-login:hover{
+    background-color: white;
+    color: #237DB5;
+    border: 1px solid #237DB5;
 }
 
 .user-accounts-sign-up{
     background-color:#D24848;
+    color: white;
+}
+
+.user-accounts-sign-up:hover{
+    background-color: white;
+    color: #D24848;
+    border: 1px solid #D24848;
 }

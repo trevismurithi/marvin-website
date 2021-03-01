@@ -1,0 +1,75 @@
+.create-account{
+    width: 80%;
+    background-color: white;
+}
+
+.get-started{
+    width: 100%;
+    text-align: start;
+    color: #D24848;
+    font-weight: normal;
+    font-family: Arial,sans-serif;
+    background-color: rgb(233, 230, 230);
+}
+
+.get-started h1{
+    margin-left: 20px;
+    padding: 15px 0px;
+}
+
+.create-user{
+    width: 100%;
+}
+
+.create-user form{
+    display: flex;
+    flex-direction: column;
+}
+
+.create-user form div{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0px 20px 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+.create-user form div label{
+    color: #999999;
+}
+
+.create-user form div label a{
+    color: #65AAD8;
+    font-size: 12px;
+}
+
+.create-user form div input{
+    width: 60%;
+    padding: 8px 0px;
+    outline: none;
+    border:1px solid #999999;
+}
+
+.create-user form div select{
+    width: 60%;
+    padding: 8px 0px;
+    border:1px solid #999999;
+}
+
+.create-user form button{
+    width: 20%;
+    padding: 10px 0px;
+    color: #999999;
+    background-color: rgb(233, 230, 230);
+    outline: none;
+    border: none;
+    margin: 10px 0px 10px 30px;
+}
+
+
+
+
+
+
+
