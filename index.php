@@ -3,7 +3,11 @@
 <main>
     <div class="container">
         <div class="image-content">
-            <img src="img/cover_banner.jpg" alt="">
+            <!-- <img src="img/cover_banner.jpg" alt=""> -->
+            <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_yolfhtxf.json" 
+            background="#E5E6E9"  
+            speed="1"  style="width:100%"  
+            loop  autoplay></lottie-player>
             <div class="image-context">
                 <div class="image-details">
                     <p><span>Writing service</span> at your own convinience</p>
@@ -55,67 +59,91 @@
             </div>
         </div>
         <div class="benefits">
-            <h2>Benefits</h2>
+            <h2>Why Choose Us</h2>
             <img src="img/graph.png" alt="">
         </div>
         <div class="entail">
-            <ul>
-                <li><img src="img/benefit1.png" alt=""></li>
-                <li>No Registration/<br>Sign up fees</li>
-            </ul>
-            <ul>
-                <li><img src="img/benefit2.png" alt=""></li>
-                <li>24/7 Responsive <br>Support Team</li>
-            </ul>
-            <ul>
-                <li><img src="img/benefit3.png" alt=""></li>
-                <li>Great Mentoring<br>Program</li>
-            </ul>
-            <ul>
-                <li><img src="img/benefit4.png" alt=""></li>
-                <li>Regular and Secure <br>Payment Processing</li>
-            </ul>
-            <ul>
-                <li><img src="img/benefit5.png" alt=""></li>
-                <li>Best Pay Rates <br>in the Business</li>
-            </ul>
+            <?php
+                for ($i=0; $i < 3; $i++) { 
+                    echo'
+                        <div class="row1">
+                            <ul>
+                                <li><img src="img/benefit1.png" alt=""></li>
+                                <li>
+                                    <h4>Outstanding Quality</h4><br>
+                                    <p>All our works have one thing in common - the highest quality. We work hard to deliver you only the best papers.</p>
+                                </li>
+                            </ul>      
+                            <ul>
+                                <li><img src="img/benefit2.png" alt=""></li>
+                                <li>
+                                    <h4>Outstanding Quality</h4><br>
+                                    <p>All our works have one thing in common - the highest quality. We work hard to deliver you only the best papers.</p>
+                                </li>
+                            </ul> 
+                            <ul>
+                                <li><img src="img/benefit3.png" alt=""></li>
+                                <li>
+                                    <h4>Outstanding Quality</h4><br>
+                                    <p>All our works have one thing in common - the highest quality. We work hard to deliver you only the best papers.</p>
+                                </li>
+                            </ul>           
+                        </div>
+                    ';
+                }
+            ?>
+        </div>
+        <div class="work">
+            <h2>How it Works</h2>
+        </div>
+        <div class="steps-demo">
+            <!-- <img src="img/cover_banner.jpg" alt=""> -->
+            <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_yolfhtxf.json" 
+            background="#E5E6E9"  
+            speed="1"  style="width:100%"  
+            loop  autoplay></lottie-player>
+            <div class="works-row">
+                <?php
+                    for ($i=0; $i <4; $i++) {
+                        $index = $i+1; 
+                        echo'
+                            <div class="step">
+                                <div class="step-img">
+                                    <img src="img/benefit'.$index.'.png" alt="">
+                                </div><br>
+                                <h4>You place your order</h4><br>
+                                <p>
+                                    To get started, you need to complete an order form on our website. 
+                                    Ask our Support managers for help if you got stuck on one of the steps. 
+                                </p>
+                                <div class="step-num"><p>'.$index.'</p></div>
+                            </div>
+                        ';
+                    }
+                ?>
+            </div>
         </div>
         <div class="services">
-            <h2>Current Available</h2>
+            <h2>Available Samples</h2>
         </div>
         <div class="available-services">
             <div class="projects">
-                <div class="single">
-                    <p><span>Type of paper:</span> Lifestyle Article</p>
-                    <p><span>Topic: </span>Fashion Race</p>
-                    <p><span>Due Date: </span>March 5</p>
-                    <div class="horizontal"></div>
-                    <p><span>Price: </span><span>$35</span></p>
-                </div>
-                <div class="single">
-                    <p><span>Type of paper:</span> Lifestyle Article</p>
-                    <p><span>Topic: </span>Fashion Race</p>
-                    <p><span>Due Date: </span>March 5</p>
-                    <div class="horizontal"></div>
-                    <p><span>Price: </span><span>$35</span></p>
-                </div>
-                <div class="single">
-                    <p><span>Type of paper:</span> Lifestyle Article</p>
-                    <p><span>Topic: </span>Fashion Race</p>
-                    <p><span>Due Date: </span>March 5</p>
-                    <div class="horizontal"></div>
-                    <p><span>Price: </span><span>$35</span></p>
-                </div>
-                <div class="single">
-                    <p><span>Type of paper:</span> Lifestyle Article</p>
-                    <p><span>Topic: </span>Fashion Race</p>
-                    <p><span>Due Date: </span>March 5</p>
-                    <div class="horizontal"></div>
-                    <p><span>Price: </span><span>$35</span></p>
-                </div>
+                <?php 
+                    for ($i=0; $i < 4; $i++) { 
+                        echo'
+                            <div class="single">
+                                <p><span>Type of paper:</span> Lifestyle Article</p>
+                                <p><span>Topic: </span>Fashion Race</p>
+                                <p><span>Due Date: </span>March 5</p>
+                                <div class="horizontal"></div>
+                                <p><a href="#">view sample</a></p>
+                            </div>
+                        ';
+                    }
+                ?>
             </div>
             <div class="view-projects">
-                <a href="#">check all projects</a>
+                <a href="#">view all samples</a>
             </div>
             <br>
         </div>

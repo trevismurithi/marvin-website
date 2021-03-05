@@ -11,6 +11,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: absolute;
+    width: 100%;
 }
 
 .log-in-account form h2{
@@ -35,7 +37,7 @@
     padding: 10px 15px;
     border: none;
     color: white;
-    width: 50%;
+    width: 10%;
 }
 
 .forgot{
@@ -66,4 +68,8 @@
 .create a{
     text-decoration: none;
     color: #237DB5;
+}
+
+.log-in-account lottie-player{
+    position: relative;
 }

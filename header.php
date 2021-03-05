@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/home/testimonials.css">
     <link rel="stylesheet" href="css/home/join.css">
     <link rel="stylesheet" href="css/home/footer.css">
+    <link rel="stylesheet" href="css/home/work.css">
     <link rel="stylesheet" href="css/log/log.css">
     <link rel="stylesheet" href="css/sign/sign.css">
     <title>Essay</title>

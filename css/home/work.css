@@ -1,0 +1,75 @@
+.work{
+    background-color: #E5E6E9;
+    width: 100%;
+    text-align: center;
+    color: #367FD3;
+    padding: 10px 1px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.steps-demo{
+    width: 100%;
+    background-color: white;
+    position: relative;
+}
+
+.steps-demo img{
+    width: 100%;
+    height: 300px;
+    position: relative;
+    top: 0;
+}
+
+.steps-demo lottie-player{
+    width: 100%;
+    height: 300px;
+    position: relative;
+    top: 0;
+}
+
+.step-img img{
+    width: 50px;
+    height: 40px;
+}
+
+.works-row{
+    position: absolute;
+    width: 100%;
+    top: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.step{
+    background-color: white;
+    width: 20%;
+    padding: 10px 15px;
+    text-align: start;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #367FD3;
+    position: relative;
+}
+
+.step p{
+    font-size: 12px;
+}
+
+.step-img{
+    width: 100%;
+    text-align: center;
+    padding: 10px 0px;
+}
+
+.step-num{
+    position: absolute;
+    top: 10px;
+    background-color: #367FD3;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}

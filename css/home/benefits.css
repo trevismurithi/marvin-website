@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    background-color: #D24848;
+    background-color: rgb(233, 230, 230);
     padding: 15px 1px;
 }
 
@@ -13,6 +13,6 @@
 }
 
 .benefits h2{
-    color: white;
+    color: #D24848;
     font-family: Arial, Helvetica, sans-serif;
 }

@@ -34,5 +34,6 @@
         <li><a href="#">@ 2021 MarvinsHub.org All rights reserved</a></li>
     </div>
 </footer>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </body>
 </html>
