@@ -18,41 +18,46 @@
                 <form class="calculator-form" action="" method="post">
                     <h3>calculate the price</h3>
                     <div class="form-btn-3">
-                        <input type="button" value="Writing">
-                        <input type="button" value="Rewriting">
-                        <input type="button" value="Editing">
+                        <input id="write" type="button" value="Writing">
+                        <input id="rewrite" type="button" value="Rewriting">
+                        <input id="edit" type="button" value="Editing">
                     </div>
                     <div class="form-select-1">
-                        <select name="article" id="article">
-                            <option value="Essay">Essay</option>
-                            <option value="Admission">Admission</option>
+                        <select id="select-type" name="article" id="article">
+                            <option value="1">Essay</option>
+                            <option value="2">Admission</option>
                         </select>
                     </div>
                     <div class="form-select-2">
-                        <select name="university" id="university">
-                            <option value="school">school</option>
-                            <option value="college">college</option>
+                        <select id="university" name="university" id="university">
+                            <option value="1">school</option>
+                            <option value="2">college</option>
                         </select>
 
-                        <select name="Week" id="Week">
+                        <select id="week" name="Week" id="Week">
                             <option value="1">1 week</option>
                             <option value="2">2 week</option>
                         </select>
                     </div>
                     <div class="form-select-1">
-                        <select name="article" id="article">
+                        <select id="article" name="article" id="article">
                             <option value="Essay">Essay</option>
                             <option value="Admission">Admission</option>
                         </select>
                     </div>
                     <div class="form-check-2">
                         <label for="double">Double spaces</label>
-                        <input type="radio" name="double" id="double">
+                        <input type="radio" name="double" value="double" id="double">
                         <label for="single">Single spaces</label>
-                        <input type="radio" name="single" id="single">
+                        <input type="radio" name="single" value="single" id="single">
                     </div>
                     <div class="cut-off">
-                        <p>$11.6</p>
+                        <lottie-player id="lottie" class="hide" src="https://assets8.lottiefiles.com/packages/lf20_Cemmpu.json"  
+                        background="transparent"  
+                        speed="1"  
+                        style="width: 30px; height: 30px;"  
+                        loop  autoplay></lottie-player>
+                        <p id="price">$16.60</p>
                     </div>
                     <button class="btn-submit" name="write-paper" type="submit">Write My Paper</button>
                 </form>
