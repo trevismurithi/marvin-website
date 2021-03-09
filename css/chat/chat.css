@@ -31,18 +31,19 @@
 
 .chatroom{
     width: 100%;
-    height: 500px;
+    height: 400px;
     background-color: rgb(138, 155, 230);
     display: flex;
     flex-direction: row;
     border-radius: 30px;
+    margin: 20px 0px;
 }
 
 .connect{
     width: 80%;
     height: 100%;
     border-radius: 30px;
-    background-color: white;
+    background-color: rgb(195, 218, 231);
     border: 1px solid rgb(223, 205, 205);
     display: flex;
     flex-direction: row;
@@ -85,4 +86,178 @@
 .chat{
     width: 60%;
     height:100%;
+}
+
+.choose-chat h2{
+    text-align: center;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    margin: 20px 0px;
+    background-image:linear-gradient(to bottom right,rgb(138, 155, 230), lightblue);
+    color: white;
+    padding: 10px 0px;
+}
+
+.user-list{
+    width: 100%;
+    height: 300px;
+    padding: 10px;
+    overflow: scroll;
+}
+
+.user-list::-webkit-scrollbar{
+    display: none;
+}
+
+.one-user{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px 10px;
+    box-shadow: 2px 2px rgb(95, 95, 95);
+    border-radius: 10px;
+    background-color: white;
+    margin: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.user-content{
+    text-align: start;
+}
+
+.user-content h6{
+    font-size: 15px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bolder;
+}
+
+.user-content p{
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.user-time p{
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.one-user img{
+    width: 50px;
+    margin-right: 5px;
+    border-radius: 10px;
+}
+
+.user-time button{
+    background-color: white;
+    outline: none;
+    padding:3px 10px;
+    color:rgb(138, 155, 230);;
+    border: 1px solid rgb(223, 205, 205);
+    border-radius: 5px;
+}
+
+.user-time button:hover{
+    background-color: black;
+    color: white;
+}
+.user-status{
+    position: relative;
+}
+.online{
+    width:10px;
+    height: 10px;
+    border-radius: 100%;
+    background-color: red;
+    position:absolute;
+    top: 0;
+    right: 0;
+}
+
+.current-user{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: white;
+    width: 50%;
+    padding: 10px 0px;
+    margin: 10px 10px;
+    border-radius: 10px;
+}
+
+.current-user h6{
+    font-size: 15px;
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.user-status-chat img{
+    width: 50px;
+    border-radius: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.user-status-chat{
+    position: relative;
+    width: fit-content;
+}
+
+.chat-content{
+    width: 90%;
+    height: 70%;
+    border-radius: 5px;
+    padding: 8px;
+    background-image: linear-gradient(to bottom right, rgb(109, 117, 155),lightblue);
+    margin: auto;
+    overflow: scroll;
+}
+.chat-content::-webkit-scrollbar{
+    display: none;
+}
+.chat-content{
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.receive{
+    width: 50%;
+    background-color:white;
+    color: black;
+    padding: 10px 8px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 20px 8px;
+}
+
+.receive img{
+    width: 30px;
+    border-radius: 100%;
+    margin-right: 8px;
+}
+
+.sent{
+    width: 50%;
+    background-color:rgb(127, 201, 127);
+    color: black;
+    padding: 10px 8px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 20px 8px;
+    white-space: pre-line;
+    overflow: hidden;
+}
+
+.sent img{
+    width: 30px;
+    border-radius: 100%;
+    margin-right: 8px;
+}
+
+.buyer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
