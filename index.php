@@ -23,26 +23,26 @@
                         <input id="edit" type="button" value="Editing">
                     </div>
                     <div class="form-select-1">
-                        <select id="select-type" name="article" id="article">
+                        <select id="select-type" name="article">
                             <option value="1">Essay</option>
                             <option value="2">Admission</option>
                         </select>
                     </div>
                     <div class="form-select-2">
-                        <select id="university" name="university" id="university">
+                        <select id="university" name="university">
                             <option value="1">school</option>
                             <option value="2">college</option>
                         </select>
 
-                        <select id="week" name="Week" id="Week">
+                        <select id="week" name="Week">
                             <option value="1">1 week</option>
                             <option value="2">2 week</option>
                         </select>
                     </div>
                     <div class="form-select-1">
-                        <select id="article" name="article" id="article">
-                            <option value="Essay">Essay</option>
-                            <option value="Admission">Admission</option>
+                        <select id="article" name="article">
+                            <option value="1">Accounts</option>
+                            <option value="2">Research</option>
                         </select>
                     </div>
                     <div class="form-check-2">

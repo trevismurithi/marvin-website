@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/home/work.css">
     <link rel="stylesheet" href="css/log/log.css">
     <link rel="stylesheet" href="css/sign/sign.css">
+    <link rel="stylesheet" href="css/chat/chat.css">
     <title>Essay</title>
 </head>
 <body>
