@@ -30,6 +30,7 @@
     width: 50%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 20px 0px 20px 30px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
@@ -38,7 +39,9 @@
 .create-user form div label{
     color: #999999;
 }
-
+.create-user form div p{
+    color: #999999;
+}
 .create-user form div label a{
     color: #65AAD8;
     font-size: 12px;
