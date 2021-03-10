@@ -107,8 +107,13 @@ class UserManager
                     //if the passwords match
                     if($match){
                         //take them to dashboard.
+                        //but first to the chat room
+                        header("Location: ../chatroom.php?error=none");
+                        exit();
                     }else {
                         //give message of for error
+                        header("Location: ../login.php?error=failedlog");
+                        exit();
                     }
                 }
                 $stmt->close();

@@ -73,3 +73,9 @@
 .log-in-account lottie-player{
     position: relative;
 }
+
+#error{
+    padding: 10px 15px;
+    color: red;
+    background-color: rgb(219, 141, 141);
+}
