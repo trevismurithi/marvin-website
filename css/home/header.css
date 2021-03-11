@@ -94,3 +94,17 @@ nav{
     color: #D24848;
     border: 1px solid #D24848;
 }
+
+.user-accounts form button{
+    background-color:#D24848;
+    color: white;
+    padding: 10px;
+    font-size: 18px;
+    outline: none;
+    border: none;
+}
+
+.user-accounts form button:hover{
+    background-color: black;
+    color: white;
+}

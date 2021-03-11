@@ -1,9 +1,15 @@
 <?php 
     require 'header.php';
+    //redirect the user if they have already logged in
+    if(isset($_SESSION['username'])){
+        header('Location: index.php');
+        exit();
+    }
     $message="";
     $error="";
     $username="";
-    $fullName="";
+    $first_name="";
+    $last_name= "";
     $email="";
     $phone="";
     if(isset($_GET['error'])){
@@ -11,23 +17,31 @@
     }
     //variables for possible errors
     $empty = "emptyfields";
-    $special = "specialcharacter";
-    $nameMax = "nameless";
+    $userspecial = "usernamespecial";
+    $firstspecial = "firstspecial";
+    $lastspecial = "lastspecial";
     $nonMatch = "nonematch";
     //create a switch statement 
     switch ($error) {
         case $empty:
             $message="fill all fields";
             break;
-         case $special:
-            $message="remove special characters in username and name";
-            $username = $_GET['user'];
-            $fullName = $_GET['name'];
+         case $userspecial:
+            $message="remove special characters in username";
+            $first_name = $_GET['f_name'];
+            $last_name = $_GET['l_name'];
             $email = $_GET['email'];
             $phone = $_GET['phone'];
             break;
-        case $nameMax:
-            $message="two names required";
+        case $firstspecial:
+            $message="remove special characters in first name";
+            $username = $_GET['user'];
+            $last_name = $_GET['l_name'];
+            $email = $_GET['email'];
+            $phone = $_GET['phone'];
+            break;
+        case $lastspecial:
+            $message="remove special characters in last name";
             $username = $_GET['user'];
             $email = $_GET['email'];
             $phone = $_GET['phone'];
@@ -35,14 +49,16 @@
         case $nonMatch:
             $message="passwords do not match";
             $username = $_GET['user'];
-            $fullName = $_GET['name'];
+            $first_name = $_GET['f_name'];
+            $last_name = $_GET['l_name'];
             $email = $_GET['email'];
             $phone = $_GET['phone'];
             break;       
         default:
             $message="";
             $username = "";
-            $fullName = "";
+            $first_name = "";
+            $last_name = "";
             $email = "";
             $phone = "";
             break;
@@ -52,7 +68,6 @@
     <div class="get-started">
         <h1>GET STARTED</h1>
     </div>
-    <?php echo($fullName)?>
     <div class="create-user">
         <form action="include/sign.inc.php" method="post">
             <div>
@@ -60,8 +75,12 @@
                 <input type="text" name="username" id="username" value=<?php echo $username;?>>
             </div>
             <div>
-                <label for="name">Full Name</label>
-                <input type="text" name="name" id="name" value=<?php echo $fullName;?>>
+                <label for="f_name">First Name</label>
+                <input type="text" name="f_name" id="f_name" value=<?php echo $first_name;?>>
+            </div>
+            <div>
+                <label for="l_name">Last Name</label>
+                <input type="text" name="l_name" id="l_name" value=<?php echo $last_name;?>>
             </div>
             <div>
                 <label for="email">Email</label>
@@ -92,6 +111,13 @@
             </div>
             <button name="submit" type="submit">Create My Account</button>
         </form>
+        <?php 
+        if(isset($_GET['error'])){
+            if($_GET['error']!="none"){
+                echo'<div class="error-message"><p>'.$message.'</p></div>';
+            }
+        }
+        ?>
     </div>
 </div>
 <?php require 'footer.php'?>

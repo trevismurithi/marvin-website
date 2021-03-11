@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,8 +38,21 @@
                 <li><a href="#">Contact Us</a></li>
             </ul>
             <div class="user-accounts">
-                <li><a class="user-accounts-login" href="login.php">login</a></li>
-                <li><a class="user-accounts-sign-up" href="signup.php">sign up</a></li>
+                <?php
+                    if(isset($_SESSION['username'])){
+                        echo '
+                            <li><a class="user-accounts-login" href="#">'.$_SESSION['username'].'</a></li>
+                            <form action="include/user.inc.php" method="post">
+                                <button type="submit" name="submit">logout</button>
+                            </form>
+                        ';
+                    }else{
+                        echo '
+                            <li><a class="user-accounts-login" href="login.php">login</a></li>
+                            <li><a class="user-accounts-sign-up" href="signup.php">sign up</a></li>
+                        ';
+                    }
+                ?>
             </div>
         </div>
     </nav>

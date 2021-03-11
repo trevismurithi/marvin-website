@@ -1,5 +1,11 @@
+<?php require 'header.php';
+?>
 <?php 
-    require 'header.php';
+    //redirect the user if they have already logged in
+    if(isset($_SESSION['username'])){
+        header('Location: index.php');
+        exit();
+    }
     $message="";
     $error="";
     if(isset($_GET['error'])){
@@ -21,12 +27,9 @@
         case $usernull:
             $message="wrong password or username";
             break;
-
-
         case $click:
             $message="click login button";
             break;
-
         default:
             $message="";
             break;

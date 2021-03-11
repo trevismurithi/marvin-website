@@ -20,7 +20,7 @@ class UserManager
     )";
     private $create_user = "INSERT INTO users(user_name,first_name,last_name,email,phone_num,pwd) VALUES (?,?,?,?,?,?)";
     private $search_user = "SELECT * FROM users WHERE user_name=? OR email=? ";
-    private $login_user = "SELECT pwd FROM users WHERE user_name=?";
+    private $login_user = "SELECT email,phone_num,pwd FROM users WHERE user_name=?";
     private $all_users = "SELECT user_name FROM users";
     public function createConnection()
     {
@@ -78,11 +78,15 @@ class UserManager
             $stmt->execute();
             $stmt->close();
             $conn->close();
+            header('Location: ../login.php?login=user');
+            exit();
         }
     }
 
     public function logInUser($conn,$username,$pwd){
         $pass_ = "";
+        $email="";
+        $phone="";
         //prepare the statement 
         $stmt = $conn->prepare($this->login_user);
         if(!$stmt){
@@ -100,7 +104,7 @@ class UserManager
             $number = $stmt->num_rows;
             if($number>0){
                 //bind the password
-                $stmt->bind_result($pass_);
+                $stmt->bind_result($email,$phone,$pass_);
                 while($stmt->fetch()){
                     //compare the passwords
                     $match = password_verify($pwd,$pass_);
@@ -108,6 +112,11 @@ class UserManager
                     if($match){
                         //take them to dashboard.
                         //but first to the chat room
+                        //set the session with their username, email and phone-number
+                        session_start();
+                        $_SESSION['username'] = $username;
+                        $_SESSION['phone'] = $phone;
+                        $_SESSION['email'] = $email; 
                         header("Location: ../chatroom.php?error=none");
                         exit();
                     }else {

@@ -1,16 +1,22 @@
 <?php require 'header.php';?>
+<?php 
+    if(!isset($_SESSION['username'])){
+        header("Location: login.php");
+        exit();
+    }
+?>
 <main>
     <div class="chatroom">
         <div class="profile">
             <div class="name-image">
                 <img src="img/dwayne.png" alt="">
-                <p>Detorit Sam</p>
+                <p><?php echo $_SESSION['username'];?></p>
             </div>
             <div class="default-setting">
                 <ul>
                     <li><img src="img/write.png" alt=""><p>Writing is a form of art</p></li>
-                    <li><img src="img/write.png" alt=""><p>trevismurithi@gmail.com</p></li>
-                    <li><img src="img/write.png" alt=""><p>+254-724-462-514</p></li>
+                    <li><img src="img/write.png" alt=""><p><?php echo $_SESSION['email'];?></p></li>
+                    <li><img src="img/write.png" alt=""><p><?php echo $_SESSION['phone'];?></p></li>
                 </ul>
             </div>
         </div>
