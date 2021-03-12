@@ -16,7 +16,6 @@
             echo'
                 <div class="seller">
                     <div class="receive">
-                        <img src="img/writer.jpg" alt="">
                         <p id=receive>'.$value[0].'</p>
                         <p id="time">'.date('l jS \of F Y h:i:s A', strtotime($key)).'</p>
                     </div>
@@ -27,7 +26,6 @@
                 <div class="buyer">
                     <div></div>
                     <div class="sent">
-                        <img src="img/dwayne.png" alt="">
                         <p>'.$value[0].'</p>
                         <p id="time">'.date('l jS \of F Y h:i:s A', strtotime($key)).'</p>
                     </div>

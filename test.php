@@ -8,6 +8,6 @@
     // $db->createUser($conn,"Fanta","jack","right","fanta@gmail.com","254724462514",$pwd);
     // // $db->logInUser($conn,"twevis","123");
 ?>
-<!-- <p><span id=receive></span></p>
-<button id="2" onclick=Messages(11,8)>reply</button>
-<script src="js/chat.js"></script> -->
+
+<button onclick=cause()>reply</button>
+<script src="js/chat.js"></script>

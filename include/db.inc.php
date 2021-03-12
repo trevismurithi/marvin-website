@@ -36,6 +36,7 @@ class UserManager
     private $user_role = "SELECT user_id FROM role";
     //messages from user querry selector
     private $user_message = "SELECT words,created_at FROM messages WHERE receiver=? AND user_id=?";
+    private $insert_message = "INSERT INTO messages (words,receiver,user_id) VALUES (?,?,?)";
     public function createConnection()
     {
         $conn = new mysqli($this->server,$this->user,$this->password,$this->database);
@@ -219,7 +220,20 @@ class UserManager
                 $arr[$time] =[$message,$user_id];
             }
             return $arr;
-        }
-            
+        }       
+    }
+
+    public function insertMessage($conn,$message,$receiver,$user_id){
+        //prepare the statement
+        $stmt = $conn->prepare($this->insert_message);
+        if(!$stmt){
+            header("Location: ../chatroom.php?error=prepareerror");
+            exit();
+        }else{
+            //bind the the user_id
+            $stmt->bind_param('sss',$message,$receiver,$user_id);
+            //execute 
+            $stmt->execute();    
+        }   
     }
 }

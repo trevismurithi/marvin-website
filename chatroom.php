@@ -42,7 +42,7 @@
                                                 </div>
                                                 <div class="user-time">
                                                     <p>3 March</p>
-                                                    <button id='.$id.' onclick=Messages('.$id.','.$_SESSION['user_id'].')>reply</button>
+                                                    <button id='.$id.' onclick=Messages('.$id.','.$_SESSION['user_id'].',"'.$name.'")>text</button>
                                                 </div>
                                             </div>
                                         ';
@@ -81,11 +81,17 @@
                         <img src="img/writer.jpg" alt="">
                         <div class="online"></div>
                     </div>
-                    <h6>Paul John(Writer)</h6>
+                    <h6 id="top-name">.....</h6>
                 </div>
 
-                <div id="chat-content" class="chat-content">
-
+                <div id="chat-content" class="chat-content"></div>
+                <div class="hide-area">
+                    <textarea name="message" id="make-message" cols="30" rows="10" placeholder="type message...."></textarea>
+                    <?php
+                        echo'
+                            <div><button type="submit" onclick=sendMessage('.$_SESSION['user_id'].')>send</button></div>
+                        ';
+                    ?>
                 </div>
             </div>
         </div>
