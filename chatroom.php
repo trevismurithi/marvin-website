@@ -25,35 +25,53 @@
                 <h2>Chat</h2>
                 <div class="user-chat">
                     <div class="user-list">
-                        <div class="one-user">
-                            <div class="user-status">
-                                <img src="img/admin.jpg" alt="">
-                                <div class="online"></div>
-                            </div>
-                            <div class="user-content">
-                                <h6>Carlos Santino(Admin)</h6>
-                                <p>Hello and welcome feel..</p>
-                            </div>
-                            <div class="user-time">
-                                <p>3 March</p>
-                                <button>reply</button>
-                            </div>
-                        </div>
-
-                        <div class="one-user">
-                            <div class="user-status">
-                                <img src="img/writer.jpg" alt="">
-                                <div class="online"></div>
-                            </div>
-                            <div class="user-content">
-                                <h6>Paul John(Writer)</h6>
-                                <p>I am here at your service..</p>
-                            </div>
-                            <div class="user-time">
-                                <p>3 March</p>
-                                <button>reply</button>
-                            </div>
-                        </div>
+                        <?php
+                            //loading the users available at the moment
+                            include 'include/db.inc.php';
+                            //create a function that returns a string
+                            function chat($name){
+                                return'
+                                            <div class="one-user">
+                                                <div class="user-status">
+                                                    <img src="img/admin.jpg" alt="">
+                                                    <div class="online"></div>
+                                                </div>
+                                                <div class="user-content">
+                                                    <h6>'.$name.'</h6>
+                                                    <p>Hello and welcome feel..</p>
+                                                </div>
+                                                <div class="user-time">
+                                                    <p>3 March</p>
+                                                    <button>reply</button>
+                                                </div>
+                                            </div>
+                                        ';
+                            }
+                            //create a connection and load the users available
+                            $db=new UserManager();
+                            $conn = $db->createConnection();
+                            $users = $db->listener($conn);
+                            //create a loop for all users available
+                            //the chat should show all users except the main user
+                            $role = $db->rolePlay($conn);
+                            if(!in_array($_SESSION['user_id'],$role)){
+                                foreach ($users as $id => $name) {
+                                    //condition not to display same user
+                                    //then if admin not to display also the writer
+                                    if(in_array($id,$role)){
+                                        echo chat($name);
+                                    }
+                                }
+                            }else{
+                                foreach ($users as $id => $name) {
+                                    //condition not to display same user
+                                    //then if admin not to display also the writer
+                                    if(!in_array($id,$role)){
+                                        echo chat($name);
+                                    }
+                                }
+                            }
+                        ?>
                     </div>
                 </div>
             </div>

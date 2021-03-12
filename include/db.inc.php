@@ -20,8 +20,10 @@ class UserManager
     )";
     private $create_user = "INSERT INTO users(user_name,first_name,last_name,email,phone_num,pwd) VALUES (?,?,?,?,?,?)";
     private $search_user = "SELECT * FROM users WHERE user_name=? OR email=? ";
-    private $login_user = "SELECT email,phone_num,pwd FROM users WHERE user_name=?";
-    private $all_users = "SELECT user_name FROM users";
+    private $login_user = "SELECT id,email,phone_num,pwd FROM users WHERE user_name=?";
+    private $all_users = "SELECT id,user_name FROM users";
+    //user roles querry selector
+    private $user_role = "SELECT user_id FROM role";
     public function createConnection()
     {
         $conn = new mysqli($this->server,$this->user,$this->password,$this->database);
@@ -87,6 +89,7 @@ class UserManager
         $pass_ = "";
         $email="";
         $phone="";
+        $user_id="";
         //prepare the statement 
         $stmt = $conn->prepare($this->login_user);
         if(!$stmt){
@@ -104,7 +107,7 @@ class UserManager
             $number = $stmt->num_rows;
             if($number>0){
                 //bind the password
-                $stmt->bind_result($email,$phone,$pass_);
+                $stmt->bind_result($user_id,$email,$phone,$pass_);
                 while($stmt->fetch()){
                     //compare the passwords
                     $match = password_verify($pwd,$pass_);
@@ -114,6 +117,7 @@ class UserManager
                         //but first to the chat room
                         //set the session with their username, email and phone-number
                         session_start();
+                        $_SESSION['user_id'] = $user_id;
                         $_SESSION['username'] = $username;
                         $_SESSION['phone'] = $phone;
                         $_SESSION['email'] = $email; 
@@ -138,18 +142,43 @@ class UserManager
     }
 
     public function listener($conn){
+        $id="";
         $user = "";
         //prepare the statement
         $stmt = $conn->prepare($this->all_users);
-        if(!$stmt)echo"failed to prepare";
+        if(!$stmt){
+            header("Location: ../chatroom.php?error=prepareerror");
+            exit();
+        }
         else{
             //execute the statement
             $stmt->execute();
-            $stmt->bind_result($user);
-            $i = 0;
+            $stmt->bind_result($id,$user);
             $arr = [];
             while($stmt->fetch()){
-                 $arr[$i] = $user;
+                 $arr[$id] = $user;
+            }
+            return $arr;
+        }
+    }
+
+    public function rolePlay($conn){
+        $user_id="";
+        //prepare the statement
+        $stmt = $conn->prepare($this->user_role);
+        if(!$stmt){
+            header("Location: ../chatroom.php?error=prepareerror");
+            exit();
+        }else{
+            //execute the statement
+            $stmt->execute();
+            //bind the result
+            $stmt->bind_result($user_id);
+            //fetch the role players
+            $i = 0;
+            $arr=[];
+            while($stmt->fetch()){
+                $arr[$i]=$user_id;
                 $i++;
             }
             return $arr;
