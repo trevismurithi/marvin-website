@@ -29,7 +29,7 @@
                             //loading the users available at the moment
                             include 'include/db.inc.php';
                             //create a function that returns a string
-                            function chat($name){
+                            function chat($id,$name){
                                 return'
                                             <div class="one-user">
                                                 <div class="user-status">
@@ -38,11 +38,11 @@
                                                 </div>
                                                 <div class="user-content">
                                                     <h6>'.$name.'</h6>
-                                                    <p>Hello and welcome feel..</p>
+                                                    <p id="short-text">Hello and welcome feel..</p>
                                                 </div>
                                                 <div class="user-time">
                                                     <p>3 March</p>
-                                                    <button>reply</button>
+                                                    <button id='.$id.' onclick=Messages('.$id.','.$_SESSION['user_id'].')>reply</button>
                                                 </div>
                                             </div>
                                         ';
@@ -59,7 +59,7 @@
                                     //condition not to display same user
                                     //then if admin not to display also the writer
                                     if(in_array($id,$role)){
-                                        echo chat($name);
+                                        echo chat($id,$name);
                                     }
                                 }
                             }else{
@@ -67,7 +67,7 @@
                                     //condition not to display same user
                                     //then if admin not to display also the writer
                                     if(!in_array($id,$role)){
-                                        echo chat($name);
+                                        echo chat($id,$name);
                                     }
                                 }
                             }
@@ -83,14 +83,9 @@
                     </div>
                     <h6>Paul John(Writer)</h6>
                 </div>
-                <div class="chat-content">
-                    <div class="seller">
-                        <div class="receive"><img src="img/writer.jpg" alt=""><p>Hello Detroit</p></div>
-                    </div>
-                    <div class="buyer">
-                        <div></div>
-                        <div class="sent"><img src="img/dwayne.png" alt=""><p>Hello John</p></div>
-                    </div>
+
+                <div id="chat-content" class="chat-content">
+
                 </div>
             </div>
         </div>

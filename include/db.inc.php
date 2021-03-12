@@ -18,12 +18,24 @@ class UserManager
         pwd TEXT NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )";
+    private $create_message="
+        CREATE TABLE messages(
+            id INT(11) AUTO_INCREMENT NOT NULL PRIMARY KEY,
+            words TEXT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            receiver INT(11) NOT NULL,
+            user_id INT(11),
+            FOREIGN KEY(user_id) REFERENCES users(id)
+        );
+    ";
     private $create_user = "INSERT INTO users(user_name,first_name,last_name,email,phone_num,pwd) VALUES (?,?,?,?,?,?)";
     private $search_user = "SELECT * FROM users WHERE user_name=? OR email=? ";
     private $login_user = "SELECT id,email,phone_num,pwd FROM users WHERE user_name=?";
     private $all_users = "SELECT id,user_name FROM users";
     //user roles querry selector
     private $user_role = "SELECT user_id FROM role";
+    //messages from user querry selector
+    private $user_message = "SELECT words,created_at FROM messages WHERE receiver=? AND user_id=?";
     public function createConnection()
     {
         $conn = new mysqli($this->server,$this->user,$this->password,$this->database);
@@ -183,5 +195,31 @@ class UserManager
             }
             return $arr;
         }
+    }
+    
+    public function userMessages($conn,$receiver,$user_id){
+        $message = "";
+        $time = "";
+        //prepare the statement
+        $stmt = $conn->prepare($this->user_message);
+        if(!$stmt){
+            header("Location: ../chatroom.php?error=prepareerror");
+            exit();
+        }else{
+            //bind the the user_id
+            $stmt->bind_param('ss',$receiver,$user_id);
+            //execute 
+            $stmt->execute();
+            //bind the message and time
+            $stmt->bind_result($message,$time);
+            //create and array
+            $arr=[];
+            while($stmt->fetch()){
+                //get the message and who it is from
+                $arr[$time] =[$message,$user_id];
+            }
+            return $arr;
+        }
+            
     }
 }

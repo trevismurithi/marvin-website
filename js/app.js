@@ -14,7 +14,7 @@ const write = document.querySelector('#write');
 const reWrite = document.querySelector('#rewrite');
 const edit = document.querySelector('#edit');
 //by default setting the write style to blue color
-write.style.color = "#367FD3";
+write.style.color="#367FD3";
 let buttonNum = 1;
 //set default radio value;
 let radioNum = 0;

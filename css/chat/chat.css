@@ -222,38 +222,41 @@
     width: 50%;
     background-color:white;
     color: black;
-    padding: 10px 8px;
+    padding: 5px 5px;
     border-radius: 8px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    text-align: start;
     margin: 20px 8px;
+    font-size: 14px;
+    white-space: pre-line;
+    overflow: hidden;
 }
 
 .receive img{
     width: 30px;
     border-radius: 100%;
-    margin-right: 8px;
+    margin-left: 8px;
 }
 
+#time{
+    font-size: 10px;
+}
 .sent{
     width: 50%;
     background-color:rgb(127, 201, 127);
     color: black;
-    padding: 10px 8px;
+    padding: 5px 5px;
     border-radius: 8px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    text-align: start;
     margin: 20px 8px;
     white-space: pre-line;
     overflow: hidden;
+    font-size: 14px;
 }
 
 .sent img{
     width: 30px;
     border-radius: 100%;
-    margin-right: 8px;
+    margin-left: 8px;
 }
 
 .buyer{
