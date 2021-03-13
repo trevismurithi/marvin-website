@@ -8,6 +8,15 @@
     // $db->createUser($conn,"Fanta","jack","right","fanta@gmail.com","254724462514",$pwd);
     // // $db->logInUser($conn,"twevis","123");
 ?>
-
+<div class="con">
+    <div class="re">
+        <p>Hi</p>
+    </div>
+</div>
 <button onclick=cause()>reply</button>
-<script src="js/chat.js"></script>
+<script>
+    function cause(){
+        var div = document.querySelector(".con");
+        console.log(div.textContent);
+    }
+</script>

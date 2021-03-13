@@ -38,7 +38,7 @@
                                                 </div>
                                                 <div class="user-content">
                                                     <h6>'.$name.'</h6>
-                                                    <p id="short-text">Hello and welcome feel..</p>
+                                                    <p id="short-text">Writing is a form of art...</p>
                                                 </div>
                                                 <div class="user-time">
                                                     <p>3 March</p>

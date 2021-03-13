@@ -4,6 +4,7 @@ let user_num = -1;
 let user_log = -1
 const textBox = document.querySelector(".hide-area");
 const content = document.getElementById("chat-content");
+
 function Messages(receiver,user_id,name){
     user_num = receiver;
     user_log = user_id;
