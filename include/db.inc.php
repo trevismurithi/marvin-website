@@ -28,6 +28,15 @@ class UserManager
             FOREIGN KEY(user_id) REFERENCES users(id)
         );
     ";
+    private $create_state ="
+        CREATE TABLE state(
+            id INT(11) AUTO_INCREMENT NOT NULL UNIQUE,
+            current_state TEXT NOT NULL,
+            set_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            user_id INT(11) NOT NULL,
+            FOREIGN KEY(user_id) REFERENCES users(id)
+        );
+    ";
     private $create_user = "INSERT INTO users(user_name,first_name,last_name,email,phone_num,pwd) VALUES (?,?,?,?,?,?)";
     private $search_user = "SELECT * FROM users WHERE user_name=? OR email=? ";
     private $login_user = "SELECT id,email,phone_num,pwd FROM users WHERE user_name=?";
@@ -38,6 +47,11 @@ class UserManager
     private $user_message = "SELECT words,created_at FROM messages WHERE receiver=? AND user_id=?";
     private $sender_message = "SELECT words,receiver FROM messages WHERE user_id=?";
     private $insert_message = "INSERT INTO messages (words,receiver,user_id) VALUES (?,?,?)";
+    //status querry selector
+    private $insert_status = "INSERT INTO state(current_state,set_at,user_id) VALUES (?,?,?)";
+    private $update_status = "UPDATE state SET current_state = ?, set_at=? WHERE user_id=?";
+    private $user_status = "SELECT current_state FROM state WHERE user_id=?";
+    private $all_status = "SELECT current_state,set_at,user_id FROM state";
     public function createConnection()
     {
         $conn = new mysqli($this->server,$this->user,$this->password,$this->database);
@@ -135,16 +149,12 @@ class UserManager
                         $_SESSION['username'] = $username;
                         $_SESSION['phone'] = $phone;
                         $_SESSION['email'] = $email; 
-                        header("Location: ../chatroom.php?error=none");
-                        exit();
                     }else {
                         //give message of for error
                         header("Location: ../login.php?error=failedlog");
                         exit();
                     }
                 }
-                $stmt->close();
-                $conn->close();
             }else{
                 //the user does not exist
                 header("Location: ../login.php?error=usernull");
@@ -155,6 +165,63 @@ class UserManager
         }
     }
 
+    public function updateStatus($conn,$status,$time,$user_id,$query){
+        //prepare the statement 
+        $stmt = $conn->prepare($query);
+        if(!$stmt){
+            //the preparation failed
+            header("Location: ../signup.php?error=prepareerror");
+            exit();
+        }else{
+            $stmt->bind_param('sss',$status,$time,$user_id);
+            //execute
+            $stmt->execute();
+        }   
+    }
+
+    public function viewStatus($conn,$user_id){
+        $status = "";
+        //prepare the statement 
+        $stmt = $conn->prepare($this->user_status);
+        if(!$stmt){
+            //the preparation failed
+            header("Location: ../signup.php?error=prepareerror");
+            exit();
+        }else{
+            $stmt->bind_param('s',$user_id);
+            //execute statement
+            $stmt->execute();
+            //bind the result
+            $stmt->bind_result($status);
+            $stmt->fetch();
+            return $status;
+        }
+    }
+
+    public function viewAllStatus($conn){
+        $current_state = "";
+        $time = "";
+        $user_id = "";
+        //prepare the statement 
+        $stmt = $conn->prepare($this->all_status);
+        if(!$stmt){
+            //the preparation failed
+            header("Location: ../signup.php?error=prepareerror");
+            exit();
+        }else{
+            //execute the statement
+            $stmt->execute();
+            //bind the result
+            $stmt->bind_result($current_state,$time,$user_id);
+            $arr=[];
+            $i=0;
+            while($stmt->fetch()){
+                $arr[$i] = [$user_id,$current_state,$time];
+                $i++;
+            }
+            return $arr;
+        } 
+    }
     public function listener($conn){
         $id="";
         $user = "";
@@ -262,6 +329,9 @@ class UserManager
                 $i++;
             }
             return $arr;
-        }       
+        }     
     }
+
+    public function getInsertStatus(){return $this->insert_status;}
+    public function getUpdateStatus(){return $this->update_status;}
 }

@@ -1,12 +1,18 @@
 <?php
+    session_start();
     include 'db.inc.php';
-    $receive = $_GET['receiver'];
-    $user_id = $_GET['user_id'];
-    $db = new UserManager();
-    $conn = $db->createConnection();
-    $receiver = $db->senders($conn,$user_id);
-    //merge both of the messages
-    $messages = array_merge($sender,$receiver);
-    //sort them in the same way they were sent
-    ksort($messages);
 
+    if($_POST['current']=='all'){
+        $db = new UserManager();
+        $conn = $db->createConnection();
+        //get users status 
+        $status = $db->viewAllStatus($conn);
+        echo json_encode($status);
+    }else if($_POST['current']=='one'){
+        $db = new UserManager();
+        $conn = $db->createConnection();
+        //update the time and state
+        //create time
+        $time = date("Y-m-d h:i:sa");
+        $db->updateStatus($conn,"online",$time,$_SESSION['user_id'],$db->getUpdateStatus());
+    }

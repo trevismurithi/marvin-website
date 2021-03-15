@@ -67,3 +67,5 @@ let timer = setInterval(() => {
         cause();
     }
 }, 800);
+
+//update the users status after every 5 min

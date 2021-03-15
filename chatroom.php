@@ -34,7 +34,7 @@
                                             <div class="one-user">
                                                 <div class="user-status">
                                                     <img src="img/admin.jpg" alt="">
-                                                    <div class="online"></div>
+                                                    <div id='.$id.' class="offline"></div>
                                                 </div>
                                                 <div class="user-content">
                                                     <h6>'.$name.'</h6>

@@ -1,5 +1,4 @@
 <?php require 'header.php';?>
-
 <main>
     <div class="container">
         <div class="image-content">
