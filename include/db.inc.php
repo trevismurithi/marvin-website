@@ -37,6 +37,14 @@ class UserManager
             FOREIGN KEY(user_id) REFERENCES users(id)
         );
     ";
+    private $create_image="
+        CREATE TABLE image(
+            id INT(11) AUTO_INCREMENT UNIQUE NOT NULL,
+            img TEXT,
+        user_id INT(11) UNIQUE NOT NULL,
+        FOREIGN KEY(user_id) REFERENCES users(id)
+        );
+    ";
     private $create_user = "INSERT INTO users(user_name,first_name,last_name,email,phone_num,pwd) VALUES (?,?,?,?,?,?)";
     private $search_user = "SELECT * FROM users WHERE user_name=? OR email=? ";
     private $login_user = "SELECT id,email,phone_num,pwd FROM users WHERE user_name=?";
@@ -52,6 +60,11 @@ class UserManager
     private $update_status = "UPDATE state SET current_state = ?, set_at=? WHERE user_id=?";
     private $user_status = "SELECT current_state FROM state WHERE user_id=?";
     private $all_status = "SELECT current_state,set_at,user_id FROM state";
+    //image querry selector
+    private $insert_image = "INSERT INTO image(img,user_id) VALUES(?,?)";
+    private $update_image ="UPDATE image SET img=? WHERE user_id=?";
+    private $select_image ="SELECT img FROM image WHERE user_id=?";
+    private $all_images = "SELECT img,user_id FROM image";
     public function createConnection()
     {
         $conn = new mysqli($this->server,$this->user,$this->password,$this->database);
@@ -222,6 +235,62 @@ class UserManager
             return $arr;
         } 
     }
+
+    public function updateImage($conn,$img,$user_id,$query){
+        //prepare the statement 
+        $stmt = $conn->prepare($query);
+        if(!$stmt){
+            //the preparation failed
+            header("Location: ../signup.php?error=prepareerror");
+            exit();
+        }else{
+            $stmt->bind_param('ss',$img,$user_id);
+            //execute
+            $stmt->execute();
+        }   
+    }
+
+    public function viewAllImages($conn){
+        $img = "";
+        $user_id = "";
+        //prepare the statement 
+        $stmt = $conn->prepare($this->all_images);
+        if(!$stmt){
+            //the preparation failed
+            header("Location: ../signup.php?error=prepareerror");
+            exit();
+        }else{
+            //execute the statement
+            $stmt->execute();
+            //bind the result
+            $stmt->bind_result($img,$user_id);
+            $arr=[];
+            while($stmt->fetch()){
+                $arr[$user_id] = $img;
+            }
+            return $arr;
+        } 
+    }
+
+    public function viewImage($conn,$user_id){
+        $img = "";
+        //prepare the statement 
+        $stmt = $conn->prepare($this->select_image);
+        if(!$stmt){
+            //the preparation failed
+            header("Location: ../signup.php?error=prepareerror");
+            exit();
+        }else{
+            $stmt->bind_param('s',$user_id);
+            //execute statement
+            $stmt->execute();
+            //bind the result
+            $stmt->bind_result($img);
+            $stmt->fetch();
+            return $img;
+        }
+    }
+    
     public function listener($conn){
         $id="";
         $user = "";
@@ -334,4 +403,6 @@ class UserManager
 
     public function getInsertStatus(){return $this->insert_status;}
     public function getUpdateStatus(){return $this->update_status;}
+    public function getInsertImage(){return $this->insert_image;}
+    public function getUpdateImage(){return $this->update_image;}
 }

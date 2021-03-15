@@ -5,13 +5,14 @@ let user_log = -1
 const textBox = document.querySelector(".hide-area");
 const content = document.getElementById("chat-content");
 
-function Messages(receiver,user_id,name){
+function Messages(receiver,user_id,name,link){
     user_num = receiver;
     user_log = user_id;
     //display the text area
     textBox.classList.remove("hide-area");
     textBox.classList.add("type-area");
     document.getElementById("top-name").innerHTML=name;
+    document.getElementById("set-image").src = link;
     //set interval listener
     //we use an AJAX to fetch messages
     let xttps = new XMLHttpRequest();
