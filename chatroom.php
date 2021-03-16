@@ -24,14 +24,15 @@ $conn = $db->createConnection();
             </div>
             <div class="default-setting">
                 <ul>
-                    <li><img src="img/write.png" alt=""><p>Writing is a form of art</p></li>
-                    <li><img src="img/write.png" alt=""><p><?php echo $_SESSION['email'];?></p></li>
-                    <li><img src="img/write.png" alt=""><p><?php echo $_SESSION['phone'];?></p></li>
+                    <li><p>Writing is a form of art</p></li>
+                    <li><p><?php echo $_SESSION['email'];?></p></li>
+                    <li><p><?php echo $_SESSION['phone'];?></p></li>
                 </ul>
             </div>
                 <form action="include/upload.inc.php" method="post" enctype="multipart/form-data">
+                    <p>Image Profile</p>
                     <input type="file" name="file" id="file" accept="image/*" required>
-                    <button type="submit" name="submit">image profile</button>
+                    <button type="submit" name="submit">upload</button>
                 </form>
         </div>
         <div class="connect">
