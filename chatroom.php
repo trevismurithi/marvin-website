@@ -10,34 +10,23 @@ $conn = $db->createConnection();
 ?>
 <main>
     <div class="chatroom">
-        <div class="profile">
-            <div class="name-image">
-                <?php
-                    $link = $db->viewImage($conn,$_SESSION['user_id']);
-                    if(empty($link)){
-                        echo '<img src="img/dwayne.png" alt="">';
-                    }else{
-                        echo '<img src="'.$link.'" alt="">';
-                    }
-                ?>
-                <p><?php echo $_SESSION['username'];?></p>
-            </div>
-            <div class="default-setting">
-                <ul>
-                    <li><p>Writing is a form of art</p></li>
-                    <li><p><?php echo $_SESSION['email'];?></p></li>
-                    <li><p><?php echo $_SESSION['phone'];?></p></li>
-                </ul>
-            </div>
-                <form action="include/upload.inc.php" method="post" enctype="multipart/form-data">
-                    <p>Image Profile</p>
-                    <input type="file" name="file" id="file" accept="image/*" required>
-                    <button type="submit" name="submit">upload</button>
-                </form>
-        </div>
         <div class="connect">
             <div class="choose-chat">
-                <h2>Chat</h2>
+                <div class="me">
+                    <?php
+                        $link = $db->viewImage($conn,$_SESSION['user_id']);
+                        if(empty($link)){
+                            echo '<img src="img/dwayne.png" alt="">';
+                        }else{
+                            echo '<img src="'.$link.'" alt="">';
+                        }
+                    ?>
+                    <form action="include/upload.inc.php" method="post" enctype="multipart/form-data">
+                        <input type="file" name="file" id="file" accept="image/*" required>
+                        <button type="submit" name="submit">upload</button>
+                    </form>
+                </div>
+                <h2>My Chats</h2>
                 <div class="user-chat">
                     <div class="user-list">
                         <?php

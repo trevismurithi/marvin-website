@@ -16,10 +16,10 @@
             echo'
                 <div class="seller">
                     <div class="receive">
-                        <p id=receive>'.$value[0].'</p>
+                        <p id=receive>'.$value[0].'</p><br>
                         <div class="time-con">
                             <p id="time">'.date('h:i:s A', strtotime($key)).'</p>
-                            <p id="time">'.date('l jS \of F Y', strtotime($key)).'</p>
+                            <p id="time">'.date('d/m/Y', strtotime($key)).'</p>
                         </div>
                     </div>
                 </div>
@@ -31,7 +31,8 @@
                     <div class="sent">
                         <p>'.$value[0].'</p>
                         <div class="time-con">
-                            <p id="time">'.date('l jS \of F Y h:i:s A', strtotime($key)).'</p>
+                            <p id="time">'.date('h:i:s A', strtotime($key)).'</p>
+                            <p id="time">'.date('d/m/Y', strtotime($key)).'</p>
                         </div>
                     </div>
                 </div>
