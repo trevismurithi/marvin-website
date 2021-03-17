@@ -9,10 +9,9 @@
 .name-image img{
     width: 80px;
     height: 80px;
-    border: 2px solid #367FD3;
     border-radius: 100%;
     box-shadow: 2px 2px rgb(78, 73, 73);
-    border: 1px solid #367FD3;
+    border: 2px solid #2bbca9;
 }
 
 .name-image{
@@ -34,15 +33,15 @@
 .chatroom{
     width: 100%;
     height: 400px;
-    background-color: #8F718D;
     display: flex;
     flex-direction: row;
     border-radius: 30px;
     margin: 20px 0px;
+    background-color: #9c53ad;
 }
 
 .connect{
-    width: 80%;
+    width: 100%;
     height: 100%;
     border-radius: 30px;
     background-color: rgb(195, 218, 231);
@@ -53,8 +52,8 @@
 
 .default-setting{
     width: 100%;
-    padding: 10px 5px;
-    text-align: center;
+    padding: 10px 10px;
+    text-align: start;
 }
 
 .default-setting ul{
@@ -232,6 +231,7 @@
     font-size: 14px;
     white-space: pre-line;
     overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .receive img{
@@ -242,18 +242,20 @@
 
 #time{
     font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .sent{
     width: 50%;
     background-color:rgb(127, 201, 127);
     color: black;
-    padding: 5px 5px;
     border-radius: 8px;
     text-align: start;
     margin: 20px 8px;
+    padding: 5px 5px;
     white-space: pre-line;
     overflow: hidden;
     font-size: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .sent img{
@@ -305,4 +307,9 @@
 .type-area div button:hover{
     background-color: black;
     color: white;
+}
+
+.time-con{
+    width: 100%;
+    text-align: right;
 }

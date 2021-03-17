@@ -63,8 +63,6 @@ $conn = $db->createConnection();
                                         ';
                             }
                             //create a connection and load the users available
-                            // $db=new UserManager();
-                            // $conn = $db->createConnection();
                             $users = $db->listener($conn);
                             //create a loop for all users available
                             //the chat should show all users except the main user

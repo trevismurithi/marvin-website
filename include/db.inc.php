@@ -45,6 +45,18 @@ class UserManager
         FOREIGN KEY(user_id) REFERENCES users(id)
         );
     ";
+
+    private $create_order="
+        CREATE TABLE orders(
+            id INT(11) AUTO_INCREMENT PRIMARY KEY,
+            details TEXT NOT NULL,
+            deadline date NOT NULL,
+            fee INT(11) NOT NULL,
+            state TEXT NOT NULL,
+            user_id INT(11) NOT NULL,
+            FOREIGN KEY(user_id) REFERENCES users(id)
+        )
+    ";
     private $create_user = "INSERT INTO users(user_name,first_name,last_name,email,phone_num,pwd) VALUES (?,?,?,?,?,?)";
     private $search_user = "SELECT * FROM users WHERE user_name=? OR email=? ";
     private $login_user = "SELECT id,email,phone_num,pwd FROM users WHERE user_name=?";
@@ -65,6 +77,10 @@ class UserManager
     private $update_image ="UPDATE image SET img=? WHERE user_id=?";
     private $select_image ="SELECT img FROM image WHERE user_id=?";
     private $all_images = "SELECT img,user_id FROM image";
+    //orders querry selector
+    private $insert_order = "INSERT INTO orders(details,deadline,fee,state,user_id) VALUES(?,?,?,?,?)";
+    private $update_orders = "UPDATE orders SET state=? WHERE user_id=?";
+    private $select_order = "SELECT id,details,deadline,fee FROM orders WHERE state=? AND user_id=?";
     public function createConnection()
     {
         $conn = new mysqli($this->server,$this->user,$this->password,$this->database);
@@ -401,6 +417,60 @@ class UserManager
         }     
     }
 
+    public function saveOrder($conn,$details,$deadline,$fee,$state,$user_id){
+        //prepare the order
+        $stmt = $conn->prepare($this->insert_order);
+        if(!$stmt){
+            header("Location: ../chatroom.php?error=prepareerror");
+            exit();      
+        }else{
+            //bind the parameters
+            $stmt->bind_param('sssss',$details,$deadline,$fee,$state,$user_id);
+            //execute the statement
+            $stmt->execute();
+        }
+    }
+
+    public function updateOrder($conn,$state,$user_id){
+        //prepare the order
+        $stmt = $conn->prepare($this->update_orders);
+        if(!$stmt){
+            header("Location: ../chatroom.php?error=prepareerror");
+            exit();      
+        }else{
+            //bind the parameters
+            $stmt->bind_param('ss',$state,$user_id);
+            //execute the statement
+            $stmt->execute();
+        }  
+    }
+
+    public function viewOrder($conn,$state,$user_id){
+        $order_id="";
+        $details="";
+        $deadline="";
+        $fee="";
+        //prepare the order
+        $stmt = $conn->prepare($this->select_order);
+        if(!$stmt){
+            header("Location: ../chatroom.php?error=prepareerror");
+            exit();      
+        }else{
+            //bind the parameters
+            $stmt->bind_param('ss',$state,$user_id);
+            //execute the statement
+            $stmt->execute();
+            //bind the result
+            $stmt->bind_result($order_id,$details,$deadline,$fee);
+            $arr=[];
+            $i=0;
+            while($stmt->fetch()){
+                $arr[$i] = [$order_id,$details,$deadline,$fee];
+                $i++;
+            }
+            return $arr;    
+        }
+    }
     public function getInsertStatus(){return $this->insert_status;}
     public function getUpdateStatus(){return $this->update_status;}
     public function getInsertImage(){return $this->insert_image;}
