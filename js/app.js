@@ -1,51 +1,44 @@
 //for the lottie animation loading
 const lottie = document.querySelector('#lottie');
 //for the select tags and option drop downs
-const selectType = document.querySelector("#select-type");
-const price = document.querySelector('#price');
+const selectType = document.querySelector("#select_type");
+const type_writing = document.querySelector('#type_writing');
 const university = document.querySelector('#university');
-const week = document.querySelector('#week');
-const article = document.querySelector('#article');
+const duration = document.querySelector('#duration');
+const pages_words = document.querySelector("#pages_words");
+const price = document.querySelector('#price');
 //for the radio checked buttons
 const single = document.querySelector('#single');
 const double = document.querySelector('#double');
+//hidden input value
+const input = document.querySelector("#h-price");
 //for the form input buttons
-const write = document.querySelector('#write');
-const reWrite = document.querySelector('#rewrite');
-const edit = document.querySelector('#edit');
-//by default setting the write style to blue color
-write.style.color="#367FD3";
-let buttonNum = 1;
-//set default radio value;
-let radioNum = 0;
-write.addEventListener('click',()=>{
-    write.style.color = "#367FD3";
-    reWrite.style.color = "#636A77";
-    edit.style.color = "#636A77";
-    buttonNum = 1;
+let radioNum = 2;
+double.checked=true;
+checker();
+selectType.addEventListener('change', () => {
     checker();
 });
 
-reWrite.addEventListener('click', () => {
-    write.style.color = "#636A77";
-    reWrite.style.color = "#367FD3";
-    edit.style.color = "#636A77";
-    buttonNum=2;
+type_writing.addEventListener('change',()=>{
     checker();
 });
 
-edit.addEventListener('click', () => {
-    write.style.color = "#636A77";
-    reWrite.style.color = "#636A77";
-    edit.style.color = "#367FD3";
-    buttonNum = 3;
+university.addEventListener('change', () => {
     checker();
 });
 
+duration.addEventListener('change', () => {
+    checker();
+});
+
+pages_words.addEventListener('change',()=>{
+    checker();
+});
 
 single.addEventListener('click',()=>{
     double.checked = false;
-    radioNum=1;
+    radioNum = 1;
     checker();
 });
 
@@ -55,42 +48,37 @@ double.addEventListener('click', () => {
     checker();
 });
 
-selectType.addEventListener('change',()=>{
-    checker();
-});
-
-university.addEventListener('change',()=>{
-    checker();
-});
-
-week.addEventListener('change',()=>{
-    checker();
-});
-
-article.addEventListener('change',()=>{
-    checker();
-});
-
 function checker(){
-    var value = 0;
-    var type = selectType.value;
-    var uni = university.value;
-    var day = week.value;
-    var art = article.value;
-    if(buttonNum==1) value+=1.5;
-    else if(buttonNum ==2) value+=3.5;
-    else value+=4.3;
-    if(parseInt(type)== 1) value+=1.3;
-    else value+=7.3;  
-    if (parseInt(uni) == 1) value += 2.3;
-    else value += 5.4;
-    if (parseInt(day) == 1) value += 1.7;
-    else value += 8.6;
-    if (parseInt(art) == 1) value += 2.9;
-    else value += 9.8;
-    if(radioNum ==1) value+=6.7;
-    else if(radioNum == 2) value+=4.3;
-
+    //type of writing
+    value=0;
+    if(selectType.value==0){
+        value+=8;
+    } else if (selectType.value == 1){
+        value+=6;
+    }else if(selectType.value == 2){
+        value+=5;
+    }
+    if (type_writing.value > 18 && type_writing.value < 27){
+        value+=4;
+    } else if (type_writing.value < 19 || type_writing.value > 26){
+        value+=2;
+    }
+    value+=(parseInt(university.value)+1);
+    if(duration.value==0){
+        value+=5;
+    } else if (duration.value==1){
+        value+=4;
+    } else if (duration.value==2){
+        value+=3;
+    }else{
+        value+=2;
+    }
+    value+=(parseInt(pages_words.value)+1)*0.50;
+    if(radioNum==1){
+        value+=value*.5;
+    }else if(radioNum==2){
+        value+=value*.002;
+    }
     delay(value.toFixed(2));
 }
 
@@ -98,6 +86,7 @@ function delay(value){
     lottie.classList.add('show');
     setTimeout(() => {
         price.innerHTML = "$"+value;
+        input.value = "$" + value;
         lottie.classList.remove('show');
         lottie.classList.add('hide');
     }, 1000);

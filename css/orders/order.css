@@ -30,3 +30,8 @@ table tr td button{
     margin:5px 0px 0px 5px;
     text-align: center;
 }
+
+table tr td button:hover{
+    background-color: white;
+    color:rgb(214, 0, 0);
+}
