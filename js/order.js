@@ -1,12 +1,9 @@
 //table
 const table = document.querySelector("#table_main");
-//order buttons
-const progress = document.querySelector("#progress");
-const complete = document.querySelector("#complete");
-const cancel = document.querySelector("#cancel");
-const pending = document.querySelector("pending");
+
 
 function loadData(user_id,state){
+    document.getElementById("order-header").innerText = state+" order";
     let xttp = new XMLHttpRequest();
     url = "../include/order.inc.php";
     param ="user_id="+user_id+"&state="+state;

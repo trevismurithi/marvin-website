@@ -53,11 +53,11 @@
                     <td>';
 
             if($_POST['state']=="pending" || $_POST['state']=="progress"){
-                echo '<button id="'.$value[0].'" onclick=progressOrder('.$value[0].','.$_POST['user_id'].',"'.$_POST['state'].'","cancel")>Cancel</button>';
+                echo '<button id="'.$value[0].'_" onclick=progressOrder('.$value[0].','.$_POST['user_id'].',"'.$_POST['state'].'","cancel")>Cancel</button>';
             }
 
             echo'
-                    <button id="'.$value[0].'" '.$caller.' onclick=progressOrder('.$value[0].','.$_POST['user_id'].',"'.$_POST['state'].'","'.$transfer.'")>'.$btnName.'</button>
+                    <button id="'.$value[0].'_" '.$caller.' onclick=progressOrder('.$value[0].','.$_POST['user_id'].',"'.$_POST['state'].'","'.$transfer.'")>'.$btnName.'</button>
                     </td>
                 </tr>
             ';

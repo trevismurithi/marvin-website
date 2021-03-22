@@ -21,10 +21,6 @@ $conn = $db->createConnection();
                             echo '<img src="'.$link.'" alt="">';
                         }
                     ?>
-                    <form action="include/upload.inc.php" method="post" enctype="multipart/form-data">
-                        <input type="file" name="file" id="file" accept="image/*" required>
-                        <button type="submit" name="submit">upload</button>
-                    </form>
                 </div>
                 <h2>My Chats</h2>
                 <div class="user-chat">
@@ -87,6 +83,10 @@ $conn = $db->createConnection();
                         ?>
                     </div>
                 </div>
+                <form action="include/upload.inc.php" method="post" enctype="multipart/form-data">
+                    <input type="file" name="file" id="file" accept="image/*" required>
+                    <button type="submit" name="submit">Change profile</button>
+                </form>
             </div>
             <div class="chat">
                 <div class="current-user">

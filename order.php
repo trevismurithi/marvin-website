@@ -4,10 +4,13 @@
 <main>
     <div class="order">
         <div class="butt-header">
-            <button id="progress" onclick=loadData(<?php echo $_SESSION['user_id'].','.'"progress"';?>,)>Progress Order</button>
-            <button id="complete" onclick=loadData(<?php echo $_SESSION['user_id'].','.'"complete"';?>)>Completed Order</button>
-            <button id="cancel" onclick=loadData(<?php echo $_SESSION['user_id'].','.'"cancel"';?>)>Cancelled Order</button>
-            <button id="pending" onclick=loadData(<?php echo $_SESSION['user_id'].','.'"pending"';?>)>Pending Order</button>
+            <div>
+                <button id="progress" onclick=loadData(<?php echo $_SESSION['user_id'].','.'"progress"';?>,)>Progress Order</button>
+                <button id="complete" onclick=loadData(<?php echo $_SESSION['user_id'].','.'"complete"';?>)>Completed Order</button>
+                <button id="cancel" onclick=loadData(<?php echo $_SESSION['user_id'].','.'"cancel"';?>)>Cancelled Order</button>
+                <button id="pending" onclick=loadData(<?php echo $_SESSION['user_id'].','.'"pending"';?>)>Pending Order</button>
+            </div>
+            <h3 id="order-header">progress order</h3>
         </div>
         <div class="records">
             <table id="table_main">
