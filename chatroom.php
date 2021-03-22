@@ -33,7 +33,7 @@ $conn = $db->createConnection();
                                 return'
                                             <div class="one-user">
                                                 <div class="user-status">
-                                                <img src="'.$link.'" alt="">
+                                                    <img src="'.$link.'" alt="">
                                                     <div id='.$id.' class="offline"></div>
                                                 </div>
                                                 <div class="user-content">

@@ -29,3 +29,14 @@
 .row1 ul li p{
     font-size: 13px;
 }
+
+/*tab view*/
+@media screen and (max-width:1024px){
+    
+}
+/*phone view*/
+@media screen and (max-width:768px){
+    .row1 ul li img{
+        width:20px;
+    }
+}

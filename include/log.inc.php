@@ -26,6 +26,11 @@
                     header("Location: ../chatroom.php?error=newUser");
                     exit();
                 }else{
+                    //know if the user has a role
+                    $roles = $db->rolePlay($conn);
+                    if(in_array($_SESSION['user_id'],$roles)){
+                        $_SESSION['role'] = "role";
+                    }
                     //otherwise update the status of the user
                     $db->updateStatus($conn,"online",$time,$user_id,$db->getUpdateStatus());
                     header("Location: ../chatroom.php?error=oldUser");

@@ -55,12 +55,20 @@
             if($_POST['state']=="pending" || $_POST['state']=="progress"){
                 echo '<button id="'.$value[0].'_" onclick=progressOrder('.$value[0].','.$_POST['user_id'].',"'.$_POST['state'].'","cancel")>Cancel</button>';
             }
+            if($_POST['state']=="cancel" || $_POST['state']=="progress" || $_POST['state']=="complete"){
+                echo'
+                        <button id="'.$value[0].'_" '.$caller.' onclick=progressOrder('.$value[0].','.$_POST['user_id'].',"'.$_POST['state'].'","'.$transfer.'")>'.$btnName.'</button>
+                        </td>
+                    </tr>
+                ';
+            }else if($_POST['state']=="pending"){
+                echo'
+                        <button id="'.$value[0].'_" '.$caller.' onclick=paymentSytem('.$value[0].','.$_POST['user_id'].',"'.$_POST['state'].'","'.$transfer.'")>'.$btnName.'</button>
+                        </td>
+                    </tr>
+                ';
+            }
 
-            echo'
-                    <button id="'.$value[0].'_" '.$caller.' onclick=progressOrder('.$value[0].','.$_POST['user_id'].',"'.$_POST['state'].'","'.$transfer.'")>'.$btnName.'</button>
-                    </td>
-                </tr>
-            ';
         }
     }
 

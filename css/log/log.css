@@ -40,6 +40,11 @@
     width: 10%;
 }
 
+.login-btn:hover{
+    background-color: white;
+    color: #237DB5;
+}
+
 .forgot{
     width: 20%;
     text-align: end;
@@ -78,4 +83,32 @@
     padding: 10px 15px;
     color: red;
     background-color: rgb(219, 141, 141);
+}
+
+/*tab view*/
+@media screen and (max-width:1024px){
+    .log-in-account form{
+        width: 100%;
+    }
+    .forgot{
+        width: 20%;
+    }
+    .login-btn{
+        width: 20%;
+    }  
+}
+/*phone view*/
+@media screen and (max-width:768px){
+    .log-in-account{
+        width: 100%;
+    }
+    .log-in-account form{
+        width: 100%;
+    }
+    .forgot{
+        width: 50%;
+    }
+    .login-btn{
+        width: 40%;
+    }
 }

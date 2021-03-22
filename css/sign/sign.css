@@ -84,7 +84,33 @@
 }
 
 
+/*tab view*/
+@media screen and (max-width:1024px){
 
+}
+/*phone view*/
+@media screen and (max-width:768px){
+    .create-account{
+        width: 100%;
+    }
+
+    .create-user{
+        flex-direction: column;
+    }
+
+    .create-user form{
+        width: 100%;
+    }
+
+    .create-user form button{
+        width: 30%;
+    }
+
+    .error-message{
+        width: 70%;
+        padding: 10px 0px;
+    }
+}
 
 
 

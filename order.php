@@ -30,11 +30,6 @@
                     //make the connection
                     $db = new UserManager();
                     $conn = $db->createConnection();
-                    //know if the user has a role
-                    $roles = $db->rolePlay($conn);
-                    if(in_array($_SESSION['user_id'],$roles)){
-                        $_SESSION['role'] = "role";
-                    }
                     //load the order based by user
                     $orders = $db->viewOrder($conn,"progress",$_SESSION['user_id']);
                     foreach ($orders as $key => $value) {

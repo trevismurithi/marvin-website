@@ -54,3 +54,20 @@ footer{
     text-decoration: none;
     color: #999999;
 }
+
+/*tab view*/
+@media screen and (max-width:1024px){
+    
+}
+/*phone view*/
+@media screen and (max-width:768px){
+    footer{
+        width:100%;
+    }
+    .navigation div h5{
+        font-size: 12px;
+    }
+    .navigation div{
+        font-size: 10px;
+    }
+}

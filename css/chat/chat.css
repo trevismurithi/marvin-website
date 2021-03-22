@@ -289,3 +289,43 @@
     width: 100%;
     text-align: right;
 }
+/*tab view*/
+@media screen and (max-width:1024px){
+
+}
+/*phone view*/
+@media screen and (max-width:768px){
+    .one-user{
+        width: 100%;
+        align-items: center;
+        margin:10px 0px 10px 0px;
+    }
+    .one-user img{
+        width: 30px;
+        height:30px;
+    }
+    .user-content h6{
+        font-size: 12px;
+    }
+    .user-content p{
+        font-size: 10px;
+    }
+    .user-time p{
+        font-size: 8px;
+    }
+    .user-time button{
+        font-size: 12px;
+        padding: 3px 5px;
+    }
+    .current-user{width: 50%;}
+    .type-area{
+        width: 100%;
+        margin: 0;
+    }
+    .type-area div{
+        width: 50px;
+    }
+    .type-area div button{
+        width: 50px;
+    }
+}

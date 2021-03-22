@@ -1,13 +1,13 @@
 <?php
-
-    // include 'include/db.inc.php';
-    // $db = new UserManager();
-    // $conn = $db->createConnection();
-    // //$db->testNameEmail($conn,"trevis","@gmail.com");
-    // $pwd = password_hash("123",PASSWORD_DEFAULT);
-    // $db->createUser($conn,"Fanta","jack","right","fanta@gmail.com","254724462514",$pwd);
-    // // $db->logInUser($conn,"twevis","123");
-    echo(substr("../trevis",3));
+    include_once 'include/db.inc.php';
+    //make the connection
+    $db = new UserManager();
+    $conn = $db->createConnection();
+    //load the order based by user
+    $orders = $db->viewOrder($conn,"progress",8);
+    foreach ($orders as $key => $value) {
+        echo $value[4];
+    }
 ?>
 
 <button onclick=test()>test</button>

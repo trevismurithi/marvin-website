@@ -141,3 +141,46 @@ main{
 .show{
     display: block;
 }
+
+/*tab view*/
+@media screen and (max-width:1024px){
+    main{
+        width:100%;
+    }
+    .image-details{
+        font-size: 15px;
+    }
+}
+/*phone view*/
+@media screen and (max-width:768px){
+    main{
+        width:100%;
+    }
+    .image-content lottie-player{
+        height: 550px;
+    }
+    .image-details{
+        width: 100%;
+        font-size: 15px;
+        background-color: black;
+    }
+
+    .form-select-2{
+        flex-direction: column;
+    }
+
+    .form-select-2 select{
+        width: 100%;
+    }
+    .calculator-form{
+        font-size: 15px;
+        padding: 15px;
+        width: 70%;
+    }
+
+    .image-context{
+        top:0;  
+        flex-direction: column;
+        align-items: center;
+    }
+}
