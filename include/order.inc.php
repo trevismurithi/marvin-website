@@ -1,5 +1,6 @@
 <?php
     include 'db.inc.php';
+    session_start();
     //load the orders based on the users request
     if(isset($_POST['user_id'])){
         //load the connections
@@ -18,12 +19,25 @@
         //button
         $button="";
         
-        if($_POST['state']=="progress"){$btnName="Confirm";$caller='class="hide_"';$transfer="complete";}
+        if($_POST['state']=="progress"){
+            $btnName="Confirm";
+            //if not admin then display
+            if(!isset($_SESSION['role'])){
+                $caller='class="hide_"';
+            }
+            $transfer="complete";
+        }
         else if($_POST['state']=="cancel") {$btnName="Renew";$caller='';$transfer="progress";}
         else if($_POST['state']=="pending") {
             $btnName="Purchase";$caller='';$transfer="progress";
         }
-        else if($_POST['state']=="complete") {$btnName="Confirm";$caller='class="hide_"';$numb='disabled="disabled"';$transfer="complete";}
+        else if($_POST['state']=="complete") {
+            $btnName="Upload";
+            if(!isset($_SESSION['role'])){
+                $caller='class="hide_"';
+            }
+            $numb='disabled="disabled"';
+            $transfer="complete";}
         echo'
                 <tr>
                     <th>ORDER</th>
@@ -55,15 +69,30 @@
             if($_POST['state']=="pending" || $_POST['state']=="progress"){
                 echo '<button id="'.$value[0].'_" onclick=progressOrder('.$value[0].','.$_POST['user_id'].',"'.$_POST['state'].'","cancel")>Cancel</button>';
             }
-            if($_POST['state']=="cancel" || $_POST['state']=="progress" || $_POST['state']=="complete"){
+            if($_POST['state']=="progress" && isset($_SESSION['role'])){
                 echo'
                         <button id="'.$value[0].'_" '.$caller.' onclick=progressOrder('.$value[0].','.$_POST['user_id'].',"'.$_POST['state'].'","'.$transfer.'")>'.$btnName.'</button>
+                        </td>
+                    </tr>
+                ';
+            }else if($_POST['state']=="complete" && isset($_SESSION['role'])){
+                echo'   
+                        <form action="include/file.inc.php" method="post" enctype="multipart/form-data">
+                            <input type="file" name="file" id="file" class="file-select" accept="application/pdf,application/msword" required>
+                            <button type="submit" name="submit" id="'.$value[0].'_" value="'.$value[0].'">'.$btnName.'</button>
+                        </form>
                         </td>
                     </tr>
                 ';
             }else if($_POST['state']=="pending"){
                 echo'
                         <button id="'.$value[0].'_" '.$caller.' onclick=paymentSytem('.$value[0].','.$_POST['user_id'].',"'.$_POST['state'].'","'.$transfer.'")>'.$btnName.'</button>
+                        </td>
+                    </tr>
+                ';
+            }else if($_POST['state']=="cancel"){
+                echo'
+                        <button id="'.$value[0].'_" '.$caller.' onclick=progressOrder('.$value[0].','.$_POST['user_id'].',"'.$_POST['state'].'","'.$transfer.'")>'.$btnName.'</button>
                         </td>
                     </tr>
                 ';

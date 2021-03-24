@@ -54,7 +54,6 @@ if(isset($_SESSION['role'])){
                                 <td>'.$value[8].'</td>
                                 <td>
                                     <button id="'.$value[0].'" onclick=progressOrder('.$value[0].','.$_SESSION['user_id'].',"progress","cancel")>Cancel</button>
-                                    <button id="'.$value[0].'" class="hide_" onclick=progressOrder('.$value[0].','.$_SESSION['user_id'].',"progress","complete")>Confirm</button>
                                 </td>
                             </tr>
                         ';

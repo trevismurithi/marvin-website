@@ -42,6 +42,26 @@ table tr td form button{
     text-align: center;
 }
 
+.file-select{
+    font-size: 10px;
+    background-color: #636A77;
+    border: none;
+    outline: none;
+}
+
+::-webkit-file-upload-button{
+    background-color: #367FD3;
+    color:white;
+    border: none;
+    outline: none;
+    padding: 5px 5px;
+}
+
+::-webkit-file-upload-button:hover{
+    background-color: white;
+    color: #367FD3;
+}
+
 table tr td button:hover{
     background-color: white;
     color:rgb(214, 0, 0);

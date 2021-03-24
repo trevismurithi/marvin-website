@@ -62,6 +62,14 @@ class UserManager
             FOREIGN KEY(user_id) REFERENCES users(id)
         )
     ";
+    private $create_file = "
+            CREATE TABLE files(
+                id INT(11) AUTO_INCREMENT PRIMARY KEY,
+                filename TEXT NOT NULL,
+                order_id INT(11) NOT NULL,
+                FOREIGN KEY(order_id) REFERENCES orders(id)
+            );
+    ";
     private $create_user = "INSERT INTO users(user_name,first_name,last_name,email,phone_num,pwd) VALUES (?,?,?,?,?,?)";
     private $search_user = "SELECT * FROM users WHERE user_name=? OR email=? ";
     private $login_user = "SELECT id,email,phone_num,pwd FROM users WHERE user_name=?";
@@ -90,6 +98,9 @@ class UserManager
     (?,?,?,?,?,?,?,?,?,?)";
     private $update_orders = "UPDATE orders SET state=? WHERE id=?";
     private $select_order = "SELECT * FROM orders WHERE state=? AND user_id=?";
+    //files querry selector
+    private $insert_file = "INSERT INTO files(filename,order_id) VALUES (?,?)";
+    private $select_file = "SELECT filename FROM files WHERE order_id=?";
     public function createConnection()
     {
         $conn = new mysqli($this->server,$this->user,$this->password,$this->database);
@@ -512,7 +523,37 @@ class UserManager
             return $arr;    
         }
     }
-
+    public function insertFile($conn,$filename,$order_id){
+        //prepare the order
+        $stmt = $conn->prepare($this->insert_file);
+        if(!$stmt){
+            header("Location: ../chatroom.php?error=prepareerror");
+            exit();      
+        }else{
+            //bind the parameters
+            $stmt->bind_param('ss',$filename,$order_id);
+            //execute the statement
+            $stmt->execute();  
+        }
+    }
+    public function viewFile($conn,$order_id){
+        $filename = "";
+        //prepare the order
+        $stmt = $conn->prepare($this->select_file);
+        if(!$stmt){
+            header("Location: ../myUsers.php?error=prepareerror");
+            exit();      
+        }else{
+            //bind the parameters
+            $stmt->bind_param('s',$order_id);
+            //execute the statement
+            $stmt->execute();
+            //bind the result
+            $stmt->bind_result($filename);
+            $stmt->free_result();
+            return $filename;    
+        }
+    }
     public function getInsertStatus(){return $this->insert_status;}
     public function getUpdateStatus(){return $this->update_status;}
     public function getInsertImage(){return $this->insert_image;}
