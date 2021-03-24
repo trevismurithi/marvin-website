@@ -33,6 +33,7 @@
                     }
                     //otherwise update the status of the user
                     $db->updateStatus($conn,"online",$time,$user_id,$db->getUpdateStatus());
+                    //locate to an area where they are able to see orders
                     header("Location: ../chatroom.php?error=oldUser");
                     exit();
                 }

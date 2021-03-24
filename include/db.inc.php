@@ -66,6 +66,7 @@ class UserManager
     private $search_user = "SELECT * FROM users WHERE user_name=? OR email=? ";
     private $login_user = "SELECT id,email,phone_num,pwd FROM users WHERE user_name=?";
     private $all_users = "SELECT id,user_name FROM users";
+    private $all_users_details = "SELECT * FROM users";
     //user roles querry selector
     private $user_role = "SELECT user_id FROM role";
     //messages from user querry selector
@@ -314,7 +315,24 @@ class UserManager
             return $img;
         }
     }
-    
+    public function userDetails($conn){
+        //prepare the statement
+        $stmt = $conn->prepare($this->all_users_details);
+        if(!$stmt){
+            header("Location: ../chatroom.php?error=prepareerror");
+            exit();
+        }
+        else{
+            //execute the statement
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $arr = [];
+            while($obj =$result->fetch_object()){
+                 $arr[$obj->id] = [$obj->user_name,$obj->first_name, $obj->email];
+            }
+            return $arr;
+        }
+    }
     public function listener($conn){
         $id="";
         $user = "";
@@ -494,6 +512,7 @@ class UserManager
             return $arr;    
         }
     }
+
     public function getInsertStatus(){return $this->insert_status;}
     public function getUpdateStatus(){return $this->update_status;}
     public function getInsertImage(){return $this->insert_image;}

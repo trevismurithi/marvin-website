@@ -1,13 +1,7 @@
 <?php
     include_once 'include/db.inc.php';
-    //make the connection
-    $db = new UserManager();
-    $conn = $db->createConnection();
-    //load the order based by user
-    $orders = $db->viewOrder($conn,"progress",8);
-    foreach ($orders as $key => $value) {
-        echo $value[4];
-    }
+    $url = $_SERVER['PHP_SELF'];
+    echo($url);
 ?>
 
 <button onclick=test()>test</button>

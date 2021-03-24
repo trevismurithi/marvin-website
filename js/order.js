@@ -36,3 +36,4 @@ function progressOrder(order_id, user_id,state,transfer){
 function paymentSytem(order_id, user_id, state, transfer){
     console.log(order_id, user_id, state, transfer);
 }
+
