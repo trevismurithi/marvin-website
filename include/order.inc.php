@@ -76,14 +76,30 @@
                     </tr>
                 ';
             }else if($_POST['state']=="complete" && isset($_SESSION['role'])){
-                echo'   
-                        <form action="include/file.inc.php" method="post" enctype="multipart/form-data">
-                            <input type="file" name="file" id="file" class="file-select" accept="application/pdf,application/msword" required>
-                            <button type="submit" name="submit" id="'.$value[0].'_" value="'.$value[0].'">'.$btnName.'</button>
-                        </form>
-                        </td>
-                    </tr>
-                ';
+                $link = $db->viewFile($conn,$value[0]);
+                if(empty($link)){
+                        echo'   
+                                <form action="include/file.inc.php" method="post" enctype="multipart/form-data">
+                                    <input type="file" name="file" id="file" class="file-select" accept="application/pdf,application/msword" required>
+                                    <button type="submit" name="submit" id="'.$value[0].'_" value="'.$value[0].'">'.$btnName.'</button>
+                                </form>
+                                </td>
+                            </tr>
+                        ';
+                }else{
+                    echo '
+                        <a href="'.$link.'">Download file</a>
+                    ';
+                }
+            }else if($_POST['state']=="complete" && !isset($_SESSION['role'])){
+                //if this is the user
+                $link = $db->viewFile($conn, $value[0]);
+                if(!empty($link)){
+                    echo '
+                        <a href="'.$link.'">Download file</a>
+                    ';                 
+                }
+
             }else if($_POST['state']=="pending"){
                 echo'
                         <button id="'.$value[0].'_" '.$caller.' onclick=paymentSytem('.$value[0].','.$_POST['user_id'].',"'.$_POST['state'].'","'.$transfer.'")>'.$btnName.'</button>

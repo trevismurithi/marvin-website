@@ -547,11 +547,15 @@ class UserManager
             //bind the parameters
             $stmt->bind_param('s',$order_id);
             //execute the statement
-            $stmt->execute();
-            //bind the result
-            $stmt->bind_result($filename);
-            $stmt->free_result();
-            return $filename;    
+            if(!$stmt->execute()){
+                header("Location: ../myUsers.php?error=execute");
+                exit();
+            }else{
+                //bind the result
+                $stmt->bind_result($filename);
+                $stmt->fetch();
+                return $filename;
+            }    
         }
     }
     public function getInsertStatus(){return $this->insert_status;}

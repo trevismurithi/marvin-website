@@ -1,10 +1,9 @@
 <?php
     include_once 'include/db.inc.php';
-    $url = $_SERVER['PHP_SELF'];
-    echo($url);
+$db = new UserManager();
+$conn = $db->createConnection();
+echo $db->viewFile($conn,2);
 ?>
-
-<button onclick=test()>test</button>
 
 <script>
     // let checker=0;

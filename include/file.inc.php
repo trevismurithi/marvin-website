@@ -27,6 +27,8 @@ if (isset($_POST['submit'])) {
                 $conn = $db->createConnection();
                 //save file
                 $db->insertFile($conn,substr($fileDestination,3),$_POST['submit']);
+                header("Location: ../singleUser.php?user_id=".$_POST['submit']);
+                exit();
             } else {
                 header("Location: ../chatroom.php?error=filebig");
                 exit();
