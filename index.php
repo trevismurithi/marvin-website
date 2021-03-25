@@ -190,5 +190,5 @@
         </div><br>
     </div>
 </main>
-
+<script src="js/nav.js"></script>
 <?php require 'footer.php';?>

@@ -73,7 +73,8 @@ function checker(){
     }else{
         value+=2;
     }
-    value+=(parseInt(pages_words.value)+1)*0.50;
+    var num = parseInt(pages_words.value);
+    value*=(num+1);
     if(radioNum==1){
         value+=value*.5;
     }else if(radioNum==2){

@@ -58,9 +58,11 @@
                 ?>
             </div>
             <div class="burger">
-                <div class="line-1"></div>
-                <div class="line-2"></div>
-                <div class="line-3"></div>
+                <div id="line-1"></div>
+                <div id="line-2"></div>
+                <div id="line-3"></div>
+            </div>
+            <div id="vertical_nav" class="vertical-nav move-hide">
             </div>
         </div>
     </nav>
