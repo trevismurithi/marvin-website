@@ -1,5 +1,8 @@
 <?php require 'header.php';?>
-<?php require_once 'include/details.inc.php'; ?>
+<?php 
+    require_once 'include/details.inc.php'; 
+    require_once 'include/content.inc.php';
+?>
 <main>
     <div class="container">
         <div class="image-content">
@@ -61,9 +64,9 @@
                     </div>                   
                     <div class="form-check-2">
                         <label for="double">Double spaces</label>
-                        <input type="radio" name="double" value="double" id="double" required>
+                        <input type="radio" name="double" value="double" id="double">
                         <label for="single">Single spaces</label>
-                        <input type="radio" name="single" value="single" id="single" required>
+                        <input type="radio" name="single" value="single" id="single">
                     </div>
                     <div class="cut-off">
                         <lottie-player id="lottie" class="hide" src="https://assets8.lottiefiles.com/packages/lf20_Cemmpu.json"  
@@ -84,30 +87,30 @@
         </div>
         <div class="entail">
             <?php
-                for ($i=0; $i < 3; $i++) { 
+                for ($i=0; $i < count($entail); $i++) { 
                     echo'
                         <div class="row1">
                             <ul>
-                                <li><img src="img/benefit1.png" alt=""></li>
+                                <li><img src="img/file1.png" alt=""></li>
                                 <li>
-                                    <h4>Outstanding Quality</h4><br>
-                                    <p>All our works have one thing in common - the highest quality. We work hard to deliver you only the best papers.</p>
+                                    <h4>'.$entail[$i][0][0].'</h4><br>
+                                    <p>'.$entail[$i][0][1].'</p>
                                 </li>
-                            </ul>      
+                            </ul>   
                             <ul>
-                                <li><img src="img/benefit2.png" alt=""></li>
+                                <li><img src="img/file1.png" alt=""></li>
                                 <li>
-                                    <h4>Outstanding Quality</h4><br>
-                                    <p>All our works have one thing in common - the highest quality. We work hard to deliver you only the best papers.</p>
+                                    <h4>'.$entail[$i][1][0].'</h4><br>
+                                    <p>'.$entail[$i][1][1].'</p>
                                 </li>
-                            </ul> 
+                            </ul>   
                             <ul>
-                                <li><img src="img/benefit3.png" alt=""></li>
+                                <li><img src="img/file1.png" alt=""></li>
                                 <li>
-                                    <h4>Outstanding Quality</h4><br>
-                                    <p>All our works have one thing in common - the highest quality. We work hard to deliver you only the best papers.</p>
+                                    <h4>'.$entail[$i][2][0].'</h4><br>
+                                    <p>'.$entail[$i][2][1].'</p>
                                 </li>
-                            </ul>           
+                            </ul>             
                         </div>
                     ';
                 }
@@ -122,19 +125,18 @@
             background="#E5E6E9"  
             speed="1"  style="width:100%"  
             loop  autoplay></lottie-player>
-            <div class="works-row">
+            <div id="works-row" class="works-row">
                 <?php
-                    for ($i=0; $i <4; $i++) {
+                    for ($i=0; $i <count($work); $i++) {
                         $index = $i+1; 
                         echo'
                             <div class="step">
                                 <div class="step-img">
-                                    <img src="img/benefit'.$index.'.png" alt="">
+                                    <img src="img/file'.$index.'.png" alt="">
                                 </div><br>
-                                <h4>You place your order</h4><br>
+                                <h4>'.$work[$i][0].'</h4><br>
                                 <p>
-                                    To get started, you need to complete an order form on our website. 
-                                    Ask our Support managers for help if you got stuck on one of the steps. 
+                                    '.$work[$i][1].'
                                 </p>
                                 <div class="step-num"><p>'.$index.'</p></div>
                             </div>

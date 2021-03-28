@@ -62,7 +62,7 @@ $conn = $db->createConnection();
                                         if(array_key_exists($id,$images)){
                                             echo chat($id,$name,$images[$id]);  
                                         }else{
-                                            echo chat($id,$name,"img/dwayne.png");
+                                            echo chat($id,$name,"img/unknown.jpg");
                                         }
                                     }
                                 }
@@ -75,7 +75,7 @@ $conn = $db->createConnection();
                                         if(array_key_exists($id,$images)){
                                             echo chat($id,$name,$images[$id]);  
                                         }else{
-                                            echo chat($id,$name,"img/dwayne.png");
+                                            echo chat($id,$name,"img/unknown.jpg");
                                         }
                                     }
                                 }
@@ -91,7 +91,7 @@ $conn = $db->createConnection();
             <div class="chat">
                 <div class="current-user">
                     <div class="user-status-chat">
-                        <img id="set-image" src="img/dwayne.png" alt="">
+                        <img id="set-image" src="img/unknown.jpg" alt="">
                         <!-- <div class="offline"></div> -->
                     </div>
                     <h6 id="top-name">.....</h6>

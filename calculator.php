@@ -1,5 +1,10 @@
 <?php require 'header.php';?>
-<?php require_once 'include/details.inc.php'; ?>
+<?php require_once 'include/details.inc.php'; 
+if(isset($_SESSION['role'])){
+    header("Location: index.php?access=denied");
+    exit();
+}
+?>
 <main>
     <div class="container">
         <div class="image-content">
@@ -61,9 +66,9 @@
                     </div>
                     <div class="form-check-2">
                         <label for="double">Double spaces</label>
-                        <input type="radio" name="double" value="double" id="double" require>
+                        <input type="radio" name="double" value="double" id="double">
                         <label for="single">Single spaces</label>
-                        <input type="radio" name="single" value="single" id="single" require>
+                        <input type="radio" name="single" value="single" id="single">
                     </div>
                     <div class="cut-off">
                         <lottie-player id="lottie" class="hide" src="https://assets8.lottiefiles.com/packages/lf20_Cemmpu.json"

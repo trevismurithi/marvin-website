@@ -36,7 +36,10 @@
 }
 /*phone view*/
 @media screen and (max-width:768px){
+    .row1 ul{
+        flex-direction: column;
+    }
     .row1 ul li img{
-        width:20px;
+        width:50px;
     }
 }

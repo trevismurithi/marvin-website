@@ -28,16 +28,16 @@
             <ul>
                 <li><h2>TURN YOUR SKILLS INTO MONEY</h2></li>
                 <li>Phone 254-724462514</li>
-                <li>Email trevismurithi@gmail.com</li>
+                <li>Email support@essaypro.website</li>
             </ul>
         </div>
         <div class="nav-links">
-            <img src="img/ignite.png" width="92vh" alt="ignite-icon">
+            <img src="img/essay.png" width="92vh" alt="ignite-icon">
             <ul>
-                <li><a href="#">How it works</a></li>
-                <li><a href="#">Get started</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">FAQ</a></li>
+                <li><a href="#works-row">How it works</a></li>
+                <li><a href="login.php">Get started</a></li>
+                <li><a href="calculator.php">Make Order</a></li>
+                <!-- <li><a hearef="#">FAQ</a></li> -->
                 <li><a href="#">Contact Us</a></li>
             </ul>
             <div class="user-accounts">

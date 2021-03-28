@@ -9,6 +9,7 @@
 
 .steps-demo{
     width: 100%;
+    height: 300px;
     background-color: white;
     position: relative;
 }
@@ -23,13 +24,13 @@
 .steps-demo lottie-player{
     width: 100%;
     height: 300px;
-    position: relative;
+    position: absolute;
     top: 0;
 }
 
 .step-img img{
-    width: 50px;
-    height: 40px;
+    width: 70px;
+    height: 60px;
 }
 
 .works-row{
@@ -89,7 +90,10 @@
         width:50%;
         margin-top: 5px;
     }
+    .steps-demo{
+        height: 900px;
+    }
     .steps-demo lottie-player{
-        height: 800px;
+        display: none;
     }
 }
