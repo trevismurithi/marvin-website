@@ -85,13 +85,14 @@
         top: 0;
         flex-direction: column;
         align-items: center;
+        position: relative;
     }
     .step{
         width:50%;
         margin-top: 5px;
     }
     .steps-demo{
-        height: 900px;
+        height: max-content;
     }
     .steps-demo lottie-player{
         display: none;

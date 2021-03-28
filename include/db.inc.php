@@ -70,6 +70,14 @@ class UserManager
                 FOREIGN KEY(order_id) REFERENCES orders(id)
             );
     ";
+    private $create_assign = "
+            CREATE TABLE assign(
+                id INT(11) AUTO_INCREMENT PRIMARY KEY,
+                role_id INT(11) NOT NULL,
+                user_id INT(11) NOT NULL UNIQUE,
+                FOREIGN KEY(user_id) REFERENCES users(id)
+            ); 
+    ";
     private $create_user = "INSERT INTO users(user_name,first_name,last_name,email,phone_num,pwd) VALUES (?,?,?,?,?,?)";
     private $search_user = "SELECT * FROM users WHERE user_name=? OR email=? ";
     private $login_user = "SELECT id,email,phone_num,pwd FROM users WHERE user_name=?";
@@ -77,6 +85,7 @@ class UserManager
     private $all_users_details = "SELECT * FROM users";
     //user roles querry selector
     private $user_role = "SELECT user_id FROM role";
+    private $user_role_2 = "SELECT role,user_id FROM role";
     //messages from user querry selector
     private $user_message = "SELECT words,created_at FROM messages WHERE receiver=? AND user_id=?";
     private $sender_message = "SELECT words,receiver FROM messages WHERE user_id=?";
@@ -101,6 +110,9 @@ class UserManager
     //files querry selector
     private $insert_file = "INSERT INTO files(filename,order_id) VALUES (?,?)";
     private $select_file = "SELECT filename FROM files WHERE order_id=?";
+    //assign querry selector
+    private $assign_writer = "INSERT INTO assign(role_id,user_id) VALUES (?,?)";
+    private $select_assign = "SELECT role_id FROM assign WHERE user_id=?";
     public function createConnection()
     {
         $conn = new mysqli($this->server,$this->user,$this->password,$this->database);
@@ -387,7 +399,28 @@ class UserManager
             return $arr;
         }
     }
-    
+
+        public function rolePlay_2($conn){
+        $user_id="";
+        $role_id="";
+        //prepare the statement
+        $stmt = $conn->prepare($this->user_role_2);
+        if(!$stmt){
+            header("Location: ../chatroom.php?error=prepareerror");
+            exit();
+        }else{
+            //execute the statement
+            $stmt->execute();
+            //bind the result
+            $stmt->bind_result($role_id,$user_id);
+            //fetch the role players
+            $arr=[];
+            while($stmt->fetch()){
+                $arr[$user_id]=$role_id;
+            }
+            return $arr;
+        }
+    }
     public function userMessages($conn,$receiver,$user_id){
         $message = "";
         $time = "";
@@ -555,6 +588,41 @@ class UserManager
                 $stmt->bind_result($filename);
                 $stmt->fetch();
                 return $filename;
+            }    
+        }
+    }
+    public function assignWriter($conn,$role_id,$user_id){
+        //prepare the order
+        $stmt = $conn->prepare($this->assign_writer);
+        if(!$stmt){
+            header("Location: ../chatroom.php?error=prepareerror");
+            exit();      
+        }else{
+            //bind the parameters
+            $stmt->bind_param('ss',$role_id,$user_id);
+            //execute the statement
+            $stmt->execute();  
+        }
+    }
+    public function verifyUser($conn,$user_id){
+        $role_id = "";
+        //prepare the order
+        $stmt = $conn->prepare($this->select_assign);
+        if(!$stmt){
+            header("Location: ../chatroom.php?error=prepareerror");
+            exit();      
+        }else{
+            //bind the parameters
+            $stmt->bind_param('s',$user_id);
+            //execute the statement
+            if(!$stmt->execute()){
+                header("Location: ../chatroom.php?error=execute");
+                exit();
+            }else{
+                //bind the result
+                $stmt->bind_result($role_id);
+                $stmt->fetch();
+                return $role_id;
             }    
         }
     }

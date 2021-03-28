@@ -32,7 +32,7 @@
             </ul>
         </div>
         <div class="nav-links">
-            <img src="img/essay.png" width="92vh" alt="ignite-icon">
+            <img src="img/ignite.png" width="92vh" alt="ignite-icon">
             <ul>
                 <li><a href="#works-row">How it works</a></li>
                 <li><a href="login.php">Get started</a></li>

@@ -52,17 +52,23 @@ $conn = $db->createConnection();
                             //create a loop for all users available
                             //the chat should show all users except the main user
                             $role = $db->rolePlay($conn);
+                            //get the titles of the roles players
+                            $titles = $db->rolePlay_2($conn);
+                            //verify the user if they have been assigned a writer
+                            $writerID = $db->verifyUser($conn,$_SESSION['user_id']);
                             if(!in_array($_SESSION['user_id'],$role)){
                                 //this condition is for user
                                 //check if user has a role to play
                                 foreach ($users as $id => $name) {
                                     //displays all the users with roles
                                     if(in_array($id,$role)){
-                                        //check if the key exists
-                                        if(array_key_exists($id,$images)){
-                                            echo chat($id,$name,$images[$id]);  
-                                        }else{
-                                            echo chat($id,$name,"img/unknown.jpg");
+                                        if($titles[$id]=="Admin"|| !empty($writerID)){
+                                            //check if the key exists
+                                            if(array_key_exists($id,$images)){
+                                                echo chat($id,$name,$images[$id]);  
+                                            }else{
+                                                echo chat($id,$name,"img/unknown.jpg");
+                                            }
                                         }
                                     }
                                 }
@@ -70,12 +76,16 @@ $conn = $db->createConnection();
                                 foreach ($users as $id => $name) {
                                     //this codition is for admin
                                     if(!in_array($id,$role)){
-                                        //display all users without a role
-                                        //check if the key exists
-                                        if(array_key_exists($id,$images)){
-                                            echo chat($id,$name,$images[$id]);  
-                                        }else{
-                                            echo chat($id,$name,"img/unknown.jpg");
+                                        //display only users assigned
+                                        $writerID = $db->verifyUser($conn,$id);
+                                        if($titles[$_SESSION['user_id']]=="Admin"|| !empty($writerID)){
+                                            //display all users without a role
+                                            //check if the key exists
+                                            if(array_key_exists($id,$images)){
+                                                echo chat($id,$name,$images[$id]);  
+                                            }else{
+                                                echo chat($id,$name,"img/unknown.jpg");
+                                            }
                                         }
                                     }
                                 }
