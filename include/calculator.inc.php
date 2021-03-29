@@ -61,7 +61,7 @@
             exit();
         }
     }else{
-        header("Location: ../calculator.php?error=nouser");
+        header("Location: ../login.php?error=nouser");
         exit();
     }
 

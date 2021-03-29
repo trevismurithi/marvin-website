@@ -34,11 +34,30 @@
         <div class="nav-links">
             <img src="img/ignite.png" width="92vh" alt="ignite-icon">
             <ul>
-                <li><a href="#works-row">How it works</a></li>
-                <li><a href="login.php">Get started</a></li>
-                <li><a href="calculator.php">Make Order</a></li>
                 <!-- <li><a hearef="#">FAQ</a></li> -->
-                <li><a href="#">Contact Us</a></li>
+                <!-- <li><a href="#">Contact Us</a></li> -->
+                <?php 
+                    if(!isset($_SESSION['username'])){
+                        echo'
+                            <li><a href="index.php">Home</a></li>
+                            <li><a href="index.php#works-row">How it works</a></li>
+                            <li><a href="index.php#entail">Why choose us</a></li>
+                        ';
+                    }else if(!isset($_SESSION['role'])){
+                        echo'
+                            <li><a href="index.php">Home</a></li>
+                            <li><a href="order.php">Orders</a></li>
+                            <li><a href="calculator.php">Make Order</a></li>
+                            <li><a href="chatroom.php">Chatroom</a></li>
+                        ';
+                    }else if(isset($_SESSION['role'])){
+                        echo'
+                            <li><a href="index.php">Home</a></li>
+                            <li><a href="myUsers.php">Users</a></li>
+                            <li><a href="chatroom.php">Chatroom</a></li>
+                        ';
+                    }
+                ?>
             </ul>
             <div class="user-accounts">
                 <?php

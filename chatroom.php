@@ -29,7 +29,12 @@ $conn = $db->createConnection();
                             //loading the users available at the moment
                             $images = $db->viewAllImages($conn);
                             //create a function that returns a string
-                            function chat($id,$name,$link){
+                            function chat($id,$name,$link,$state){
+                                if(empty($state)){
+                                    $state="discharged";
+                                }else{
+                                    $state="allocated";
+                                }
                                 return'
                                             <div class="one-user">
                                                 <div class="user-status">
@@ -41,7 +46,7 @@ $conn = $db->createConnection();
                                                     <p id="short-text">Writing is a form of art...</p>
                                                 </div>
                                                 <div class="user-time">
-                                                    <p>3 March</p>
+                                                    <p id='.$id.'state>'.$state.'</p>
                                                     <button id='.$id.' onclick=Messages('.$id.','.$_SESSION['user_id'].',"'.$name.'","'.$link.'")>text</button>
                                                 </div>
                                             </div>
@@ -54,9 +59,9 @@ $conn = $db->createConnection();
                             $role = $db->rolePlay($conn);
                             //get the titles of the roles players
                             $titles = $db->rolePlay_2($conn);
-                            //verify the user if they have been assigned a writer
-                            $writerID = $db->verifyUser($conn,$_SESSION['user_id']);
                             if(!in_array($_SESSION['user_id'],$role)){
+                                //verify the user if they have been assigned a writer
+                                $writerID = $db->verifyUser($conn,$_SESSION['user_id']);
                                 //this condition is for user
                                 //check if user has a role to play
                                 foreach ($users as $id => $name) {
@@ -65,9 +70,9 @@ $conn = $db->createConnection();
                                         if($titles[$id]=="Admin"|| !empty($writerID)){
                                             //check if the key exists
                                             if(array_key_exists($id,$images)){
-                                                echo chat($id,$name,$images[$id]);  
+                                                echo chat($id,$name,$images[$id],$writerID);  
                                             }else{
-                                                echo chat($id,$name,"img/unknown.jpg");
+                                                echo chat($id,$name,"img/unknown.jpg",$writerID);
                                             }
                                         }
                                     }
@@ -82,9 +87,9 @@ $conn = $db->createConnection();
                                             //display all users without a role
                                             //check if the key exists
                                             if(array_key_exists($id,$images)){
-                                                echo chat($id,$name,$images[$id]);  
+                                                echo chat($id,$name,$images[$id],$writerID);  
                                             }else{
-                                                echo chat($id,$name,"img/unknown.jpg");
+                                                echo chat($id,$name,"img/unknown.jpg",$writerID);
                                             }
                                         }
                                     }
@@ -105,6 +110,15 @@ $conn = $db->createConnection();
                         <!-- <div class="offline"></div> -->
                     </div>
                     <h6 id="top-name">.....</h6>
+                    <?php
+                        if(array_key_exists($_SESSION["user_id"],$titles)){
+                            if($titles[$_SESSION["user_id"]]=="Admin"){
+                                echo '
+                                    <button id="top-id" type="submit">set</button>
+                                ';
+                            }
+                        }
+                    ?>
                 </div>
 
                 <div id="chat-content" class="chat-content"></div>

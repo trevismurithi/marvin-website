@@ -15,6 +15,7 @@
     $failedlog = "failedlog";
     $usernull = "usernull";
     $success = "none";
+    $nouser = "nouser";
     $click = "unclicked";
     switch ($error) {
         case $emptyfield:
@@ -29,6 +30,9 @@
             break;
         case $click:
             $message="click login button";
+            break;
+        case $nouser:
+            $message="log in to make an order";
             break;
         default:
             $message="";
@@ -52,7 +56,7 @@
         <button class="login-btn" type="submit" name="submit">LOGIN</button>
         <div class="create">
             <p>Don't have an account?</p>
-            <a href="#">Create One!</a>
+            <a href="signup.php">Create One!</a>
         </div>
     </form>
 </div>

@@ -113,6 +113,8 @@ class UserManager
     //assign querry selector
     private $assign_writer = "INSERT INTO assign(role_id,user_id) VALUES (?,?)";
     private $select_assign = "SELECT role_id FROM assign WHERE user_id=?";
+    private $remove_assign ="DELETE * FROM assign WHERE user_id=?";
+
     public function createConnection()
     {
         $conn = new mysqli($this->server,$this->user,$this->password,$this->database);
@@ -624,6 +626,19 @@ class UserManager
                 $stmt->fetch();
                 return $role_id;
             }    
+        }
+    }
+    public function removeWriter($conn,$user_id){
+        //prepare the order
+        $stmt = $conn->prepare($this->remove_assign);
+        if(!$stmt){
+            header("Location: ../chatroom.php?error=prepareerror");
+            exit();      
+        }else{
+            //bind the parameters
+            $stmt->bind_param('ss',$user_id);
+            //execute the statement
+            $stmt->execute();  
         }
     }
     public function getInsertStatus(){return $this->insert_status;}

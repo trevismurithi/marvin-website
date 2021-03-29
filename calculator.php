@@ -1,8 +1,13 @@
 <?php require 'header.php';?>
 <?php require_once 'include/details.inc.php'; 
-if(isset($_SESSION['role'])){
-    header("Location: index.php?access=denied");
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
     exit();
+}else{
+    if(isset($_SESSION['role'])){
+        header("Location: index.php?access=denied");
+        exit();
+    }
 }
 ?>
 <main>
@@ -21,7 +26,7 @@ if(isset($_SESSION['role'])){
                     <p><a href="#">Records</a></p>
                 </div>
                 <form class="calculator-form" action="include/calculator.inc.php" method="post">
-                    <h3>calculate the price</h3>
+                    <h3>Make your order</h3>
                     <div class="form-select-0">
                         <select id="select_type" name="select_type">
                             <option value="0">Write</option>
@@ -79,7 +84,7 @@ if(isset($_SESSION['role'])){
                         <p id="price">$...</p>
                         <input type="text" name="price" id="h-price" style="display:none">
                     </div>
-                    <button class="btn-submit" name="submit" type="submit">Write My Paper</button>
+                    <button class="btn-submit" name="submit" type="submit">Create My Order</button>
                 </form>
             </div>
         </div>

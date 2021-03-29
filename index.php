@@ -18,7 +18,7 @@
                     <h5>Essay writing service for students who want to see results twice as fast.</h5><br>
                     <p><a href="#">Write My Paper</a></p>
                 </div>
-                <form class="calculator-form" action="" method="post">
+                <form class="calculator-form" action="include/calculator.inc.php" method="post">
                     <h3>calculate the price</h3>
                     <div class="form-select-0">
                         <select id="select_type" name="select_type">
@@ -85,7 +85,7 @@
             <h2>Why Choose Us</h2>
             <img src="img/graph.png" alt="">
         </div>
-        <div class="entail">
+        <div id="entail" class="entail">
             <?php
                 for ($i=0; $i < count($entail); $i++) { 
                     echo'
@@ -192,5 +192,4 @@
         </div><br>
     </div>
 </main>
-<script src="js/nav.js"></script>
 <?php require 'footer.php';?>

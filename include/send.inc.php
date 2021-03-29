@@ -1,7 +1,9 @@
 <?php
     include 'db.inc.php';
-    $db = new UserManager();
-    //create the connection
-    $conn = $db->createConnection();
-    //insert message and update the user
-    $db->insertMessage($conn,$_GET['message'],$_GET['receiver'],$_GET['user_id']);
+    if(isset($_POST['user_id'])){
+        $db = new UserManager();
+        //create the connection
+        $conn = $db->createConnection();
+        //insert message and update the user
+        $db->insertMessage($conn,$_POST['message'],$_POST['receiver'],$_POST['user_id']);
+    }
