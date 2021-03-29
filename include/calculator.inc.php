@@ -1,6 +1,7 @@
 <?php
     require_once 'db.inc.php';
     require_once 'details.inc.php';
+    require_once 'html.inc.php';
     session_start();
     //check if the user is logged in
     if(isset($_SESSION['user_id'])){
@@ -49,6 +50,28 @@
                             $grade[$_POST['university']],$duration[$_POST['duration']],
                             $space,$pages[$_POST['pages_words']],$_POST['price'],
                         $time,"pending",$_SESSION['user_id']);
+            //send email to admin and writer
+            $to = "trevismurithi@gmail.com";
+            $subject = "New Order";
+            $headers = "CC: tyresewaithaka@gmail.com\r\n";
+            $headers .= "MIME-Version: 1.0\r\n";
+            $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+            $msg = 
+            "<p>".$_SESSION['username']." has made a new order.</p>
+            <p>The order details are:</p>
+            <ul>
+                <li>(1)".$select_type."</li>
+                <li>(2)".$type_writing[$_POST['type_writing']]."</li>
+                <li>(3)".$grade[$_POST['university']]."</li>
+                <li>(4)".$duration[$_POST['duration']]."</li>
+                <li>(5)".$space."</li>
+                <li>(6)".$pages[$_POST['pages_words']]."</li>
+                <li>(7)".$_POST['price']."</li>
+            </ul>
+            <p>Kindly contact the client via phone ".$_SESSION['phone'].
+            ", ".$_SESSION['email'].", or message system and assign a writer";
+            mail($to,$subject,messageEdit("Support Team",$msg),$headers);
+
                         
             // print_r($select_type.$type_writing[$_POST['type_writing']].
             //                 $grade[$_POST['university']].$duration[$_POST['duration']].

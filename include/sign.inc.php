@@ -1,5 +1,6 @@
 <?php
     include 'db.inc.php';
+    include  'html.inc.php';
     if(isset($_POST['submit'])){
         //if the button is clicked
         $username = trim($_POST['username']);
@@ -41,6 +42,9 @@
                             if($pwd!=$r_pwd){
                                 header("Location: ../signup.php?error=nonematch&user=".$username."&f_name=".$first_name."&l_name=".$last_name."&email=".$email."&phone=".$phone);
                                 exit();
+                            }else if(checkPassword($pwd)!="pass"){
+                                header("Location: ../signup.php?error=weakpass&user=".$username."&f_name=".$first_name."&l_name=".$last_name."&email=".$email."&phone=".$phone);
+                                exit();
                             }else{
                                 //say everthing is well and good
                                 //create the users account details
@@ -52,8 +56,22 @@
                                 //if everything works well then create the users account
                                 //after hashing the password
                                 $hashed = password_hash($pwd,PASSWORD_DEFAULT);
+                                //send email to admin and writer
+                                $to = "trevismurithi@gmail.com";
+                                $subject = "New User Registration";
+                                $headers = "CC: tyresewaithaka@gmail.com\r\n";
+                                $headers .= "MIME-Version: 1.0\r\n";
+                                $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+                                $msg = "<p>".$username." has registered to your website.</p>
+                                <p>The clients full names are:</p> 
+                                <ul>
+                                    <li>".$first_name." ".$last_name."</li>
+                                    <li>".$email."</li>
+                                    <li>".$phone."</li>
+                                </ul>
+                                <p>Kindly contact the client and assign a writer</p>";
+                                mail($to,$subject,messageEdit("Support Team",$msg),$headers);
                                 $db->createUser($conn,strtolower($username),$first_name,$last_name,$email,$phone,$hashed);
-
                             }
                         }
                     }
@@ -65,3 +83,17 @@
         header("Location: ../signup.php?error=unclicked");
         exit();
     }
+
+function checkPassword($password) {
+    // Validate password strength
+    $uppercase = preg_match('@[A-Z]@', $password);
+    $lowercase = preg_match('@[a-z]@', $password);
+    $number    = preg_match('@[0-9]@', $password);
+    $specialChars = preg_match('@[^\w]@', $password);
+
+    if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
+        return 'failed';
+    }else{
+        return 'pass';
+    }
+}

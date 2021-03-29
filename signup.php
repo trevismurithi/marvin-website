@@ -21,6 +21,7 @@
     $firstspecial = "firstspecial";
     $lastspecial = "lastspecial";
     $nonMatch = "nonematch";
+    $weak = "weakpass";
     //create a switch statement 
     switch ($error) {
         case $empty:
@@ -54,6 +55,19 @@
             $email = $_GET['email'];
             $phone = $_GET['phone'];
             break;       
+        case $weak:
+            $message="
+                must contain 8 characters or more<br>
+                must have special characters #$!&<br>
+                atleast one small letter<br>
+                atleast one capital letter
+                ";
+            $username = $_GET['user'];
+            $first_name = $_GET['f_name'];
+            $last_name = $_GET['l_name'];
+            $email = $_GET['email'];
+            $phone = $_GET['phone'];
+            break; 
         default:
             $message="";
             $username = "";
@@ -72,7 +86,7 @@
         <form action="include/sign.inc.php" method="post">
             <div>
                 <label for="username">Username</label>
-                <input type="text" name="username" id="username" value=<?php echo $username;?>>
+                <input type="text" name="username" id="username" placeholder="one word small letters" value=<?php echo $username;?>>
             </div>
             <div>
                 <label for="f_name">First Name</label>

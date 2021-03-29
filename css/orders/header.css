@@ -1,5 +1,6 @@
 .order{
     height: 70vh;
+    overflow: scroll;
 }
 .butt-header{
     width: 100%;

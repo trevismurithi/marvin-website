@@ -18,6 +18,14 @@ class UserManager
         pwd TEXT NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )";
+    private $create_role ="
+        CREATE TABLE role(
+            id INT(11) AUTO_INCREMENT PRIMARY KEY,
+            role INT(11) NOT NULL,
+            user_id INT(11) NOT NULL,
+            FOREIGN KEY(user_id) REFERENCES users(id)
+        );
+    ";
     private $create_message="
         CREATE TABLE messages(
             id INT(11) AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -83,6 +91,7 @@ class UserManager
     private $login_user = "SELECT id,email,phone_num,pwd FROM users WHERE user_name=?";
     private $all_users = "SELECT id,user_name FROM users";
     private $all_users_details = "SELECT * FROM users";
+    private $update_users_pwd = "UPDATE users SET pwd=? WHERE email=?";
     //user roles querry selector
     private $user_role = "SELECT user_id FROM role";
     private $user_role_2 = "SELECT role,user_id FROM role";
@@ -227,7 +236,25 @@ class UserManager
             }
         }
     }
-
+    public function updatePassword($conn,$pwd,$email,$state){
+        //prepare the order
+        $stmt = $conn->prepare($this->update_users_pwd);
+        if(!$stmt){
+            header("Location: ../reset.php?error=prepareerror");
+            exit();      
+        }else{
+            //bind the parameters
+            $stmt->bind_param('ss',$pwd,$email);
+            //execute the statement
+            if($stmt->execute()){
+                header("Location: ../login.php");
+                exit();
+            }else{
+                header("Location: ../reset.php?state=".$state."&error=execute");
+                exit();
+            }
+        }  
+    }
     public function updateStatus($conn,$status,$time,$user_id,$query){
         //prepare the statement 
         $stmt = $conn->prepare($query);

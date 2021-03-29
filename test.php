@@ -1,8 +1,14 @@
 <?php
-    include_once 'include/db.inc.php';
-$db = new UserManager();
-$conn = $db->createConnection();
-echo $db->viewFile($conn,2);
+//     include_once 'include/db.inc.php';
+// $db = new UserManager();
+// $conn = $db->createConnection();
+// echo $db->viewFile($conn,2);
+// $name = "trevis";
+// $name = base64_encode($name);
+// $name = bin2hex($name);
+// echo $name;
+// echo '<br>';
+// echo base64_decode(hex2bin($name));
 ?>
 
 <script>
