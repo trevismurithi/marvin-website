@@ -66,3 +66,9 @@ table tr td button:hover{
     background-color: white;
     color:rgb(214, 0, 0);
 }
+/*phone view*/
+@media screen and (max-width:768px){
+    #mobile{
+        display:none;
+    }
+}

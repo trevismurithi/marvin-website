@@ -16,20 +16,23 @@ function Messages(receiver,user_id,name,link){
     document.getElementById("top-name").innerHTML=name;
     document.getElementById("set-image").src = link;
     var stateID = document.getElementById(user_num+"state");
-    assign.onclick = function () {
-        //assign the user 
-        if(write == 0){
-            writer("eject");
-            assign.innerText = "unset";
-            stateID.innerText = "allocated"
-            write=1;
-        }else{
-            writer("reject");
-            assign.innerText = "set";
-            stateID.innerText = "discharged";
-            write=0;
-        }
-    };
+    //check is the assign is not null
+    if(assign != null){
+        assign.onclick = function () {
+            //assign the user 
+            if (write == 0) {
+                writer("eject");
+                assign.innerText = "unset";
+                stateID.innerText = "allocated"
+                write = 1;
+            } else {
+                writer("reject");
+                assign.innerText = "set";
+                stateID.innerText = "discharged";
+                write = 0;
+            }
+        };
+    }
     url = "../include/message.inc.php";
     param = "receiver=" + receiver + "&user_id=" + user_id;
     //set interval listener

@@ -16,8 +16,8 @@ if(!isset($_SESSION['role'])){
             <table id="table_main">
                 <tr>
                     <th>USERNAME</th>
-                    <th>DISPLAY NAME</th>
-                    <th>EMAIL</th>
+                    <th id="mobile">DISPLAY NAME</th>
+                    <th id="mobile">EMAIL</th>
                     <th>PROGRESS</th>
                     <th>COMPLETED</th>
                     <th>ACTION</th>
@@ -38,8 +38,8 @@ if(!isset($_SESSION['role'])){
                             $complete = $db->viewOrder($conn,"complete",$key);
                             echo'<tr>';
                             echo '<td>'.$value[0].'</td>';
-                            echo '<td>'.$value[1].'</td>';
-                            echo '<td>'.$value[2].'</td>';
+                            echo '<td id="mobile">'.$value[1].'</td>';
+                            echo '<td id="mobile">'.$value[2].'</td>';
                             echo '<td>'.count($progress).'</td>';
                             echo '<td>'.count($complete).'</td>';
                             if(count($progress) != 0 && count($complete)!=0){

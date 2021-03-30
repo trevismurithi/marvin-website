@@ -314,6 +314,7 @@
 /*phone view*/
 @media screen and (max-width:768px){
     .one-user{
+        flex-direction: column;
         width: 100%;
         align-items: center;
         margin:10px 0px 10px 0px;
@@ -324,9 +325,6 @@
     }
     .user-content h6{
         font-size: 12px;
-    }
-    .user-content p{
-        font-size: 10px;
     }
     .user-time p{
         font-size: 8px;
@@ -345,5 +343,30 @@
     }
     .type-area div button{
         width: 50px;
+    }
+    /*for mobile preference*/
+    .user-list{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .me img{
+        width: 60px;
+        height: 60px;
+    }
+    .choose-chat{
+        width: 20%;
+    }
+    .choose-chat h2{
+        font-size: 15px;
+    }
+    .user-content p{
+        display: none;
+    }
+    .chat{
+        width:80%;
+    }
+    .choose-chat form{
+        display: none;
     }
 }

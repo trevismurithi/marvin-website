@@ -29,15 +29,15 @@ if (!isset($_SESSION['role'])) {
         <div class="records">
             <table id="table_main">
                 <tr>
-                    <th>ORDER</th>
+                    <th id="mobile">ORDER</th>
                     <th>SECTOR</th>
                     <th>TYPE</th>
                     <th>CATEGORY</th>
                     <th>DURATION</th>
-                    <th>SPACING</th>
-                    <th>PAGES</th>
-                    <th>DEADLINE</th>
-                    <th>FEE</th>
+                    <th id="mobile">SPACING</th>
+                    <th id="mobile">PAGES</th>
+                    <th id="mobile">DEADLINE</th>
+                    <th id="mobile">FEE</th>
                     <th>ACTION</th>
                 </tr>
                 <?php 
@@ -49,15 +49,15 @@ if (!isset($_SESSION['role'])) {
                     foreach ($orders as $key => $value) {
                         echo'
                             <tr>
-                                <td>'.$value[0].'</td>
+                                <td id="mobile">'.$value[0].'</td>
                                 <td>'.$value[1].'</li>
                                 <td>'.$value[2].'</td>
                                 <td>'.$value[3].'</td>
                                 <td>'.$value[4].'</td>
-                                <td>'.$value[5].'</td>
-                                <td>'.$value[6].'</td>
-                                <td>'.$value[7].'</td>
-                                <td>'.$value[8].'</td>
+                                <td id="mobile">'.$value[5].'</td>
+                                <td id="mobile">'.$value[6].'</td>
+                                <td id="mobile">'.$value[7].'</td>
+                                <td id="mobile">'.$value[8].'</td>
                                 <td>
                                     <button id="'.$value[0].'" onclick=progressOrder('.$value[0].','.$_GET['user_id'].',"progress","cancel")>Cancel</button>
                                     <button id="'.$value[0].'" onclick=progressOrder('.$value[0].','.$_GET['user_id'].',"progress","complete")>Confirm</button>
