@@ -134,4 +134,8 @@ $conn = $db->createConnection();
         </div>
     </div>
 </main>
+<?php 
+if(isset($_SESSION['user_id'])){
+    echo'<script src="js/online.js"></script>';
+}?>
 <?php require 'footer.php';?>

@@ -34,9 +34,6 @@
         <li><a href="#">@ 2021 MarvinsHub.org All rights reserved</a></li>
     </div>
 </footer>
-<?php if(isset($_SESSION['user_id'])){
-echo'<script src="js/online.js"></script>';
-}?>
 <script src="js/nav.js"></script>
 <script src="js/app.js"></script>
 <script src="js/chat.js"></script>

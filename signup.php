@@ -22,6 +22,7 @@
     $lastspecial = "lastspecial";
     $nonMatch = "nonematch";
     $weak = "weakpass";
+    $exist = "userexists";
     //create a switch statement 
     switch ($error) {
         case $empty:
@@ -68,6 +69,14 @@
             $email = $_GET['email'];
             $phone = $_GET['phone'];
             break; 
+        case $exist:
+            $message="that username exists use another one";
+            $username = "";
+            $first_name = "";
+            $last_name = "";
+            $email = "";
+            $phone = "";
+            break; 
         default:
             $message="";
             $username = "";
@@ -86,7 +95,7 @@
         <form action="include/sign.inc.php" method="post">
             <div>
                 <label for="username">Username</label>
-                <input type="text" name="username" id="username" placeholder="one word small letters" value=<?php echo $username;?>>
+                <input type="text" name="username" id="username" placeholder="one word small letters(no numbers or special characters)" value=<?php echo $username;?>>
             </div>
             <div>
                 <label for="f_name">First Name</label>

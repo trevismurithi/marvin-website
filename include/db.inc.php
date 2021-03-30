@@ -87,10 +87,10 @@ class UserManager
             ); 
     ";
     private $create_user = "INSERT INTO users(user_name,first_name,last_name,email,phone_num,pwd) VALUES (?,?,?,?,?,?)";
-    private $search_user = "SELECT * FROM users WHERE user_name=? OR email=? ";
+    private $search_user = "SELECT first_name FROM users WHERE user_name=? OR email=? ";
     private $login_user = "SELECT id,email,phone_num,pwd FROM users WHERE user_name=?";
     private $all_users = "SELECT id,user_name FROM users";
-    private $all_users_details = "SELECT * FROM users";
+    private $all_users_details = "SELECT id,user_name,first_name,email FROM users";
     private $update_users_pwd = "UPDATE users SET pwd=? WHERE email=?";
     //user roles querry selector
     private $user_role = "SELECT user_id FROM role";
@@ -115,7 +115,7 @@ class UserManager
     VALUES
     (?,?,?,?,?,?,?,?,?,?)";
     private $update_orders = "UPDATE orders SET state=? WHERE id=?";
-    private $select_order = "SELECT * FROM orders WHERE state=? AND user_id=?";
+    private $select_order = "SELECT id,type,type_write,university,duration,space,page,fee,deadline FROM orders WHERE state=? AND user_id=?";
     //files querry selector
     private $insert_file = "INSERT INTO files(filename,order_id) VALUES (?,?)";
     private $select_file = "SELECT filename FROM files WHERE order_id=?";
@@ -136,6 +136,7 @@ class UserManager
 
     public function testNameEmail($conn,$user_name,$email)
     {
+        $first_name = "";
         //create a statement 
         $stmt = $conn->prepare($this->search_user);
         if(!$stmt){
@@ -149,12 +150,11 @@ class UserManager
             //execute 
             $stmt->execute();
             //get the number of users
-            $stmt->store_result();
+            $stmt->bind_result($first_name);
             $number = $stmt->num_rows;
             //if the number  is greater
             // than 0 send error message
-            if($number>0){
-                $stmt->free_result();
+            if(!empty($first_name)){
                 $stmt->close();
                 $conn->close();
                 header("Location: ../signup.php?error=userexists");
@@ -368,6 +368,10 @@ class UserManager
         }
     }
     public function userDetails($conn){
+        $user_id ="";
+        $username ="";
+        $first_name ="";
+        $email = "";
         //prepare the statement
         $stmt = $conn->prepare($this->all_users_details);
         if(!$stmt){
@@ -377,10 +381,10 @@ class UserManager
         else{
             //execute the statement
             $stmt->execute();
-            $result = $stmt->get_result();
+            $stmt->bind_result($user_id,$username,$first_name,$email);
             $arr = [];
-            while($obj =$result->fetch_object()){
-                 $arr[$obj->id] = [$obj->user_name,$obj->first_name, $obj->email];
+            while($stmt->fetch()){
+                 $arr[$user_id] = [$username,$first_name, $email];
             }
             return $arr;
         }
@@ -552,6 +556,8 @@ class UserManager
     }
 
     public function viewOrder($conn,$state,$user_id){
+        $order_id="";$type="";$type_write="";$university="";
+        $duration="";$space="";$page="";$fee="";$deadline="";
         //prepare the order
         $stmt = $conn->prepare($this->select_order);
         if(!$stmt){
@@ -563,21 +569,21 @@ class UserManager
             //execute the statement
             $stmt->execute();
             //bind the result
-            $result = $stmt->get_result();
+            $stmt->bind_result($order_id,$type,$type_write,$university,$duration,$space,$page,$fee,$deadline);
             $arr=[];
             $i=0;
-            while($obj = $result->fetch_object()){
+            while($stmt->fetch()){
                 $arr[$i] = [
-                    $obj->id,
-                    $obj->type,
-                    $obj->type_write,
-                    $obj->university,
-                    $obj->duration,
-                    $obj->space,
-                    $obj->page,
-                    $obj->deadline,
-                    $obj->fee,
-                    $obj->state
+                    $order_id,
+                    $type,
+                    $type_write,
+                    $university,
+                    $duration,
+                    $space,
+                    $page,
+                    $deadline,
+                    $fee,
+                    $state
                 ];
                 $i++;
             }

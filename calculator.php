@@ -15,18 +15,18 @@ if (!isset($_SESSION['username'])) {
         <div class="image-content">
             <!-- <img src="img/cover_banner.jpg" alt=""> -->
             <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_yolfhtxf.json"
-            background="#E5E6E9"
-            speed="1"  style="width:100%"
+            background="#000000"
+            speed="1"  style="width:100%;"
             loop  autoplay></lottie-player>
             <div class="image-context">
                 <div class="image-details">
                     <p><span>Writing service</span> at your own convinience</p>
                     <h1>Hire Your Personal Essay Writer Today</h1><br>
                     <h5>Essay writing service for students who want to see results twice as fast.</h5><br>
-                    <p><a href="#">Records</a></p>
+                    <p><a href="order.php">Records</a></p>
                 </div>
                 <form class="calculator-form" action="include/calculator.inc.php" method="post">
-                    <h3>Make your order</h3>
+                    <h3>Order Here</h3>
                     <div class="form-select-0">
                         <select id="select_type" name="select_type">
                             <option value="0">Write</option>

@@ -23,7 +23,7 @@
                 if(empty($status)){
                     //if its empty then create
                     $db->updateStatus($conn,"online",$time,$user_id,$db->getInsertStatus());
-                    header("Location: ../chatroom.php?error=newUser");
+                    header("Location: ../calculator.php?error=newUser");
                     exit();
                 }else{
                     //know if the user has a role
@@ -34,7 +34,7 @@
                     //otherwise update the status of the user
                     $db->updateStatus($conn,"online",$time,$user_id,$db->getUpdateStatus());
                     //locate to an area where they are able to see orders
-                    header("Location: ../chatroom.php?error=oldUser");
+                    header("Location: ../calculator.php?error=oldUser");
                     exit();
                 }
             }

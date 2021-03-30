@@ -148,7 +148,34 @@ main{
         width:100%;
     }
     .image-details{
+        width: 100%;
         font-size: 15px;
+        background-color: black;
+    }
+    .image-details{
+        font-size: 15px;
+    }
+    .image-content{
+        height: max-content;
+    }
+    .image-context{
+        position: relative;
+        height: max-content;
+        background-color:#E5E6E9;
+    }
+    .image-content lottie-player{
+        display: none;
+    }
+    .image-context{
+        top:0;  
+        flex-direction: column;
+        align-items: center;
+    }
+    .calculator-form{
+        margin-top: 10px;
+        font-size: 15px;
+        padding: 15px;
+        width: 70%;
     }
 }
 /*phone view*/
@@ -156,8 +183,16 @@ main{
     main{
         width:100%;
     }
+    .image-content{
+        height: max-content;
+    }
+    .image-context{
+        position: relative;
+        height: max-content;
+        background-color:#E5E6E9;
+    }
     .image-content lottie-player{
-        height: 550px;
+        display: none;
     }
     .image-details{
         width: 100%;
@@ -173,6 +208,7 @@ main{
         width: 100%;
     }
     .calculator-form{
+        margin-top: 10px;
         font-size: 15px;
         padding: 15px;
         width: 70%;
