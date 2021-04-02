@@ -19,8 +19,10 @@
             $message = "
             <p>We heard that you lost your EssayPro password. Sorry about that!</p>
             <p>But don’t worry! You can use the following link to reset your password:</p>
-            <p>http://www.essaypro.website?state=".$user."</p>
+            <p>http://www.essaypro.website/reset.php?state=".$user."</p>
             ";
             mail($to,$subject,messageEdit("User",$message),$headers);
+            header("Location: ../forgot.php?state=checkyouremail");
+            exit();
         }
     }

@@ -34,9 +34,19 @@
         <li><a href="#">@ 2021 MarvinsHub.org All rights reserved</a></li>
     </div>
 </footer>
+<script src="js/loader.js"></script>
 <script src="js/nav.js"></script>
 <script src="js/app.js"></script>
 <script src="js/chat.js"></script>
+<?php 
+    if(!isset($_SESSION['role'])){
+        echo'
+            <script>
+                requestFiles('.$_SESSION['user_id'].');
+            </script>
+        ';
+    }
+?>
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </body>
 </html>

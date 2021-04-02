@@ -16,7 +16,7 @@ $conn = $db->createConnection();
                     <?php
                         $link = $db->viewImage($conn,$_SESSION['user_id']);
                         if(empty($link)){
-                            echo '<img src="img/dwayne.png" alt="">';
+                            echo '<img src="img/unknown.jpg" alt="">';
                         }else{
                             echo '<img src="'.$link.'" alt="">';
                         }
@@ -29,7 +29,7 @@ $conn = $db->createConnection();
                             //loading the users available at the moment
                             $images = $db->viewAllImages($conn);
                             //create a function that returns a string
-                            function chat($id,$name,$link,$state){
+                            function chat($id,$name,$link,$state,$call){
                                 if(empty($state)){
                                     $state="discharged";
                                 }else{
@@ -47,7 +47,7 @@ $conn = $db->createConnection();
                                                 </div>
                                                 <div class="user-time">
                                                     <p id='.$id.'state>'.$state.'</p>
-                                                    <button id='.$id.' onclick=Messages('.$id.','.$_SESSION['user_id'].',"'.$name.'","'.$link.'")>text</button>
+                                                    <button id='.$id.' onclick=Messages('.$id.','.$_SESSION['user_id'].',"'.$name.'","'.$link.'","'.$state.'",'.$call.')>text</button>
                                                 </div>
                                             </div>
                                         ';
@@ -70,9 +70,9 @@ $conn = $db->createConnection();
                                         if($titles[$id]=="Admin"|| !empty($writerID)){
                                             //check if the key exists
                                             if(array_key_exists($id,$images)){
-                                                echo chat($id,$name,$images[$id],$writerID);  
+                                                echo chat($id,$name,$images[$id],$writerID,false);  
                                             }else{
-                                                echo chat($id,$name,"img/unknown.jpg",$writerID);
+                                                echo chat($id,$name,"img/unknown.jpg",$writerID,false);
                                             }
                                         }
                                     }
@@ -87,9 +87,9 @@ $conn = $db->createConnection();
                                             //display all users without a role
                                             //check if the key exists
                                             if(array_key_exists($id,$images)){
-                                                echo chat($id,$name,$images[$id],$writerID);  
+                                                echo chat($id,$name,$images[$id],$writerID,true);  
                                             }else{
-                                                echo chat($id,$name,"img/unknown.jpg",$writerID);
+                                                echo chat($id,$name,"img/unknown.jpg",$writerID,true);
                                             }
                                         }
                                     }
@@ -130,8 +130,18 @@ $conn = $db->createConnection();
                         ';
                     ?>
                 </div>
+                <form action="include/multiple.inc.php" method="post" enctype="multipart/form-data">
+                    <input type="text" name="project_name" id="project_name" placeholder="Group Name" required>
+                    <input type="file" name="file[]" class="file-select" accept="application/pdf,application/msword,image/*" multiple required>
+                    <button type="submit" name="submit">Share files</button>
+                </form>
             </div>
         </div>
+    </div>
+    <div class="share-files">
+         <div class="share-header">
+            <h2>Files shared. Select link to Download</h2>        
+         </div>           
     </div>
 </main>
 <?php 

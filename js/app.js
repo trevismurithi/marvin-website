@@ -14,39 +14,41 @@ const double = document.querySelector('#double');
 const input = document.querySelector("#h-price");
 //for the form input buttons
 let radioNum = 2;
-double.checked=true;
-checker();
-selectType.addEventListener('change', () => {
+if(double!=null){
+    double.checked=true;
     checker();
-});
+    selectType.addEventListener('change', () => {
+        checker();
+    });
 
-type_writing.addEventListener('change',()=>{
-    checker();
-});
+    type_writing.addEventListener('change', () => {
+        checker();
+    });
 
-university.addEventListener('change', () => {
-    checker();
-});
+    university.addEventListener('change', () => {
+        checker();
+    });
 
-duration.addEventListener('change', () => {
-    checker();
-});
+    duration.addEventListener('change', () => {
+        checker();
+    });
 
-pages_words.addEventListener('change',()=>{
-    checker();
-});
+    pages_words.addEventListener('change', () => {
+        checker();
+    });
 
-single.addEventListener('click',()=>{
-    double.checked = false;
-    radioNum = 1;
-    checker();
-});
+    single.addEventListener('click', () => {
+        double.checked = false;
+        radioNum = 1;
+        checker();
+    });
 
-double.addEventListener('click', () => {
-    single.checked = false;
-    radioNum=2;
-    checker();
-});
+    double.addEventListener('click', () => {
+        single.checked = false;
+        radioNum = 2;
+        checker();
+    });
+}
 
 function checker(){
     //type of writing

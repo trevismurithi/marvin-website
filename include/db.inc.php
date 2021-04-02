@@ -86,6 +86,15 @@ class UserManager
                 FOREIGN KEY(user_id) REFERENCES users(id)
             ); 
     ";
+    private $create_project = "
+        CREATE TABLE projects(
+            id INT(11) AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR(255) NOT NULL,
+            link TEXT NOT NULL,
+            user_id INT(11) NOT NULL,
+            FOREIGN KEY(user_id) REFERENCES users(id)
+        )
+    ";
     private $create_user = "INSERT INTO users(user_name,first_name,last_name,email,phone_num,pwd) VALUES (?,?,?,?,?,?)";
     private $search_user = "SELECT first_name FROM users WHERE user_name=? OR email=? ";
     private $login_user = "SELECT id,email,phone_num,pwd FROM users WHERE user_name=?";
@@ -123,6 +132,10 @@ class UserManager
     private $assign_writer = "INSERT INTO assign(role_id,user_id) VALUES (?,?)";
     private $select_assign = "SELECT role_id FROM assign WHERE user_id=?";
     private $remove_assign ="DELETE * FROM assign WHERE user_id=?";
+    //project querry selector
+    private $insert_project = "INSERT INTO projects(name,link,user_id) VALUES (?,?,?)";
+    private $view_project = "SELECT name,link FROM projects WHERE user_id=?";
+    private $remove_project ="DELETE * FROM projects WHERE name=?";
 
     public function createConnection()
     {
@@ -669,10 +682,66 @@ class UserManager
             exit();      
         }else{
             //bind the parameters
-            $stmt->bind_param('ss',$user_id);
+            $stmt->bind_param('s',$user_id);
             //execute the statement
             $stmt->execute();  
         }
+    }
+
+    public function insertProject($conn,$sql){
+        //Execute the queries
+        if ($conn->multi_query($sql) === TRUE) {
+            header("Location: ../chatroom.php?error=none");
+            exit();
+        } else {
+            header("Location: ../chatroom.php?error=uploadfailed");
+            exit();
+        }
+    }
+
+    public function viewProject($conn,$user_id){
+        $name = "";
+        $link ="";
+        //prepare the order
+        $stmt = $conn->prepare($this->view_project);
+        if(!$stmt){
+            header("Location: ../chatroom.php?error=prepareerror");
+            exit();      
+        }else{
+            //bind the parameters
+            $stmt->bind_param('s',$user_id);
+            //execute the statement
+            if(!$stmt->execute()){
+                header("Location: ../chatroom.php?error=execute");
+                exit();
+            }else{
+                //bind the result
+                $stmt->bind_result($name,$link);
+                $arr = [];
+                $i=0;
+                while($stmt->fetch()){
+                    $arr[$i] = [$name,$link];
+                    $i++;
+                }
+                return $arr;
+            }    
+        }
+    }
+    public function removeProject($conn,$name){
+        //prepare the order
+        $stmt = $conn->prepare($this->remove_project);
+        if(!$stmt){
+            header("Location: ../chatroom.php?error=prepareerror");
+            exit();      
+        }else{
+            //bind the parameters
+            $stmt->bind_param('s',$name);
+            //execute the statement
+            $stmt->execute();  
+        }
+    }
+    public function projectQuery($name,$link,$user_id){
+        return " INSERT INTO projects(name,link,user_id) VALUES ('".$name."','".$link."','".$user_id."'); ";
     }
     public function getInsertStatus(){return $this->insert_status;}
     public function getUpdateStatus(){return $this->update_status;}

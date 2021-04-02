@@ -52,7 +52,7 @@
         <h2>LOG IN</h2>
         <input type="text" name="username" id="username" placeholder="Username">
         <input type="password" name="pwd" id="pwd" placeholder="Password">
-        <div class="forgot"><a href="reset.php">Forgot password</a></div>
+        <div class="forgot"><a href="forgot.php">Forgot password</a></div>
         <button class="login-btn" type="submit" name="submit">LOGIN</button>
         <div class="create">
             <p>Don't have an account?</p>

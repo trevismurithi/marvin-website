@@ -6,8 +6,12 @@ let write = 0;
 const textBox = document.querySelector(".hide-area");
 const content = document.getElementById("chat-content");
 const assign = document.getElementById("top-id");
-
-function Messages(receiver,user_id,name,link){
+//get the shared files class
+const shared = document.querySelector(".share-files");
+let assistFiles = null;
+var select = document.createElement("select");
+var a = document.createElement("a");
+function Messages(receiver,user_id,name,link,state,call){
     user_num = receiver;
     user_log = user_id;
     //display the text area
@@ -16,8 +20,11 @@ function Messages(receiver,user_id,name,link){
     document.getElementById("top-name").innerHTML=name;
     document.getElementById("set-image").src = link;
     var stateID = document.getElementById(user_num+"state");
+    if(call==true)requestFiles(receiver);
     //check is the assign is not null
     if(assign != null){
+        if (state == "allocated") assign.innerText = "unset";
+        else assign.innerText = "set";
         assign.onclick = function () {
             //assign the user 
             if (write == 0) {
@@ -114,3 +121,41 @@ function writer(state) {
     }
     xttps.send(param);
 }
+
+function requestFiles(user_id) {
+    if(shared != null){
+        //get the values to insert into the options 
+        url = "include/share.inc.php";
+        param = "state=ok&user_id=" + user_id;
+        let xttp = new XMLHttpRequest();
+        xttp.open("POST", url, true);
+        xttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                //get the Json information
+                assistFiles = JSON.parse(this.responseText);
+                if (assistFiles.length > 0) {
+                    //call function
+                    displayFiles();
+                }
+            }
+        };
+        xttp.send(param);
+    }
+}
+
+function displayFiles() {
+    select.innerHTML=null;
+    assistFiles.forEach(element => {
+        var option = document.createElement("option");
+        option.value = element[1];
+        option.innerText = element[0] + " " + element[1];
+        select.appendChild(option);
+    });
+    select.addEventListener('change', () => {
+        a.innerText = select[select.selectedIndex].innerText;
+        a.href = select.value;
+    });
+}
+shared.appendChild(select);
+shared.appendChild(a);
