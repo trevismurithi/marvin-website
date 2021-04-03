@@ -7,7 +7,9 @@ const textBox = document.querySelector(".hide-area");
 const content = document.getElementById("chat-content");
 const assign = document.getElementById("top-id");
 //get the shared files class
-const shared = document.querySelector(".share-files");
+const card = document.querySelector(".card");
+const div = document.createElement("DIV");
+div.className = "shared-files";
 let assistFiles = null;
 var select = document.createElement("select");
 var a = document.createElement("a");
@@ -123,7 +125,7 @@ function writer(state) {
 }
 
 function requestFiles(user_id) {
-    if(shared != null){
+    if(card != null){
         //get the values to insert into the options 
         url = "include/share.inc.php";
         param = "state=ok&user_id=" + user_id;
@@ -157,5 +159,7 @@ function displayFiles() {
         a.href = select.value;
     });
 }
-shared.appendChild(select);
-shared.appendChild(a);
+
+div.appendChild(select);
+div.appendChild(a);
+card.appendChild(div);

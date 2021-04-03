@@ -130,18 +130,23 @@ $conn = $db->createConnection();
                         ';
                     ?>
                 </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="share-files">
+        <div class="card">
+            <div class="share-header">
+                <h3>Share Files</h3>        
+            </div> 
+            <div>
                 <form action="include/multiple.inc.php" method="post" enctype="multipart/form-data">
                     <input type="text" name="project_name" id="project_name" placeholder="Group Name" required>
                     <input type="file" name="file[]" class="file-select" accept="application/pdf,application/msword,image/*" multiple required>
                     <button type="submit" name="submit">Share files</button>
                 </form>
             </div>
-        </div>
-    </div>
-    <div class="share-files">
-         <div class="share-header">
-            <h2>Files shared. Select link to Download</h2>        
-         </div>           
+        </div>          
     </div>
 </main>
 <?php 

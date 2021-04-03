@@ -30,13 +30,6 @@
     border-radius: 10px;
 }
 
-.chat form button{
-    outline: none;
-    border: none;
-    padding:5px;
-    color:white;
-    background-color: #4E4949;
-}
 
 .me{
     display: flex;
