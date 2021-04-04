@@ -160,6 +160,8 @@ function displayFiles() {
     });
 }
 
-div.appendChild(select);
-div.appendChild(a);
-card.appendChild(div);
+if(card != null){
+    div.appendChild(select);
+    div.appendChild(a);
+    card.appendChild(div);
+}

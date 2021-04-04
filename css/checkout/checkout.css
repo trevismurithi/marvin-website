@@ -1,0 +1,62 @@
+.checkout-body{
+    width: 100%;
+    height: 80vh;
+    position: relative;
+}
+
+.checkout-card{
+    top: 10%;
+    width: 70%;
+    height: 400px;
+    background-color: white;
+    margin: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+}
+
+.checkout-title{
+    width: 100%;
+    padding: 10px;
+    background-color: blue;
+    margin: 5px;
+}
+.checkout-title h3{
+    color: white;
+    font-weight: bold;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.checkout-details{
+    display: flex;
+    flex-direction: row;
+}
+.checkout-details ul{
+    list-style: none;
+}
+
+.checkout-details ul li{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: lighter;
+    margin: 5px;
+}
+
+#checkout-specific li{
+    font-weight: bolder;
+    margin: 5px;
+}
+
+.cash-in{
+    width: 40%;
+    border: 1px solid rgb(82, 81, 81);
+    padding: 10px;
+    height: 100%;
+}
+
+.cash-in h3{
+    color: gray;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+}

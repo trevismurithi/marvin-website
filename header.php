@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="css/chat/share.css">
     <link rel="stylesheet" href="css/orders/header.css">
     <link rel="stylesheet" href="css/orders/order.css">
+    <link rel="stylesheet" href="css/checkout/checkout.css">
     <title>Essay</title>
 </head>
 <body>
@@ -28,7 +29,7 @@
         <div class="nav-contact">
             <ul>
                 <li><h2>TURN YOUR SKILLS INTO MONEY</h2></li>
-                <li>Phone 254-724462514</li>
+                <li>Email Addresss</li>
                 <li>support@essaypro.website</li>
             </ul>
         </div>

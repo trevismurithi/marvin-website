@@ -95,6 +95,21 @@ class UserManager
             FOREIGN KEY(user_id) REFERENCES users(id)
         )
     ";
+    private $create_payment = "
+        CREATE TABLE payment(
+            id INT(11) AUTO_INCREMENT PRIMARY KEY,
+            paypal_id INT(11) NOT NULL,
+            paypal_address TEXT NOT NULL,
+            paypal_email VARCHAR(255) NOT NULL,
+            paypal_name VARCHAR(255) NOT NULL,
+            paypal_status VARCHAR(255) NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            order_id INT(11) NOT NULL,
+            user_id INT(11) NOT NULL,
+            FOREIGN KEY(order_id) REFERENCES orders(id),
+            FOREIGN KEY(user_id) REFERENCES users(id)
+        );
+    ";
     private $create_user = "INSERT INTO users(user_name,first_name,last_name,email,phone_num,pwd) VALUES (?,?,?,?,?,?)";
     private $search_user = "SELECT first_name FROM users WHERE user_name=? OR email=? ";
     private $login_user = "SELECT id,email,phone_num,pwd FROM users WHERE user_name=?";
@@ -136,6 +151,7 @@ class UserManager
     private $insert_project = "INSERT INTO projects(name,link,user_id) VALUES (?,?,?)";
     private $view_project = "SELECT name,link FROM projects WHERE user_id=?";
     private $remove_project ="DELETE * FROM projects WHERE name=?";
+    //payment querry selector
 
     public function createConnection()
     {
