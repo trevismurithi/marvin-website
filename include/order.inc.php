@@ -101,11 +101,13 @@
                 }
 
             }else if($_POST['state']=="pending"){
-                echo'
-                        <button id="'.$value[0].'_" '.$caller.' onclick=paymentSytem('.$value[0].','.$_POST['user_id'].',"'.$_POST['state'].'","'.$transfer.'")>'.$btnName.'</button>
-                        </td>
-                    </tr>
-                ';
+                    echo'   
+                            <form action="include/gateway.inc.php" method="post">
+                                <button type="submit" name="submit" id="'.$value[0].'_" value="'.$value[0].'">'.$btnName.'</button>
+                            </form>
+                            </td>
+                        </tr>
+                    ';
             }else if($_POST['state']=="cancel"){
                 echo'
                         <button id="'.$value[0].'_" '.$caller.' onclick=progressOrder('.$value[0].','.$_POST['user_id'].',"'.$_POST['state'].'","'.$transfer.'")>'.$btnName.'</button>

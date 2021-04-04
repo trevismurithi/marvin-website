@@ -140,6 +140,7 @@ class UserManager
     (?,?,?,?,?,?,?,?,?,?)";
     private $update_orders = "UPDATE orders SET state=? WHERE id=?";
     private $select_order = "SELECT id,type,type_write,university,duration,space,page,fee,deadline FROM orders WHERE state=? AND user_id=?";
+    private $single_order = "SELECT type,type_write,university,duration,space,page,fee,deadline FROM orders WHERE id=?";
     //files querry selector
     private $insert_file = "INSERT INTO files(filename,order_id) VALUES (?,?)";
     private $select_file = "SELECT filename FROM files WHERE order_id=?";
@@ -152,6 +153,8 @@ class UserManager
     private $view_project = "SELECT name,link FROM projects WHERE user_id=?";
     private $remove_project ="DELETE * FROM projects WHERE name=?";
     //payment querry selector
+    private $insert_payment ="INSERT INTO payment(paypal_id,paypal_address,paypal_email,paypal_name,paypal_status,order_id,user_id)
+                                VALUES (?,?,?,?,?,?,?)";
 
     public function createConnection()
     {
@@ -620,6 +623,41 @@ class UserManager
             return $arr;    
         }
     }
+    public function singleOrder($conn,$order_id){
+        $type="";$type_write="";$university="";
+        $duration="";$space="";$page="";$fee="";$deadline="";
+        //prepare the order
+        $stmt = $conn->prepare($this->single_order);
+        if(!$stmt){
+            header("Location: ../order.php?error=prepareerror");
+            exit();      
+        }else{
+            //bind the parameters
+            $stmt->bind_param('s',$order_id);
+            //execute the statement
+            $stmt->execute();
+            //bind the result
+            $stmt->bind_result($type,$type_write,$university,$duration,$space,$page,$fee,$deadline);
+            $arr=[];
+            $i=0;
+            while($stmt->fetch()){
+                $arr[$i] = [
+                    $type,
+                    $type_write,
+                    $university,
+                    $duration,
+                    $space,
+                    $page,
+                    $deadline,
+                    $fee
+                ];
+                $i++;
+            }
+            $stmt->free_result();
+            return $arr;    
+        }
+    }
+
     public function insertFile($conn,$filename,$order_id){
         //prepare the order
         $stmt = $conn->prepare($this->insert_file);
@@ -754,6 +792,20 @@ class UserManager
             $stmt->bind_param('s',$name);
             //execute the statement
             $stmt->execute();  
+        }
+    }
+    public function insertPayment($conn,$paypal_id,$paypal_address,$paypal_email,$paypal_name,$paypal_status,$order_id,$user_id){
+        //prepare the order
+        $stmt = $conn->prepare($this->insert_payment);
+        if(!$stmt){
+            echo 'failed prepare';     
+        }else{
+            //bind the parameters
+            $stmt->bind_param('sssssss',$paypal_id,$paypal_address,$paypal_email,$paypal_name,$paypal_status,$order_id,$user_id);
+            //execute the statement
+            if(!$stmt->execute()){
+                echo "failed execute";
+            }  
         }
     }
     public function projectQuery($name,$link,$user_id){

@@ -1,46 +1,10 @@
 <?php
-//     include_once 'include/db.inc.php';
-// $db = new UserManager();
-// $conn = $db->createConnection();
-// echo $db->viewFile($conn,2);
-// $name = "trevis";
-// $name = base64_encode($name);
-// $name = bin2hex($name);
-// echo $name;
-// echo '<br>';
-// echo base64_decode(hex2bin($name));
+    echo '<p id="value" value="3">1</p>';
 ?>
 
 <script>
-    // let checker=0;
-    // let first=null;
-    // let last=null;
-    // function test(){
-    //     let xttp = new XMLHttpRequest();
-    //     xttp.open("POST","include/update.inc.php",true);
-    //     xttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-    //     param = 'name=Trevis';
-    //     xttp.onreadystatechange = function(){
-    //         if(this.status == 200 && this.readyState ==4){
-    //             // if(checker==0) first = JSON.parse(this.responseText);
-    //             // else last = JSON.parse(this.responseText);
-    //         }
-    //     };
-    //     xttp.send(param);
-    // }
-
-    // setInterval(() => {
-    //     if(checker==0){
-    //         test();
-    //         console.log(checker);
-    //         console.log(first);
-    //         checker=1;
-    //     }else{
-    //         test();
-    //         console.log(checker);
-    //         console.log(last);
-    //         checker=0;
-    //     }
-    // }, 5000);
-
+    var num = document.getElementById("value");
+    console.log(num.value);
+    console.log(parseInt(num.innerText));
+    console.log(isNaN(parseInt(num.innerText)));
 </script>
