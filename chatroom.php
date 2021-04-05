@@ -139,13 +139,21 @@ $conn = $db->createConnection();
             <div class="share-header">
                 <h3>Share Files</h3>        
             </div> 
-            <div>
-                <form action="include/multiple.inc.php" method="post" enctype="multipart/form-data">
-                    <input type="text" name="project_name" id="project_name" placeholder="Group Name" required>
-                    <input type="file" name="file[]" class="file-select" accept="application/pdf,application/msword,image/*" multiple required>
-                    <button type="submit" name="submit">Share files</button>
-                </form>
-            </div>
+            <?php 
+                if(isset($_SESSION['user_id'])){
+                    if(!isset($_SESSION['role'])){
+                        echo'
+                            <div>
+                                <form action="include/multiple.inc.php" method="post" enctype="multipart/form-data">
+                                    <input type="text" name="project_name" id="project_name" placeholder="Group Name" required>
+                                    <input type="file" name="file[]" class="file-select" accept="application/pdf,application/msword,image/*" multiple required>
+                                    <button type="submit" name="submit">Share files</button>
+                                </form>
+                            </div>
+                        ';
+                    }
+                }
+            ?>
         </div>          
     </div>
 </main>

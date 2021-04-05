@@ -15,6 +15,7 @@ if ($_SESSION['user_id']) {
         $pages = $object[0][5];
         $deadline = $object[0][6];
         $fee = $object[0][7];
+        echo '<script>let id="'.base64_encode($order_id).'"; let myPrice="'.base64_encode($fee).'";  </script>';
     }else{
         header('Location: order.php?error=order_id');
         exit();
@@ -54,7 +55,7 @@ if ($_SESSION['user_id']) {
                                 <li>'.$spacing.'</li>
                                 <li>'.$pages.'</li>
                                 <li>'.$deadline.'</li>
-                                <li id="fee" value="'.$fee.'">'.$fee.'</li>
+                                <li id="fee">'.$fee.'</li>
                             ';
                         ?>
                     </ul>

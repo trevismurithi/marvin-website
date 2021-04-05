@@ -1,10 +1,14 @@
 paypal.Buttons({
     createOrder: function (data, actions) {
-        var amount = document.getElementById("fee");
+        var amount = atob(myPrice);
+        if(order_check() == false){
+            //breach
+            window.location.replace("http://localhost:4000/order.php");
+        }
         return actions.order.create({
             purchase_units: [{
                 amount: {
-                    value: amount.innerText.substring(1)
+                    value: amount.substring(1)
                 }
             }]
         });
@@ -30,14 +34,14 @@ paypal.Buttons({
 
 function saveTransfer(paypal_id,paypal_address,paypal_email,paypal_name,paypal_status){
     //access the order number
-    var order_id = document.getElementById("order_id");
-    if (isNaN(parseInt(order_id.innerText))){
+    var order_id = atob(id);
+    if (isNaN(parseInt(order_id))){
         window.location.replace("http://localhost:4000/order.php");
     }
     url="../include/payment.inc.php";
     param="paypal_id="+paypal_id+"&paypal_address="+paypal_address+
             "&paypal_email="+paypal_email+"&paypal_name="+paypal_name+
-            "&paypal_status="+paypal_status+"&order_id="+order_id.innerText;
+            "&paypal_status="+paypal_status+"&order_id="+order_id;
     let xttp = new XMLHttpRequest();
     xttp.open("POST",url,true);
     xttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
@@ -45,11 +49,19 @@ function saveTransfer(paypal_id,paypal_address,paypal_email,paypal_name,paypal_s
         if(this.status==200 && this.readyState==4){
             //after succesful response back
             if(this.responseText == "ok"){
-                window.location.replace("http://localhost:4000/success.php");
+                window.location.replace("http://localhost:4000/payment.php");
             }else{
                 window.location.replace("http://localhost:4000/order.php?error=failedpayment");
             }
         }
     };
     xttp.send(param);
+}
+
+function order_check(){
+    if (atob(id) == document.getElementById("order_id").innerText && atob(myPrice) == document.getElementById("fee").innerText){
+        return true;
+    }else{
+        return false;
+    }
 }
