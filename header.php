@@ -23,6 +23,7 @@ session_start();?>
     <link rel="stylesheet" href="css/orders/header.css">
     <link rel="stylesheet" href="css/orders/order.css">
     <link rel="stylesheet" href="css/checkout/checkout.css">
+    <link rel="stylesheet" href="css/success/success.css">
     <title>Essay</title>
 </head>
 <body>

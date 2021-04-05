@@ -23,7 +23,7 @@ paypal.Buttons({
     },
     onCancel: function (data) {
         //send to cancelled transaction
-        window.location.replace("http://www.essaypro.website/order.php");
+        window.location.replace("http://localhost:4000/order.php");
     }
 }).render('#paypal-button-container'); // Display payment options on your web page
 
@@ -32,7 +32,7 @@ function saveTransfer(paypal_id,paypal_address,paypal_email,paypal_name,paypal_s
     //access the order number
     var order_id = document.getElementById("order_id");
     if (isNaN(parseInt(order_id.innerText))){
-        window.location.replace("http://www.essaypro.website/order.php");
+        window.location.replace("http://localhost:4000/order.php");
     }
     url="../include/payment.inc.php";
     param="paypal_id="+paypal_id+"&paypal_address="+paypal_address+

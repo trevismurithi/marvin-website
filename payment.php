@@ -1,31 +1,20 @@
 <?php include_once 'header.php'?>
-<script src="https://www.paypal.com/sdk/js?&client-id=AczgWiTgHZZMaEMuAHZTseLxcqZZ8x8C-6omZTCm109mn8X2T-xCRXc4hOMMztB_HNvJsFK6DGw4h8on"></script>
-
-
-<div id="paypal-button-container"></div>
-
-<!-- Add the checkout buttons, set up the order and approve the order -->
-<script>
-    paypal.Buttons({
-    createOrder: function(data, actions) {
-        return actions.order.create({
-        purchase_units: [{
-            amount: {
-            value: '0.01'
-            }
-        }]
-        });
-    },
-    onApprove: function(data, actions) {
-        return actions.order.capture().then(function(details) {
-        alert('Transaction completed by ' + details.payer.name.given_name);
-        console.log(details);
-        //window.location.replace("");
-        });
-    },
-    onCancel: function(data){
-        //window.location.replace("");
-    }
-    }).render('#paypal-button-container'); // Display payment options on your web page
-</script>
+<main>
+    <div class="success-page">
+        <div class="success-page-1">
+            <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_7W0ppe.json"  
+            background="transparent"  speed="1"  
+            style="width: 400px; height: 400px;"  loop  autoplay>
+            </lottie-player>
+            <div class="success-page-2">
+                <h2>Start tracking your order</h2>
+                <p>Your project has been transferred to progress.</p>
+                <p>You will be assigned a writer,</p>
+                <p>Chat with the Support or writer in case of anything,</p>
+                <p>When your order is complete it will be transferred to completed tasks,</p>
+                <p>You can also reach us through support@essaypro.website for immediate feedback.</p>
+            </div>
+        </div>
+    </div>
+</main>
 <?php include_once 'footer.php'?>

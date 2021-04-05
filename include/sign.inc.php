@@ -64,11 +64,9 @@
                                 $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
                                 $msg = "<p>".$username." has registered to your website.</p>
                                 <p>The clients full names are:</p> 
-                                <ul>
-                                    <li>".$first_name." ".$last_name."</li>
-                                    <li>".$email."</li>
-                                    <li>".$phone."</li>
-                                </ul>
+                                <p>".$first_name." ".$last_name."</p>
+                                <p>".$email."</p>
+                                <p>".$phone."</p>
                                 <p>Kindly contact the client and assign a writer</p>";
                                 mail($to,$subject,messageEdit("Support Team",$msg),$headers);
                                 $db->createUser($conn,strtolower($username),$first_name,$last_name,$email,$phone,$hashed);

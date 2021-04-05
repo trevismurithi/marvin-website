@@ -100,7 +100,7 @@ function cause(){
     xttps.send(param);
 }
 
-//this timer constantly adjusts after every 2 seconds
+//this timer constantly adjusts after every 0.8 seconds
 let timer = setInterval(() => {
     if(user_num!=-1 && user_log!=-1){
         cause();

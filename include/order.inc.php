@@ -27,7 +27,7 @@
             }
             $transfer="complete";
         }
-        else if($_POST['state']=="cancel") {$btnName="Renew";$caller='';$transfer="progress";}
+        else if($_POST['state']=="cancel") {$btnName="Renew";$caller='';$transfer="pending";}
         else if($_POST['state']=="pending") {
             $btnName="Purchase";$caller='';$transfer="progress";
         }
@@ -66,7 +66,7 @@
                     <td id="mobile">'.$value[8].'</td>
                     <td>';
 
-            if($_POST['state']=="pending" || $_POST['state']=="progress"){
+            if($_POST['state']=="pending"){//removed cancel on progress
                 echo '<button id="'.$value[0].'_" onclick=progressOrder('.$value[0].','.$_POST['user_id'].',"'.$_POST['state'].'","cancel")>Cancel</button>';
             }
             if($_POST['state']=="progress" && isset($_SESSION['role'])){

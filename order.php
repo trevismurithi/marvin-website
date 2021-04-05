@@ -53,7 +53,7 @@ if(isset($_SESSION['role'])){
                                 <td id="mobile">'.$value[7].'</td>
                                 <td id="mobile">'.$value[8].'</td>
                                 <td>
-                                    <button id="'.$value[0].'" onclick=progressOrder('.$value[0].','.$_SESSION['user_id'].',"progress","cancel")>Cancel</button>
+                                    
                                 </td>
                             </tr>
                         ';
@@ -65,3 +65,4 @@ if(isset($_SESSION['role'])){
 </main>
 <script src="js/order.js"></script>
 <?php require 'footer.php';?>
+<!-- <button id="'.$value[0].'" onclick=progressOrder('.$value[0].','.$_SESSION['user_id'].',"progress","cancel")>Cancel</button> -->

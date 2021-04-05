@@ -15,6 +15,20 @@
             $db->insertPayment($conn,$paypal_id,$paypal_address,$paypal_email,$paypal_name,$paypal_status,$order_id,$_SESSION['user_id']);
             //tranfer project to progress
             $db->updateOrder($conn,"progress",$order_id);
+            //send email to Admin
+            $to = "trevismurithi@gmail.com";
+            $subject = "Order Alert";
+            $headers = "CC: tyresewaithaka@gmail.com\r\n";
+            $headers .= "MIME-Version: 1.0\r\n";
+            $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+            $msg = "<p>".$_SESSION['username']." has registered to your website.</p>
+            <p>The clients website details are:</p> 
+            <p>".$_SESSION['email']."</p>
+            <p>".$_SESSION['phone']."</p>
+            <p>".$_SESSION['user_id']."</p>
+            <p>Has made payment for an order with the id ".$order_id."</p>
+            <p>Kindly contact the client and assign a writer</p>";
+            mail($to,$subject,messageEdit("Support Team",$msg),$headers);
             echo "ok";
         }else{
             echo "order_id error";
