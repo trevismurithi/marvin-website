@@ -1,4 +1,10 @@
-<?php include_once 'header.php'?>
+<?php 
+include_once 'header.php';
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php?error=nouser');
+    exit();
+}
+?>
 <main>
     <div class="success-page">
         <div class="success-page-1">

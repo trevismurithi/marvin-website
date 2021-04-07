@@ -1,7 +1,7 @@
 <?php include_once 'header.php';
     $email="";
-    if(isset($_POST['state'])){
-        $email = $_POST['state'];
+    if(isset($_GET['state'])){
+        $email = $_GET['state'];
     }
     $error="";
     if(isset($_GET['error'])){

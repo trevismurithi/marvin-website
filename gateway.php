@@ -1,6 +1,6 @@
 <script src="https://www.paypal.com/sdk/js?&client-id=AczgWiTgHZZMaEMuAHZTseLxcqZZ8x8C-6omZTCm109mn8X2T-xCRXc4hOMMztB_HNvJsFK6DGw4h8on"></script>
 <?php require 'header.php';
-if ($_SESSION['user_id']) {
+if (isset($_SESSION['user_id'])) {
     if(isset($_GET['order_id'])){
         include_once 'include/db.inc.php';
         $db = new UserManager();
