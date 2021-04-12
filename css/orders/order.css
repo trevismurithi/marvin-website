@@ -22,7 +22,7 @@ table tr td button{
     padding: 6px 10px;
     outline: none;
     border: none;
-    background-color: rgb(214, 0, 0);
+    background-color:blue;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
@@ -32,7 +32,7 @@ table tr td form button{
     padding: 6px 10px;
     outline: none;
     border: none;
-    background-color: blue;
+    background-color:rgb(214, 0, 0);
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;

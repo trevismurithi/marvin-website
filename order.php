@@ -18,7 +18,7 @@ if(isset($_SESSION['role'])){
                 <button id="cancel" onclick=loadData(<?php echo $_SESSION['user_id'].','.'"cancel"';?>)>Cancelled Order</button>
                 <button id="pending" onclick=loadData(<?php echo $_SESSION['user_id'].','.'"pending"';?>)>Pending Order</button>
             </div>
-            <h3 id="order-header">progress order</h3>
+            <h3 id="order-header">pending order</h3>
         </div>
         <div class="records">
             <table id="table_main">
@@ -39,7 +39,7 @@ if(isset($_SESSION['role'])){
                     $db = new UserManager();
                     $conn = $db->createConnection();
                     //load the order based by user
-                    $orders = $db->viewOrder($conn,"progress",$_SESSION['user_id']);
+                    $orders = $db->viewOrder($conn,"pending",$_SESSION['user_id']);
                     foreach ($orders as $key => $value) {
                         echo'
                             <tr>
@@ -53,7 +53,10 @@ if(isset($_SESSION['role'])){
                                 <td id="mobile">'.$value[7].'</td>
                                 <td id="mobile">'.$value[8].'</td>
                                 <td>
-                                    
+                                <button id="'.$value[0].'" onclick=progressOrder('.$value[0].','.$_SESSION['user_id'].',"pending","cancel")>Cancel</button>
+                                <form action="include/gateway.inc.php" method="post">
+                                    <button type="submit" name="submit" id="'.$value[0].'_" value="'.$value[0].'">Purchase</button>
+                                </form>
                                 </td>
                             </tr>
                         ';
@@ -65,4 +68,3 @@ if(isset($_SESSION['role'])){
 </main>
 <script src="js/order.js"></script>
 <?php require 'footer.php';?>
-<!-- <button id="'.$value[0].'" onclick=progressOrder('.$value[0].','.$_SESSION['user_id'].',"progress","cancel")>Cancel</button> -->

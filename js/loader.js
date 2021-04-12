@@ -1,8 +1,7 @@
 paypal.Buttons({
     createOrder: function (data, actions) {
-        var amount = atob(myPrice);
+        var amount = atob(i59574e306457467355484a705932553d);
         if(order_check() == false){
-            //breach
             window.location.replace("http://localhost:4000/order.php");
         }
         return actions.order.create({
@@ -27,14 +26,14 @@ paypal.Buttons({
     },
     onCancel: function (data) {
         //send to cancelled transaction
-        window.location.replace("http://localhost:4000/order.php");
+        window.location.replace("http://localhost:4000/cancel.php");
     }
 }).render('#paypal-button-container'); // Display payment options on your web page
 
 
 function saveTransfer(paypal_id,paypal_address,paypal_email,paypal_name,paypal_status){
     //access the order number
-    var order_id = atob(id);
+    var order_id = atob(i59574e30645746735357513d);
     if (isNaN(parseInt(order_id))){
         window.location.replace("http://localhost:4000/order.php");
     }
@@ -59,7 +58,7 @@ function saveTransfer(paypal_id,paypal_address,paypal_email,paypal_name,paypal_s
 }
 
 function order_check(){
-    if (atob(id) == document.getElementById("order_id").innerText && atob(myPrice) == document.getElementById("fee").innerText){
+    if (atob(i59574e30645746735357513d) == document.getElementById("order_id").innerText && atob(i59574e306457467355484a705932553d ) == document.getElementById("fee").innerText){
         return true;
     }else{
         return false;

@@ -1,4 +1,4 @@
-<script src="https://www.paypal.com/sdk/js?&client-id=AczgWiTgHZZMaEMuAHZTseLxcqZZ8x8C-6omZTCm109mn8X2T-xCRXc4hOMMztB_HNvJsFK6DGw4h8on"></script>
+<script src="https://www.paypal.com/sdk/js?&client-id=AeudXbkMsKGEFtxdgKeKKZFlYKUpS0Zz2OCrTA_z8EpioexNIeVzUeLW6M2g57-lFKqtrupBvKxDvev9"></script>
 <?php require 'header.php';
 if (isset($_SESSION['user_id'])) {
     if(isset($_GET['order_id'])){
@@ -15,7 +15,7 @@ if (isset($_SESSION['user_id'])) {
         $pages = $object[0][5];
         $deadline = $object[0][6];
         $fee = $object[0][7];
-        echo '<script>let id="'.base64_encode($order_id).'"; let myPrice="'.base64_encode($fee).'";  </script>';
+        echo '<script>let i'.bin2hex(base64_encode("actualId")).' ="'.base64_encode($order_id).'"; let i'.bin2hex(base64_encode("actualPrice")).' ="'.base64_encode($fee).'";  </script>';
     }else{
         header('Location: order.php?error=order_id');
         exit();
