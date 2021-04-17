@@ -15,6 +15,7 @@ body{
 nav{
     width: 80%;
     background-color: white;
+    position: relative;
 }
  
 .nav-contact{
@@ -105,6 +106,11 @@ nav{
     font-size: 18px;
     outline: none;
     border: none;
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  z-index: 10;
 }
 
 .user-accounts form button:hover{

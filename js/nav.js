@@ -66,3 +66,12 @@ burger.addEventListener('click',()=>{
         num=0;
     }
 });
+
+// window.addEventListener("scroll", function () {
+//     var navbar = document.getElementById("navbar");
+//     if (window.scrollY > (navbar.offsetTop + navbar.offsetHeight)) {
+//         navbar.classList.add("sticky");
+//     } else {
+//         navbar.classList.remove("sticky");
+//     }
+// });

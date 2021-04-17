@@ -1,7 +1,22 @@
 <?php include_once 'header.php';
+    if(isset($_SESSION['user_id'])){
+        header('Location: index.php');
+        exit();
+    }
     $email="";
-    if(isset($_GET['state'])){
-        $email = $_GET['state'];
+    if(isset($_GET['s633352686447553d']) && isset($_POST['s5a4746305a513d3d'])){
+        //convert state to binary the decode
+        $time = hex2bin($_POST['s5a4746305a513d3d']);
+        $time = base64_decode($_POST['s5a4746305a513d3d']);
+        if(date("Y-m-d h:i:sa") != $time){
+            header('Location: index.php');
+            exit();
+        }else{
+            $email = $_GET['s633352686447553d'];
+        }
+    }else{
+        header('Location: index.php');
+        exit();
     }
     $error="";
     if(isset($_GET['error'])){
@@ -38,7 +53,7 @@
     background="#E5E6E9"
     speed="1"  style="width:100%"
     loop  autoplay></lottie-player>
-    <form action="" method="post">
+    <form action="include/reset.inc.php" method="post">
         <?php 
         if(isset($_GET['error'])) echo'<p id="error">'.$message.'</p>';
         ?>

@@ -7,6 +7,51 @@
     margin-top: 5px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+.holder{
+  position: relative;
+}
+
+.holder button{
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  font-size: 50px;
+  top:50%;  
+  outline: none;
+  border-radius: 100%;
+}
+
+.holder button:hover{
+  color: #367FD3;
+}
+
+#next{
+  right: 0;
+}
+
+#back{
+  left: 0;
+}
+
+.benecont{
+    display: flex;
+    overflow-x:hidden;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+}
+
+.benecont::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.benecont::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 10px;
+}
+.benecont::-webkit-scrollbar-track {
+  background: transparent;
+}
 
 .beneficiary{
     display: flex;
@@ -18,6 +63,7 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
     width: 100%;
+    flex-shrink: 0;
 }
 
 .beneficiary img{
@@ -40,4 +86,28 @@
 
 .beneficiary-details a{
     color: #367FD3;
+}
+
+.direct{
+    width: 100%;
+    text-align: center;
+}
+.direct >a{
+  display: inline-flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: white;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0 0 0.5rem 0;
+  position: relative;
+}
+
+.direct > a:active {
+  top: 1px;
+}
+.direct > a:focus {
+  background: #000;
 }

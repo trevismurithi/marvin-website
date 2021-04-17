@@ -1,4 +1,8 @@
 <?php include_once 'header.php';
+if(isset($_SESSION['user_id'])){
+    header('Location: index.php');
+    exit();
+}
 $error="";
 $message="";
 if(isset($_GET['state'])){

@@ -21,7 +21,7 @@ class UserManager
     private $create_role ="
         CREATE TABLE role(
             id INT(11) AUTO_INCREMENT PRIMARY KEY,
-            role INT(11) NOT NULL,
+            role VARCHAR(255) NOT NULL,
             user_id INT(11) NOT NULL,
             FOREIGN KEY(user_id) REFERENCES users(id)
         );

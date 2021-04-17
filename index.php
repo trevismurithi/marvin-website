@@ -83,36 +83,24 @@
         </div>
         <div class="benefits">
             <h2>Why Choose Us</h2>
-            <img src="img/graph.png" alt="">
         </div>
         <div id="entail" class="entail">
             <?php
                 for ($i=0; $i < count($entail); $i++) { 
                     echo'
-                        <div class="row1">
-                            <ul>
-                                <li><img src="img/file1.png" alt=""></li>
-                                <li>
-                                    <h4>'.$entail[$i][0][0].'</h4><br>
-                                    <p>'.$entail[$i][0][1].'</p>
-                                </li>
-                            </ul>   
-                            <ul>
-                                <li><img src="img/file1.png" alt=""></li>
-                                <li>
-                                    <h4>'.$entail[$i][1][0].'</h4><br>
-                                    <p>'.$entail[$i][1][1].'</p>
-                                </li>
-                            </ul>   
-                            <ul>
-                                <li><img src="img/file1.png" alt=""></li>
-                                <li>
-                                    <h4>'.$entail[$i][2][0].'</h4><br>
-                                    <p>'.$entail[$i][2][1].'</p>
-                                </li>
-                            </ul>             
-                        </div>
-                    ';
+                        <div class="row1">';
+                        foreach ($entail[$i] as $content) {
+                            echo '
+                                <ul>
+                                    <li><img src="'.$content[0].'" width="70px" alt=""></li>
+                                    <li>
+                                        <h4>'.$content[1].'</h4><br>
+                                        <p>'.$content[2].'</p>
+                                    </li>
+                                </ul> 
+                            ';
+                        }            
+                        echo'</div>';
                 }
             ?>
         </div>
@@ -172,19 +160,36 @@
         <div class="testimonials">
             <h2>Testimonials</h2>
         </div>
-        <div class="beneficiary">
-            <img src="img/dwayne.png" alt="">
-            <div class="beneficiary-details">
-                <h5>Dwayne Johnson</h6>
-                <p><span>Joined in April 2016</span></p>
-                <br>
-                <p>I have been using WritersHub since 2016, 
-                    and I have to say that it is a very useful platform for those who want to transform skills into earning. 
-                    I would like to express my sincere gratitude to the QA team for their professional guidance 
-                    and Support Department for their 24/7 help. Also, I am espe...
-                </p>
-                <br>
-                <a href="#">Show more</a>
+        <div class="direct">
+            <a href="#slide1">1</a>
+            <a href="#slide2">2</a>
+            <a href="#slide3">3</a>
+        </div>
+        <div class="holder">
+            <button id="next">&#8250;</button>
+            <button id="back">&#8249;</button>
+            <div class="benecont">
+                <?php
+                    $i=1;
+                    foreach ($testimony as $test) {
+                        echo'
+                            <div class="beneficiary" id="slide'.$i.'">
+                                <img src="'.$test[0].'" alt="">
+                                <div class="beneficiary-details">
+                                    <h5>'.$test[1].'</h6>
+                                    <p><span>'.$test[2].'</span></p>
+                                    <br>
+                                    <p>
+                                        '.$test[3].'
+                                    </p>
+                                    <br>
+                                    <a href="#">Show more</a>
+                                </div>
+                            </div>
+                        ';
+                        $i++;
+                    }
+                ?>
             </div>
         </div>
         <div class="join-us"><br>
@@ -192,4 +197,5 @@
         </div><br>
     </div>
 </main>
+<script src="js/slide.js"></script>
 <?php require 'footer.php';?>

@@ -27,10 +27,10 @@ session_start();?>
     <title>Essay</title>
 </head>
 <body>
-    <nav>
+    <nav id="navbar">
         <div class="nav-contact">
             <ul>
-                <li><h2>TURN YOUR SKILLS INTO MONEY</h2></li>
+                <li><h2>Made to Make your Essays Better</h2></li>
                 <li>Email Addresss</li>
                 <li>support@essaypro.website</li>
             </ul>
