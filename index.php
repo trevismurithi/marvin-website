@@ -183,7 +183,11 @@
                                         '.$test[3].'
                                     </p>
                                     <br>
-                                    <a href="#">Show more</a>
+                                    <i class="fa fa-star checked" aria-hidden="true"></i>
+                                    <i class="fa fa-star checked" aria-hidden="true"></i>
+                                    <i class="fa fa-star checked" aria-hidden="true"></i>
+                                    <i class="fa fa-star checked" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
                                 </div>
                             </div>
                         ';

@@ -16,11 +16,12 @@ nav{
     width: 80%;
     background-color: white;
     position: relative;
+    color: white;
 }
  
 .nav-contact{
     width: 100%;
-    background-color: #65AAD8;
+    background-color: #367FD3;
     padding: 10px 0px;
 }
 

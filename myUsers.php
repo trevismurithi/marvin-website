@@ -42,7 +42,7 @@ if(!isset($_SESSION['role'])){
                             echo '<td id="mobile">'.$value[2].'</td>';
                             echo '<td>'.count($progress).'</td>';
                             echo '<td>'.count($complete).'</td>';
-                            if(count($progress) != 0 && count($complete)!=0){
+                            if(count($progress) != 0){
                                 echo '  <form action="include/open.inc.php" method="POST">
                                             <td><button type="submit" name="submit" value="'.$key.'">view</button></td>
                                         </form>';

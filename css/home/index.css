@@ -220,3 +220,6 @@ main{
         align-items: center;
     }
 }
+.checked {
+    color: orange;
+}
