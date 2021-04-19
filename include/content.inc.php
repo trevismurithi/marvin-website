@@ -18,15 +18,65 @@
         ["You download your order","If you are satisfied with the order, you can approve and download the order in one of the available formats."]
     );
 
-    $testimony = array(
-        ["img/grandma.jpg","Nana Johnson","Joined in April 2016","I have been using Essaypro since 2016, 
-                        and I have to say that it is a very useful platform for those who want to get their job done. 
-                        I would like to express my sincere gratitude to the QA team for their professional guidance 
-                        and Support Department for their 24/7 help. Also, I am espe..."],
-        ["img/admin.jpg","Chris Manson","Joined in March 2020","I can recommend using this service, it is not a scam. 
-                                                                Cool thing is that you can actually chat with your writer and mention 
-                                                                all of the details you need in the paper. 
-                                                                And support is very fast too."],
-        ["img/writer.jpg","Kevin Stewart","Joined in May 2017","I had a million requirements from my professor that I just copy-pasted into the 
-                                                                order form. The paper came out great, and I got the grade I wanted!"],
+    $testimonies = array(
+        [
+            [
+            "img/grandma.jpg",
+            "Nana Johnson","Job done quick",
+            "I had a million requirements from my professor that I just copy-pasted into the order form.",
+            "24 Sept 2020"
+            ],
+            [
+            "img/grandma.jpg",
+            "Nana2 Johnson","Job done quick",
+            "I had a million requirements from my professor that I just copy-pasted into the order form.",
+            "24 Sept 2020"
+            ],
+            [
+            "img/grandma.jpg",
+            "Nana3 Johnson","Job done quick",
+            "I had a million requirements from my professor that I just copy-pasted into the order form.",
+            "24 Sept 2020"
+            ],
+    ],
+    [
+        [
+        "img/grandma.jpg",
+        "Nana5 Johnson","Job done quick",
+        "I had a million requirements from my professor that I just copy-pasted into the order form.",
+        "24 Sept 2020"
+        ],
+        [
+        "img/grandma.jpg",
+        "Nana6 Johnson","Job done quick",
+        "I had a million requirements from my professor that I just copy-pasted into the order form.",
+        "24 Sept 2020"
+        ],
+        [
+        "img/grandma.jpg",
+        "Nana7 Johnson","Job done quick",
+        "I had a million requirements from my professor that I just copy-pasted into the order form.",
+        "24 Sept 2020"
+        ],
+    ],
+    [
+        [
+        "img/grandma.jpg",
+        "Nana5 Johnson","Job done quick",
+        "I had a million requirements from my professor that I just copy-pasted into the order form.",
+        "24 Sept 2020"
+        ],
+        [
+        "img/grandma.jpg",
+        "Nana6 Johnson","Job done quick",
+        "I had a million requirements from my professor that I just copy-pasted into the order form.",
+        "24 Sept 2020"
+        ],
+        [
+        "img/grandma.jpg",
+        "Nana7 Johnson","Job done quick",
+        "I had a million requirements from my professor that I just copy-pasted into the order form.",
+        "24 Sept 2020"
+        ],
+    ],                                                            
     );

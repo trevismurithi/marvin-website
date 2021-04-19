@@ -169,31 +169,46 @@
             <button id="next">&#8250;</button>
             <button id="back">&#8249;</button>
             <div class="benecont">
-                <?php
-                    $i=1;
-                    foreach ($testimony as $test) {
-                        echo'
-                            <div class="beneficiary" id="slide'.$i.'">
-                                <img src="'.$test[0].'" alt="">
-                                <div class="beneficiary-details">
-                                    <h5>'.$test[1].'</h6>
-                                    <p><span>'.$test[2].'</span></p>
+            <?php
+                $i = 1;
+                foreach ($testimonies as $value) {
+                    echo '<div class="beneficiary-main" id="slide'.$i.'">';
+                    foreach ($value as $content) {
+                        echo 
+                        '
+                            <div class="beneficiary-card">
+                                <div class="img-details">
+                                    <img src="'.$content[0].'" alt="">
+                                    <div class="name-rating">
+                                        <h5>'.$content[1].'</h5>
+                                        <i class="fa fa-star checked" aria-hidden="true"></i>
+                                        <i class="fa fa-star checked" aria-hidden="true"></i>
+                                        <i class="fa fa-star checked" aria-hidden="true"></i>
+                                        <i class="fa fa-star checked" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <hr style="border-top: dotted 2px;" />
+                                <div class="beneficiary-body">
+                                    <h4>'.$content[2].'</h4>
                                     <br>
                                     <p>
-                                        '.$test[3].'
+                                        '.$content[3].'
                                     </p>
-                                    <br>
-                                    <i class="fa fa-star checked" aria-hidden="true"></i>
-                                    <i class="fa fa-star checked" aria-hidden="true"></i>
-                                    <i class="fa fa-star checked" aria-hidden="true"></i>
-                                    <i class="fa fa-star checked" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </div>
+                                <hr style="border-top: dotted 2px;" />
+                                <div class="beneficiary-footer">
+                                    <img src="https://assets.website-files.com/5e5d4354e4bb2065e7524459/5f7f2282fe19c04c8f6c6224_Group%207062.svg" 
+                                    alt="" loading="lazy" aria-hidden="true">
+                                    <p>'.$content[4].'</p>
                                 </div>
                             </div>
                         ';
-                        $i++;
                     }
-                ?>
+                    echo '</div>';
+                    $i++;
+                }
+            ?>
             </div>
         </div>
         <div class="join-us"><br>

@@ -1,5 +1,6 @@
 <?php
     include_once 'db.inc.php';
+    include_once 'html.inc.php';
     session_start();
     if($_SESSION['user_id']){
         if(isset($_POST['order_id'])){
