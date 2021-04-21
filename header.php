@@ -37,7 +37,7 @@ session_start();?>
             </ul>
         </div>
         <div class="nav-links">
-            <img src="img/ignite.png" width="92vh" alt="ignite-icon">
+            <img src="img/ignite.png" width="92vh" alt="ignite-icon" id="image-icon">
             <ul>
                 <!-- <li><a hearef="#">FAQ</a></li> -->
                 <!-- <li><a href="#">Contact Us</a></li> -->
