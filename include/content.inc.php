@@ -80,3 +80,27 @@
         ],
     ],                                                            
     );
+
+    $samples = [
+        "#1"=>[
+            "Topic"=>"Reflective clinical practice.",
+            "Discipline"=>"Health care and Life Sciences",
+            "Type"=>"Research Paper",
+            "Pages"=>"6",
+            "Style"=>"Vancouver"
+        ],
+        "#2"=>[
+            "Topic"=>"Reflective clinical practice.",
+            "Discipline"=>"Health care and Life Sciences",
+            "Type"=>"Research Paper",
+            "Pages"=>"6",
+            "Style"=>"Vancouver"
+        ],
+        "#3"=>[
+            "Topic"=>"Reflective clinical practice.",
+            "Discipline"=>"Health care and Life Sciences",
+            "Type"=>"Research Paper",
+            "Pages"=>"6",
+            "Style"=>"Vancouver"
+        ]
+    ];

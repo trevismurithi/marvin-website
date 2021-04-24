@@ -71,7 +71,7 @@ function sendMessage(user_id){
         textArea.style.border = "none";
         url = "../include/send.inc.php";
         param = "receiver=" + user_num + "&user_id=" + user_id + "&message=" + message;
-        //use the message to send information
+        //use the message tPcho send information
         let xttps = new XMLHttpRequest();
         xttps.open("POST", url, true);
         xttps.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');

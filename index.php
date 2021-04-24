@@ -139,14 +139,16 @@
         <div class="available-services">
             <div class="projects">
                 <?php 
-                    for ($i=0; $i < 4; $i++) { 
+                foreach ($samples as $link=>$sample) {
+                    echo '<div class="single">';
+                    foreach ($sample as $key => $value) {
                         echo'
-                            <div class="single">
-                                <p><span>Type of paper:</span> Lifestyle Article</p>
-                                <p><span>Topic: </span>Fashion Race</p>
-                                <p><span>Due Date: </span>March 5</p>
-                                <div class="horizontal"></div>
-                                <p><a href="#">view sample</a></p>
+                            <p><span>'.$key.':</span>'.$value.'</p>                                
+                        ';
+                    }
+                    echo '
+                            <div class="horizontal"></div>
+                            <p><a href="'.$link.'">view sample</a></p>
                             </div>
                         ';
                     }
