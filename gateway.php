@@ -70,4 +70,6 @@ if (isset($_SESSION['user_id'])) {
 </main>
 <!-- Add the checkout buttons, set up the order and approve the order -->
 <script src="js/loader.js"></script>
-<?php require 'footer.php';?>
+<script src="js/nav.js"></script>
+<script src="js/app.js"></script>
+<script src="js/chat.js"></script>

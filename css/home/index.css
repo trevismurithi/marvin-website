@@ -43,7 +43,7 @@ main{
     text-decoration: none;
     color: white;
     padding: 10px;
-    background-color: #367FD3;
+    background-color: #228B22;
     border-radius: 5px;
     text-align: end;
 }
@@ -127,7 +127,7 @@ main{
 }
 .btn-submit{
     outline: none;
-    background-color: #367FD3;
+    background-color: #228B22;
     color: white;
     padding: 10px;
     border:none;

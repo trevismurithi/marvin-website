@@ -1,6 +1,6 @@
 footer{
     width: 80%;
-    background-color: #3F3E3E;
+    background-image: linear-gradient(to right,#006400,#228B22);
     display: flex;
     flex-direction: column;
     padding: 20px 0px;

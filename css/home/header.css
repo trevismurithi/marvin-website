@@ -20,7 +20,7 @@ nav{
  
 .nav-contact{
     width: 100%;
-    background-color: #65AAD8;
+    background-image: linear-gradient(to right,#006400,#00FF00);
     padding: 10px 0px;
 }
 
@@ -78,14 +78,14 @@ nav{
 }
 
 .user-accounts-login{
-    background-color: #237DB5;
+    background-color: #228B22;
     color: white;
 }
 
 .user-accounts-login:hover{
     background-color: white;
-    color: #237DB5;
-    border: 1px solid #237DB5;
+    color: #228B22;
+    border: 1px solid #228B22;
 }
 
 .user-accounts-sign-up{
