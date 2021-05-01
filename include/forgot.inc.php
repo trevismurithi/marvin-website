@@ -10,7 +10,7 @@
             //create time
             $time = date("Y-m-d h:i:sa");
             $time = base64_encode($time);
-            $time = bin2hex($user);
+            $time = bin2hex($time);
             //encode the email
             $user = base64_encode($email);
             $user = bin2hex($user);

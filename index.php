@@ -218,5 +218,6 @@
         </div><br>
     </div>
 </main>
+<img src="img/whatsapp.png" width="50px" style="position: fixed; left:2%; bottom:5%;" alt="">
 <script src="js/slide.js"></script>
 <?php require 'footer.php';?>

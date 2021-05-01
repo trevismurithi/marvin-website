@@ -127,7 +127,7 @@ function writer(state) {
 function requestFiles(user_id) {
     if(card != null){
         //get the values to insert into the options 
-        url = "include/share.inc.php";
+        url = "../include/share.inc.php";
         param = "state=ok&user_id=" + user_id;
         let xttp = new XMLHttpRequest();
         xttp.open("POST", url, true);

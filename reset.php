@@ -4,10 +4,10 @@
         exit();
     }
     $email="";
-    if(isset($_GET['s633352686447553d']) && isset($_POST['s5a4746305a513d3d'])){
+    if(isset($_GET['s633352686447553d']) && isset($_GET['s5a4746305a513d3d'])){
         //convert state to binary the decode
-        $time = hex2bin($_POST['s5a4746305a513d3d']);
-        $time = base64_decode($_POST['s5a4746305a513d3d']);
+        $time = hex2bin($_GET['s5a4746305a513d3d']);
+        $time = base64_decode($_GET['s5a4746305a513d3d']);
         if(date("Y-m-d h:i:sa") != $time){
             header('Location: index.php');
             exit();

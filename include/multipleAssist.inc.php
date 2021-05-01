@@ -26,7 +26,7 @@ function saveFiles($fileDestination,$name){
     //prepare the sql statement
     $sql="";
     for ($i=0; $i < count($fileDestination); $i++) { 
-        $sql .= $db->projectQuery($name,substr($fileDestination[$i],3),8);
+        $sql .= $db->projectQuery($name,substr($fileDestination[$i],3),$_SESSION['user_id']);
     }
     $db->insertProject($conn,$sql);
 }

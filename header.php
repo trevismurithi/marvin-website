@@ -24,7 +24,12 @@ session_start();?>
     <link rel="stylesheet" href="css/orders/order.css">
     <link rel="stylesheet" href="css/checkout/checkout.css">
     <link rel="stylesheet" href="css/success/success.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/blog/blog.css">
+    <link rel="stylesheet" href="css/blog/readmore.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="shortcut icon" href="img/ignite.png" type="image/x-icon">
     <title>Essay</title>
 </head>
 <body>
@@ -45,12 +50,14 @@ session_start();?>
                     if(!isset($_SESSION['username'])){
                         echo'
                             <li><a href="index.php">Home</a></li>
+                            <li><a href="blog.php">Blogs</a></li>
                             <li><a href="index.php#works-row">How it works</a></li>
                             <li><a href="index.php#entail">Why choose us</a></li>
                         ';
                     }else if(!isset($_SESSION['role'])){
                         echo'
                             <li><a href="index.php">Home</a></li>
+                            <li><a href="blog.php">Blogs</a></li>
                             <li><a href="order.php">Orders</a></li>
                             <li><a href="calculator.php">Make Order</a></li>
                             <li><a href="chatroom.php">Chatroom</a></li>

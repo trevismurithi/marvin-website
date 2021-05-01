@@ -1,5 +1,6 @@
 <?php 
     require 'header.php';
+    require 'include/details.inc.php';
     //redirect the user if they have already logged in
     if(isset($_SESSION['username'])){
         header('Location: index.php');
@@ -87,6 +88,7 @@
             break;
     }
 ?>
+<style>.hide{display: none;}</style>
 <div class="create-account">
     <div class="get-started">
         <h1>GET STARTED</h1>
@@ -112,27 +114,38 @@
             <div>
                 <label for="country">country</label>
                 <select name="country" id="country">
-                    <option value="254">Kenya +254</option>
+                    <?php
+                        for ($i=0; $i < count($countries); $i++) { 
+                            echo'<option value="'.$country_codes[$i].'">'.$countries[$i].'</option>';
+                        }
+                    ?>
                 </select>
             </div>
             <div>
                 <label for="tel">Phone Number</label>
-                <p id="text-country">+254</p>
+                <p id="text-country">93</p>
                 <input type="tel" name="tel" id="tel" value=<?php echo $phone;?>>
             </div>
-            <div>
+            <div style="position: relative;">
                 <label for="pwd">Password</label>
-                <input type="password" name="pwd" id="pwd">
+                <input type="password" name="pwd" id="pwd" style="border-top: none; border-left:none; border-right:none;">
+                <i id="open-eye" class="fa fa-eye hide" onclick="showPassword()" style="position: absolute; right:2%;"></i>
+                <i id="slash-eye" class="fa fa-eye-slash" onclick="showPassword()" style="position: absolute; right:2%;"></i>
             </div>
             <div>
                 <label for="r-pwd">Confirm Password</label>
-                <input type="password" name="r-pwd" id="r-pwd">
+                <input type="password" name="r-pwd" id="r-pwd" style="border-top: none; border-left:none; border-right:none;">
             </div>
             <div>
-                <label class="contain" for="checkbox"><a href="#">terms and conditions</a></label>
+                <label class="contain" for="checkbox">
+                    <a href="#" 
+                    style="font-family: Arial, Helvetica, sans-serif;
+                    font-size:18px; font-weight:bolder;"
+                    >Terms and conditions</a>
+                </label>
                 <input type="checkbox" name="checkbox" id="checkbox" value="agree" required>
             </div>
-            <button name="submit" type="submit">Create My Account</button>
+            <button id="signup-btn" name="submit" type="submit" >Create My Account</button>
         </form>
         <?php 
         if(isset($_GET['error'])){
@@ -143,4 +156,31 @@
         ?>
     </div>
 </div>
+<script>
+//country selector
+const countryCode = document.getElementById('country');
+countryCode.addEventListener('change',()=>{
+    //change the country code default
+    document.getElementById("text-country").innerText = countryCode.value;
+    document.getElementById("signup-btn").value = countryCode.value;
+});
+//reveal and disclose section
+let open_eye = document.getElementById('open-eye');
+let slash_eye = document.getElementById('slash-eye');
+function showPassword() {
+  var password = document.getElementById("pwd");
+  var r_password = document.getElementById("r-pwd");
+  if (password.type === "password") {
+    password.type = "text";
+    r_password.type = "text";
+    open_eye.classList.toggle('hide');
+    slash_eye.classList.toggle('hide');
+  } else {
+    password.type = "password";
+    r_password.type = "password";
+    slash_eye.classList.toggle('hide');
+    open_eye.classList.toggle('hide');
+  }
+}
+</script>
 <?php require 'footer.php'?>

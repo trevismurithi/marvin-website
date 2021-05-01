@@ -1,4 +1,5 @@
 <footer>
+    <?php require_once 'include/details.inc.php'?>
     <div class="navigation">
         <div>
             <h5>Menu</h5>
@@ -25,6 +26,48 @@
         <div>
             <h5>Contact Us</h5>
             <li><a href="#">support@essaypro.website</a></li> 
+        </div>
+    </div>
+    <div class="whole-list-service">
+        <h5>Services</h5>
+        <div class="horizontal"></div>
+        <div class="service-columns">
+            <div class="service-columns-1">
+                <?php
+                    foreach ($type_writing as $key => $value) {
+                        if($key < 8){
+                            echo'<p>'.$value.'</p>';
+                        }
+                    }
+                ?>
+            </div>
+            <div class="service-columns-2">
+                <?php
+                    foreach ($type_writing as $key => $value) {
+                        if($key > 7 && $key<16){
+                            echo'<p>'.$value.'</p>';
+                        }
+                    }
+                ?>
+            </div>
+            <div class="service-columns-3">
+                <?php
+                    foreach ($type_writing as $key => $value) {
+                        if($key > 15 && $key<24){
+                            echo'<p>'.$value.'</p>';
+                        }
+                    }
+                ?>
+            </div>
+            <div class="service-columns-4">
+                <?php
+                    foreach ($type_writing as $key => $value) {
+                        if($key >24){
+                            echo'<p>'.$value.'</p>';
+                        }
+                    }
+                ?>
+            </div>
         </div>
     </div>
     <div class="line-hr"></div>
